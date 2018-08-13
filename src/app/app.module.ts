@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/main/navbar/navbar.component';
+import { MaterialModule } from './material/material.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NavbarComponent } from './components/main/navbar/navbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
