@@ -1,34 +1,70 @@
-<!-- <app-navbar></app-navbar>
-<i class="fa fa-superpowers" aria-hidden="true"></i> -->
+<div class="uo-main-container">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+          <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+      </button>
 
-<h3>Icon Buttons</h3>
-<div class="button-row">
-    <button mat-icon-button>
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-    <button mat-icon-button color="primary">
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-    <button mat-icon-button color="accent">
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-    <button mat-icon-button color="warn">
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-    <button mat-icon-button disabled>
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-</div>
+        <h1 class="example-app-name">Umss Online</h1>
 
-<h3>Fab Buttons</h3>
-<div class="button-row">
-    <button mat-fab>Basic</button>
-    <button mat-fab color="primary">Primary</button>
-    <button mat-fab color="accent">Accent</button>
-    <button mat-fab color="warn">Warn</button>
-    <button mat-fab disabled>Disabled</button>
-    <button mat-fab>
-    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-  </button>
-    <a mat-fab routerLink=".">Link</a>
+        <span class="uo-component-spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <!-- <mat-icon>more_vert</mat-icon> -->
+          <i class="material-icons">more_vert</i>
+      </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/profile">
+              <mat-icon>account_box</mat-icon>
+              <span>Mi Perfil</span>
+          </button>
+            <button mat-menu-item routerLink="/login">
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Cerrar Sesión</span>
+          </button>
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="uo-sidenav-container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
+            <img src="assets/images/uologov1.jpg" width="180">
+
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/buscar" style="cursor: pointer">
+              <mat-icon>search</mat-icon>
+              <span>Buscar</span>
+          </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/consulta" style="cursor: pointer">
+              <mat-icon>insert_drive_file</mat-icon>
+              <span>Registrar</span>
+          </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer">
+              <mat-icon>star_rate</mat-icon>
+              <span>Especialidades</span>
+          </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer">
+              <mat-icon>healing</mat-icon>
+              <span>Médicos</span>
+          </button>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer">
+              <mat-icon>assignment</mat-icon>
+              <span>Examenes</span>
+          </button>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer">
+              <mat-icon>accessibility</mat-icon>
+              <span>Pacientes</span>
+          </button>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/reporte" style="cursor: pointer">
+              <mat-icon>assessment</mat-icon>
+              <span>Reportes</span>
+          </button>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </div>
