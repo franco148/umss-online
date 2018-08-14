@@ -30,7 +30,7 @@
             <img src="assets/images/uologov1.jpg" width="180">
 
             <mat-form-field>
-                <mat-select placeholder="Umss Online Projects">
+                <mat-select placeholder="Umss Online Projects" [(ngModel)]="selectedProject" name="proj" (valueChange)="changeProject($event)">
                     <mat-option *ngFor="let project of uoProjects" [value]="project.id">
                         <img src="assets/images/uologov1.jpg" width="20"> {{project.name}}
                     </mat-option>
