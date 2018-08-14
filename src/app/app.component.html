@@ -29,21 +29,29 @@
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
 
+            <mat-form-field>
+                <mat-select placeholder="Umss Online Projects">
+                    <mat-option *ngFor="let project of uoProjects" [value]="project.id">
+                        <img src="assets/images/uologov1.jpg" width="20"> {{project.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-divider></mat-divider>
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/buscar" style="cursor: pointer">
               <mat-icon>search</mat-icon>
               <span>Buscar</span>
           </button>
-            <mat-divider></mat-divider>
+            <!-- <mat-divider></mat-divider> -->
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer">
               <mat-icon>insert_drive_file</mat-icon>
               <span>Registrar</span>
           </button>
-            <mat-divider></mat-divider>
+            <!-- <mat-divider></mat-divider> -->
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer">
               <mat-icon>star_rate</mat-icon>
               <span>Especialidades</span>
           </button>
-            <mat-divider></mat-divider>
+            <!-- <mat-divider></mat-divider> -->
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer">
               <mat-icon>healing</mat-icon>
               <span>Médicos</span>

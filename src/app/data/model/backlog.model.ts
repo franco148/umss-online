@@ -1,11 +1,11 @@
 export class Backlog {
 
-    private id: number;
-    private description: string;
-    private ammountOfUserStories: number;
+    id: number;
+    description: string;
+    ammountOfUserStories: number;
 
-    private isDeleted: boolean;
+    isDeleted: boolean;
 
-    private createdAt: Date;
-    private updatedAt: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }

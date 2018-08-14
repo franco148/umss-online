@@ -1,14 +1,14 @@
 import { Backlog } from './backlog.model';
 export class Project {
 
-    private id: number;
-    private name: string;
-    private completedDateEstimation: Date;
-    private backlog: Backlog;
+    id: number;
+    name: string;
+    completedDateEstimation: Date;
+    backlog: Backlog;
 
-    private isDeleted: boolean;
+    isDeleted: boolean;
 
-    private createdAt: Date;
-    private updatedAt: Date;
+    createdAt: Date;
+    updatedAt: Date;
     // private
 }
