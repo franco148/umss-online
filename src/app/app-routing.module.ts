@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectBacklogComponent } from './components/main/project-backlog/project-backlog.component';
 
 const routes: Routes = [
-    { path: 'project', component: ProjectBacklogComponent }
+    { path: 'project-backlog/:id', component: ProjectBacklogComponent }
 ];
 
 @NgModule({
