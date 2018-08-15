@@ -10,18 +10,21 @@ import { Project } from './data/model/project.model';
 export class AppComponent {
 
   uoProjects: Project[] = [];
-  selectedProject: Number;
+  selectedProjectId: Number;
+  selectedProject: Project;
 
   constructor(private projectService: ProjectService) {
     this.projectService.findAll().subscribe(data => {
       this.uoProjects = data;
       console.log(this.uoProjects);
     });
-    console.log('before: ' + this.selectedProject);
+    console.log('before: ' + this.selectedProjectId);
   }
 
   changeProject(selectedProjecId: Number) {
-    this.selectedProject = selectedProjecId;
-    console.log(`Selected Project ID: ${this.selectedProject}`);
+    this.selectedProjectId = selectedProjecId;
+
+    this.selectedProject = this.uoProjects.find(e => e.id === selectedProjecId);
+    console.log(this.selectedProject);
   }
 }
