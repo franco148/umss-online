@@ -1,3 +1,4 @@
+import { UserStory } from './user-story.model';
 export class Backlog {
 
     id: number;
@@ -5,6 +6,8 @@ export class Backlog {
     ammountOfUserStories: number;
 
     isDeleted: boolean;
+
+    userStories: UserStory[];
 
     createdAt: Date;
     updatedAt: Date;

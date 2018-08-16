@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GATEWAY_SERVER_URL } from '../constants/app.constant';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../data/model/project.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,9 @@ import { Project } from '../data/model/project.model';
 export class ProjectService {
 
   serverUrl = `${GATEWAY_SERVER_URL}/proj-mgt/projects`;
+
+  projectsChange = new Subject<Project[]>();
+  message = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
