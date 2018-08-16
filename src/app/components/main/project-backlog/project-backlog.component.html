@@ -1,3 +1,19 @@
+<!-- <div class="container">
+    <h1 matBadge="{{project.completedDateEstimation}}" matBadgeOverlap="false">{{project.name}}</h1>
+</div> -->
+<mat-toolbar>
+    <!-- <span matBadge="{{project.completedDateEstimation}}" matBadgeOverlap="false">{{project.name}}</span> -->
+    <div class="row">
+        <h1>{{project.name}}</h1>
+        <mat-chip-list>
+            <mat-chip color="primary" selected>Estimated completion date: {{project.completedDateEstimation}}</mat-chip>
+        </mat-chip-list>
+    </div>
+</mat-toolbar>
+<div class="row alert alert-secondary" role="alert">
+    {{project.backlog.description}}
+</div>
+<mat-divider></mat-divider>
 <p>
-  project-backlog works!
+    project-backlog works!
 </p>

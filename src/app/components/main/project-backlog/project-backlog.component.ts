@@ -10,19 +10,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjectBacklogComponent implements OnInit {
 
-  // tslint:disable-next-line:no-input-rename
-  // @Input('project') selectedProject: Project;
-  private project: Project;
+  project: Project;
 
-  constructor(private activateRoute: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private activateRoute: ActivatedRoute, private projectService: ProjectService) {
+    this.project = new Project();
+   }
 
   ngOnInit() {
 
     this.activateRoute.params.subscribe(params => {
-      console.log('id: ' + params['id']);
       this.projectService.findById(params['id']).subscribe(response => {
         this.project = response;
-        console.log('Response: ' + this.project);
+        console.log(this.project);
+        console.log(this.project.backlog);
       });
     });
 
