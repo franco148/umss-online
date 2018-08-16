@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProjectBacklogComponent implements OnInit {
 
   project: Project;
+  // userStories: UserS
 
   constructor(private activateRoute: ActivatedRoute, private projectService: ProjectService) {
     this.project = new Project();
@@ -25,10 +26,6 @@ export class ProjectBacklogComponent implements OnInit {
         console.log(this.project.backlog);
       });
     });
-
-    // this.projectService.findAll().subscribe(data => {
-    //   console.log(data);
-    // });
   }
 
 }

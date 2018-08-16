@@ -1,4 +1,5 @@
 import { Backlog } from './backlog.model';
+
 export class Project {
 
     id: number;
@@ -10,5 +11,4 @@ export class Project {
 
     createdAt: Date;
     updatedAt: Date;
-    // private
 }
