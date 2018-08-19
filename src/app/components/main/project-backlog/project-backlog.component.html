@@ -1,14 +1,13 @@
-<mat-toolbar>
-    <div class="row">
+<mat-toolbar fxLayout="column">
+    <div fxLayout="column" fxLayoutAlign="center center">
         <h1>{{project.name}}</h1>
         <mat-chip-list>
             <mat-chip color="primary" selected>Estimated completion date: {{project.completedDateEstimation}}</mat-chip>
         </mat-chip-list>
     </div>
+    <h4>{{project.backlog?.description}}</h4>
 </mat-toolbar>
-<div class="row alert alert-secondary" role="alert">
-    {{project.backlog?.description}}
-</div>
+
 <mat-divider></mat-divider>
 <div class="example-container mat-elevation-z8">
 
