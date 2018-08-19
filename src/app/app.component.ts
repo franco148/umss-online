@@ -22,7 +22,6 @@ export class AppComponent {
     // console.log('before: ' + this.selectedProjectId);
 
     const procs = this.projectService.findAll();
-    console.log(procs);
     this.uoProjects = procs;
   }
 
@@ -39,6 +38,7 @@ export class AppComponent {
     this.selectedProjectId = selectedProjecId;
 
     this.selectedProject = this.uoProjects.find(e => e.id === selectedProjecId);
+    console.log('selected project: ', this.selectedProject);
 
     this.router.navigate(['/project-backlog', selectedProjecId]);
   }

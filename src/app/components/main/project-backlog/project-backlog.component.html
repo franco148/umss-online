@@ -44,7 +44,7 @@
 
         <ng-container matColumnDef="assignedTo">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To </mat-header-cell>
-            <mat-cell *matCellDef="let row"> {{row.assignedTo.id}} </mat-cell>
+            <mat-cell *matCellDef="let row"> {{row.assignedTo.name}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="estimatedTime">

@@ -28,7 +28,6 @@
     <mat-sidenav-container class="uo-sidenav-container">
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
-
             <mat-form-field>
                 <mat-select placeholder="Umss Online Projects" [(ngModel)]="selectedProject" name="proj" (valueChange)="changeProject($event)">
                     <mat-option *ngFor="let project of uoProjects" [value]="project.id">
@@ -37,30 +36,30 @@
                 </mat-select>
             </mat-form-field>
             <mat-divider></mat-divider>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>search</mat-icon>
               <span>Search</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>directions_boat</mat-icon>
               <span>Active Sprint</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>library_books</mat-icon>
               <span>Sprints</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>bug_report</mat-icon>
               <span>Issues</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>assignment</mat-icon>
               <span>Documents</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer" [disabled]="!selectedProject">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>supervisor_account</mat-icon>
               <span>Participants</span>
           </button>
