@@ -34,16 +34,19 @@ export class ProjectBacklogComponent implements OnInit {
         // this.project = projectData;
       });
 
-      this.projectService.findById(params['id']).subscribe(response => {
-        this.project = response;
-        this.pBacklog = this.project.backlog;
-        this.userStories = this.pBacklog.userStories;
-        console.log(this.userStories);
+      // this.projectService.findById(params['id']).subscribe(response => {
+      //   this.project = response;
+      //   this.pBacklog = this.project.backlog;
+      //   this.userStories = this.pBacklog.userStories;
+      //   console.log(this.userStories);
 
-        this.dataSource = new MatTableDataSource(this.userStories);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      });
+      //   this.dataSource = new MatTableDataSource(this.userStories);
+      //   this.dataSource.paginator = this.paginator;
+      //   this.dataSource.sort = this.sort;
+      // });
+
+      const project1 = this.projectService.findById(params['id']);
+      this.project = project1;
     });
   }
 

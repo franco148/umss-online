@@ -15,18 +15,30 @@ export class AppComponent {
   selectedProject: Project;
 
   constructor(private router: Router, private projectService: ProjectService) {
-    this.projectService.findAll().subscribe(data => {
-      this.uoProjects = data;
-      // console.log(this.uoProjects);
-    });
+    // this.projectService.findAll().subscribe(data => {
+    //   this.uoProjects = data;
+    //   // console.log(this.uoProjects);
+    // });
     // console.log('before: ' + this.selectedProjectId);
+
+    const procs = this.projectService.findAll();
+    console.log(procs);
+    this.uoProjects = procs;
   }
 
-  changeProject(selectedProjecId: Number) {
+  // changeProject(selectedProjecId: Number) {
+  //   this.selectedProjectId = selectedProjecId;
+
+  //   this.selectedProject = this.uoProjects.find(e => e.id === selectedProjecId);
+  //   // console.log(this.selectedProject);
+
+  //   this.router.navigate(['/project-backlog', selectedProjecId]);
+  // }
+
+  changeProject(selectedProjecId: any) {
     this.selectedProjectId = selectedProjecId;
 
     this.selectedProject = this.uoProjects.find(e => e.id === selectedProjecId);
-    // console.log(this.selectedProject);
 
     this.router.navigate(['/project-backlog', selectedProjecId]);
   }
