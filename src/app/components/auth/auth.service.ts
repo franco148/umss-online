@@ -3,22 +3,25 @@ import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 
+import { User } from './user.model';
+import { AuthData } from './auth-data.model';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
   authChanged = new Subject<boolean>();
-  private user: any;
+  private user: User;
 
   constructor(private router: Router) { }
 
-  registerUser(authData: any) {
+  registerUser(authData: AuthData) {
     // Add the logic here.
     this.authSuccessfully();
   }
 
-  login(authData: any) {
+  login(authData: AuthData) {
     // Add the logic here.
     this.authSuccessfully();
   }
