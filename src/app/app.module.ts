@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { ProjectBacklogComponent } from './components/main/project-backlog/project-backlog.component';
+import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 
 
 @NgModule({
