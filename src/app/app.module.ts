@@ -12,12 +12,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectBacklogComponent
+    ProjectBacklogComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
