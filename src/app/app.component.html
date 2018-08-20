@@ -10,8 +10,7 @@
         <span class="uo-component-spacer"></span>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <!-- <mat-icon>more_vert</mat-icon> -->
-          <i class="material-icons">more_vert</i>
+          <mat-icon>more_vert</mat-icon>
       </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item routerLink="/profile">
@@ -29,38 +28,45 @@
     <mat-sidenav-container class="uo-sidenav-container">
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
-
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/buscar" style="cursor: pointer">
+            <mat-form-field>
+                <mat-select placeholder="Umss Online Projects" [(ngModel)]="selectedProject" name="proj" (valueChange)="changeProject($event)">
+                    <mat-option *ngFor="let project of uoProjects" [value]="project.id">
+                        <img src="assets/images/uologov1.jpg" width="20"> {{project.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>search</mat-icon>
-              <span>Buscar</span>
+              <span>Search</span>
           </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/consulta" style="cursor: pointer">
-              <mat-icon>insert_drive_file</mat-icon>
-              <span>Registrar</span>
+            <!-- <mat-divider></mat-divider> -->
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer" [disabled]="selectedProject == undefined">
+              <mat-icon>directions_boat</mat-icon>
+              <span>Active Sprint</span>
           </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer">
-              <mat-icon>star_rate</mat-icon>
-              <span>Especialidades</span>
+            <!-- <mat-divider></mat-divider> -->
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer" [disabled]="selectedProject == undefined">
+              <mat-icon>library_books</mat-icon>
+              <span>Sprints</span>
           </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer">
-              <mat-icon>healing</mat-icon>
-              <span>Médicos</span>
+            <!-- <mat-divider></mat-divider> -->
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer" [disabled]="selectedProject == undefined">
+              <mat-icon>bug_report</mat-icon>
+              <span>Issues</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>assignment</mat-icon>
-              <span>Examenes</span>
+              <span>Documents</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer">
-              <mat-icon>accessibility</mat-icon>
-              <span>Pacientes</span>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer" [disabled]="selectedProject == undefined">
+              <mat-icon>supervisor_account</mat-icon>
+              <span>Participants</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/reporte" style="cursor: pointer">
+            <!-- <button mat-menu-item (click)="sidenav.toggle()" routerLink="/reporte" style="cursor: pointer" [disabled]="!selectedProject">
               <mat-icon>assessment</mat-icon>
               <span>Reportes</span>
-          </button>
+          </button> -->
         </mat-sidenav>
 
         <mat-sidenav-content>
