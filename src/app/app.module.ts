@@ -14,7 +14,7 @@ import { MaterialModule } from './material/material.module';
 import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
-import { ProjectManagementHeaderComponent } from './components/project-management-header/project-management-header.component';
+import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
 
 
 @NgModule({
@@ -23,7 +23,7 @@ import { ProjectManagementHeaderComponent } from './components/project-managemen
     ProjectBacklogComponent,
     LoginComponent,
     SignupComponent,
-    ProjectManagementHeaderComponent
+    UoDocsToolbarComponent
   ],
   imports: [
     BrowserModule,
