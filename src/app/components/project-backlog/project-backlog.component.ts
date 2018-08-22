@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { ProjectService } from '../../../service/project.service';
-import { Project } from '../../../data/model/project.model';
+import { ProjectService } from '../../service/project.service';
+import { Project } from '../../data/model/project.model';
 import { ActivatedRoute } from '@angular/router';
-import { UserStory } from '../../../data/model/user-story.model';
+import { UserStory } from '../../data/model/user-story.model';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Backlog } from '../../../data/model/backlog.model';
+import { Backlog } from '../../data/model/backlog.model';
 
 @Component({
   selector: 'app-project-backlog',
