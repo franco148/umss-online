@@ -3,3 +3,11 @@
     background-color: #f2f2f2;
     height: 40px;
 }
+
+span {
+    cursor: pointer;
+}
+
+span:active {
+    transform: translateY(4px);
+}

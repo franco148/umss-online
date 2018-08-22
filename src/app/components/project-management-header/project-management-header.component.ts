@@ -12,4 +12,7 @@ export class ProjectManagementHeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClickMethod() {
+    console.log('menu buttons clicks!!!...');
+  }
 }
