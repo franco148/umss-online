@@ -14,6 +14,7 @@ import { MaterialModule } from './material/material.module';
 import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
+import { ProjectManagementHeaderComponent } from './components/project-management-header/project-management-header.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SignupComponent } from './components/auth/signup/signup.component';
     AppComponent,
     ProjectBacklogComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    ProjectManagementHeaderComponent
   ],
   imports: [
     BrowserModule,
