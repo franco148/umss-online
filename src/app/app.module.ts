@@ -17,6 +17,7 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
 import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
 import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-card.component';
+import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-docs-notes.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-ca
     SignupComponent,
     UoDocsToolbarComponent,
     UoDocsHeaderComponent,
-    UoInfoCardComponent
+    UoInfoCardComponent,
+    UoDocsNotesComponent
   ],
   imports: [
     BrowserModule,
