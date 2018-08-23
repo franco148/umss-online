@@ -1,5 +1,6 @@
 mat-card {
     max-width: 600px;
+    padding: 15px;
 }
 
 mat-card-title {
