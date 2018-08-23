@@ -16,6 +16,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
 import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
+import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-card.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-
     LoginComponent,
     SignupComponent,
     UoDocsToolbarComponent,
-    UoDocsHeaderComponent
+    UoDocsHeaderComponent,
+    UoInfoCardComponent
   ],
   imports: [
     BrowserModule,
