@@ -26,6 +26,12 @@ mat-card-content {
     border-radius: 8px;
 }
 
+.uo-card-content {
+    width: 70%;
+    margin-left: 15px;
+    max-height: 80px;
+}
+
 .span-button {
     cursor: pointer;
     border-radius: 8px;
