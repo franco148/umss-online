@@ -15,6 +15,7 @@ import { ProjectBacklogComponent } from './components/project-backlog/project-ba
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
+import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/u
     ProjectBacklogComponent,
     LoginComponent,
     SignupComponent,
-    UoDocsToolbarComponent
+    UoDocsToolbarComponent,
+    UoDocsHeaderComponent
   ],
   imports: [
     BrowserModule,

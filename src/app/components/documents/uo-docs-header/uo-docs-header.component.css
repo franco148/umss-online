@@ -1,0 +1,25 @@
+span {
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    margin-left: 0%;
+}
+
+span:active {
+    transform: translateY(4px);
+}
+
+mat-progress-bar {
+    height: 15px;
+    margin-top: 5px;
+}
+
+.uo-docs-header {
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.uo-docs-header-rightside {
+    /* background-color: #f2f2f2; */
+    /* background-color: #e0e0e0; */
+}
