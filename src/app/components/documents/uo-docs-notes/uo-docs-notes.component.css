@@ -1,6 +1,7 @@
 mat-card {
     max-width: 300px;
     background-color: papayawhip;
+    padding: 10px;
 }
 
 mat-card-title {
