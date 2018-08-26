@@ -20,6 +20,7 @@ import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-ca
 import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-docs-notes.component';
 import { UoProjectHeaderComponent } from './components/projects/uo-project-header/uo-project-header.component';
 import { UoProjectProgressComponent } from './components/projects/uo-project-progress/uo-project-progress.component';
+import { UoProgressItemComponent } from './components/projects/uo-project-progress/uo-progress-item/uo-progress-item.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { UoProjectProgressComponent } from './components/projects/uo-project-pro
     UoInfoCardComponent,
     UoDocsNotesComponent,
     UoProjectHeaderComponent,
-    UoProjectProgressComponent
+    UoProjectProgressComponent,
+    UoProgressItemComponent
   ],
   imports: [
     BrowserModule,
