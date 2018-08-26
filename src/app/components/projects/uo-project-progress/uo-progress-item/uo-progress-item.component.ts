@@ -22,10 +22,6 @@ export class UoProgressItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.progressPercentage = 41;
-    this.progressStatus = 'To Do';
-    this.numberOfTasks = 82;
-    this.percentageColor = '#134F5C';
   }
 
 }
