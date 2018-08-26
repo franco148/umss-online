@@ -3,11 +3,11 @@ import { AuthService } from '../auth.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-uo-auth-signup',
+  templateUrl: './uo-auth-signup.component.html',
+  styleUrls: ['./uo-auth-signup.component.css']
 })
-export class SignupComponent implements OnInit {
+export class UoAuthSignupComponent implements OnInit {
 
   maxDate;
 

@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 import { UoAuthLoginComponent } from './components/auth/uo-auth-login/uo-auth-login.component';
-import { SignupComponent } from './components/auth/signup/signup.component';
+import { UoAuthSignupComponent } from './components/auth/uo-auth-signup/uo-auth-signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
 import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
 import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-card.component';
@@ -25,7 +25,7 @@ import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-do
     AppComponent,
     ProjectBacklogComponent,
     UoAuthLoginComponent,
-    SignupComponent,
+    UoAuthSignupComponent,
     UoDocsToolbarComponent,
     UoDocsHeaderComponent,
     UoInfoCardComponent,
