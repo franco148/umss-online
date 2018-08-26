@@ -6,7 +6,8 @@ import { MatAutocompleteModule, MatNativeDateModule, MatExpansionModule, MatList
          MatDatepickerModule, MatSelectModule, MatDialogModule, MatSnackBarModule,
          MatCardModule, MatInputModule, MatButtonModule, MatIconModule, MatMenuModule,
          MatSidenavModule, MatDividerModule, MatToolbarModule, MatFormFieldModule, MatTableModule,
-         MatPaginatorModule, MatSortModule, MatPaginatorIntl, MatBadgeModule, MatChipsModule } from '@angular/material';
+         MatPaginatorModule, MatSortModule, MatPaginatorIntl, MatBadgeModule, MatChipsModule,
+         MatCheckboxModule, MatProgressBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -33,7 +34,9 @@ import { MatAutocompleteModule, MatNativeDateModule, MatExpansionModule, MatList
     MatNativeDateModule,
     MatAutocompleteModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule,
+    MatProgressBarModule
 ],
 exports: [
     MatButtonModule,
@@ -57,7 +60,9 @@ exports: [
     MatNativeDateModule,
     MatAutocompleteModule,
     MatBadgeModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule,
+    MatProgressBarModule
 ],
   declarations: []
 })

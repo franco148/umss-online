@@ -1,0 +1,50 @@
+mat-card {
+    max-width: 300px;
+    background-color: papayawhip;
+    padding: 10px;
+}
+
+mat-card-title {
+    margin-bottom: 5px;
+    font-size: 13px !important;
+}
+
+mat-card-subtitle {
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+mat-card-content {
+    font-size: 12px;
+    text-align: justify;
+}
+
+span:active {
+    transform: translateY(2px);
+}
+
+.uo-card-avatar {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.uo-card-content {
+    width: 70%;
+    margin-left: 15px;
+    max-height: 80px;
+}
+
+.span-button {
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 0%;
+    border: 1px moccasin solid;
+    background-color: moccasin;
+    width: 90px;
+    height: 25px;
+    font-size: 12px;
+    color: cadetblue;
+}

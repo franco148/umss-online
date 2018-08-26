@@ -1,0 +1,41 @@
+<mat-card fxFlex.lt-sm="100%">
+    <div fxLayout="row">
+        <div mat-card-avatar class="uo-card-avatar"></div>
+        <div class="uo-card-content">
+            <mat-card-header>
+                <mat-card-title>Shiba Inu</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <p>
+                    {{ cardDescription.substr(0, 100) }} ... see more
+                </p>
+            </mat-card-content>
+        </div>
+        <div *ngIf="isChangesInformation" fxLayoutAlign="end center" style="width: 30%">
+            <span class="span-button" fxLayoutAlign="center center">Verified</span>
+            <span class="span-checkbox" fxLayoutAlign="center center">
+              <mat-icon aria-label="Example icon-button with a heart icon">chevron_left</mat-icon>
+              <mat-checkbox class="mat-checkbox-inner-container" color="primary"></mat-checkbox>
+          </span>
+        </div>
+    </div>
+    <mat-card-actions *ngIf="!isChangesInformation" fxLayoutAlign="end" fxLayoutGap="0px">
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">star</mat-icon>
+      </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">star</mat-icon>
+      </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">star</mat-icon>
+      </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">star</mat-icon>
+      </button>
+        <button mat-icon-button>
+          <mat-icon aria-label="Example icon-button with a heart icon">star_half</mat-icon>
+      </button>
+    </mat-card-actions>
+</mat-card>

@@ -1,0 +1,16 @@
+<div class="exam">
+    <div class="uo-project-percentage-bar" fxLayout="row">
+        <hr [style.width]="'41%'" [style.box-shadow]="'inset 0 12px 12px -8px #134F5C'">
+        <hr [style.width]="'17%'" [style.box-shadow]="'inset 0 12px 12px -8px #FEFE00'">
+        <hr [style.width]="'29%'" [style.box-shadow]="'inset 0 12px 12px -8px #009E0F'">
+        <hr [style.width]="'8%'" [style.box-shadow]="'inset 0 12px 12px -8px #FF9900'">
+        <hr [style.width]="'5%'" [style.box-shadow]="'inset 0 12px 12px -8px #351C75'">
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around center">
+        <app-uo-progress-item [percentage]="41" [status]="'To Do'" [amount]="82" [color]="'#134F5C'"></app-uo-progress-item>
+        <app-uo-progress-item [percentage]="17" [status]="'In Progress'" [amount]="34" [color]="'#FEFE00'"></app-uo-progress-item>
+        <app-uo-progress-item [percentage]="29" [status]="'Completed'" [amount]="58" [color]="'#009E0F'"></app-uo-progress-item>
+        <app-uo-progress-item [percentage]="8" [status]="'Delayed'" [amount]="16" [color]="'#FF9900'"></app-uo-progress-item>
+        <app-uo-progress-item [percentage]="5" [status]="'Issues'" [amount]="10" [color]="'#351C75'"></app-uo-progress-item>
+    </div>
+</div>
