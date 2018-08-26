@@ -18,6 +18,8 @@ import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/u
 import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
 import { UoInfoCardComponent } from './components/shared/uo-info-card/uo-info-card.component';
 import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-docs-notes.component';
+import { UoProjectHeaderComponent } from './components/projects/uo-project-header/uo-project-header.component';
+import { UoProjectProgressComponent } from './components/projects/uo-project-progress/uo-project-progress.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-do
     UoDocsToolbarComponent,
     UoDocsHeaderComponent,
     UoInfoCardComponent,
-    UoDocsNotesComponent
+    UoDocsNotesComponent,
+    UoProjectHeaderComponent,
+    UoProjectProgressComponent
   ],
   imports: [
     BrowserModule,
