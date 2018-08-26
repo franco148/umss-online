@@ -3,11 +3,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-uo-auth-login',
+  templateUrl: './uo-auth-login.component.html',
+  styleUrls: ['./uo-auth-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class UoAuthLoginComponent implements OnInit {
 
   loginForm: FormGroup;
 

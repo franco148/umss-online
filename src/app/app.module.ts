@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
 import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
-import { LoginComponent } from './components/auth/login/login.component';
+import { UoAuthLoginComponent } from './components/auth/uo-auth-login/uo-auth-login.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
 import { UoDocsHeaderComponent } from './components/documents/uo-docs-header/uo-docs-header.component';
@@ -24,7 +24,7 @@ import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-do
   declarations: [
     AppComponent,
     ProjectBacklogComponent,
-    LoginComponent,
+    UoAuthLoginComponent,
     SignupComponent,
     UoDocsToolbarComponent,
     UoDocsHeaderComponent,
