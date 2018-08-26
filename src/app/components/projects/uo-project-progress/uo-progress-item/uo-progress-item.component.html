@@ -1,3 +1,7 @@
-<p>
-  uo-progress-item works!
-</p>
+<div fxLayout="row" fxLayoutAlign="start center">
+    <p class="uo-progress-percentage" [style.color]="percentageColor">{{progressPercentage}}%</p>
+    <span>
+      <p class="uo-progress-status">{{progressStatus}}</p>
+      <p class="uo-progress-tasks">{{numberOfTasks}} tasks</p>
+    </span>
+</div>
