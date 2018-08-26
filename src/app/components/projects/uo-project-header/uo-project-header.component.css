@@ -1,0 +1,29 @@
+.uo-projects-header-container {
+    margin-left: 15px;
+}
+
+.uo-projects-header-title {
+    font-size: 30px;
+    font-weight: bold;
+    padding-right: 5px;
+    margin-bottom: 0px;
+}
+
+.uo-projects-header-note {
+    font-size: 10px;
+    border: 1px slategray solid;
+    border-radius: 30px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: 3px;
+    background-color: navajowhite;
+    margin-bottom: 8px;
+}
+
+.uo-projects-header-label {
+    font-size: 10px;
+    font-weight: bold;
+    color: dimgray;
+}
