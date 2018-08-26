@@ -26,4 +26,9 @@
     font-size: 10px;
     font-weight: bold;
     color: dimgray;
+    margin-bottom: 0px;
+}
+
+hr {
+    margin: 0px;
 }
