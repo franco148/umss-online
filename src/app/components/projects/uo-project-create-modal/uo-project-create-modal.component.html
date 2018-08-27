@@ -1,3 +1,24 @@
-<p>
-  uo-project-create-modal works!
-</p>
+<section>
+    <form fxLayout="column" fxFlex.lt-sm="300px" fxLayoutAlign="start start" #f="ngForm">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter project name" ngModel name="name" required #nameInput="ngModel">
+            <mat-error *ngIf="nameInput.hasError('required')">Project Name must not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Completed date estimation" [matDatepicker]="picker" [min]="minDate" ngModel name="completedOn">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Estimation of a date completion.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Backlog description" ngModel name="backlogDescription" #descInput="ngModel">
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="15px">
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+            <button mat-raised-button color="warn">Cancel</button>
+        </div>
+    </form>
+</section>
