@@ -1,5 +1,5 @@
 <section>
-    <form fxLayout="column" fxFlex.lt-sm="300px" fxLayoutAlign="start start" #f="ngForm">
+    <form fxLayout="column" fxFlex.gt-sm="250px" #f="ngForm">
         <mat-form-field>
             <input type="text" matInput placeholder="Enter project name" ngModel name="name" required #nameInput="ngModel">
             <mat-error *ngIf="nameInput.hasError('required')">Project Name must not be empty</mat-error>
@@ -16,7 +16,7 @@
             <input matInput placeholder="Backlog description" ngModel name="backlogDescription" #descInput="ngModel">
         </mat-form-field>
 
-        <div fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="15px">
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
             <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
             <button mat-raised-button color="warn">Cancel</button>
         </div>
