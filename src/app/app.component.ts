@@ -13,6 +13,7 @@ export class AppComponent {
   uoProjects: Project[] = [];
   selectedProjectId: Number;
   selectedProject: Project;
+  // image = this.sanitization.bypassSecurityTrustStyle(`url(${element.image})`);
 
   constructor(private router: Router, private projectService: ProjectService) {
     // this.projectService.findAll().subscribe(data => {
