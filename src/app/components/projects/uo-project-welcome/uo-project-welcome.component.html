@@ -1,3 +1,12 @@
-<p>
-  uo-project-welcome works!
-</p>
+<div fxLayoutAlign="center start" class="uo-project-welcome-message-container">
+    <div *ngIf="projectsList.length == 0" fxLayout="column" fxLayoutAlign="center center">
+        <p class="uo-project-welcome-message-secondary">welcome to</p>
+        <p class="uo-project-welcome-message-primary">{{ projectName }}</p>
+        <p class="uo-project-welcome-message-secondary">There is no any project, create the first one.</p>
+
+        <button mat-stroked-button color="accent">Create Project</button>
+    </div>
+    <div *ngIf="projectsList.length > 0" class="uo-project-welcome-cards">
+        <app-uo-info-card *ngFor="let project of projectsList"></app-uo-info-card>
+    </div>
+</div>
