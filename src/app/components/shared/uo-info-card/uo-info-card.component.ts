@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Project } from '../../../data/model/project.model';
 
 @Component({
   selector: 'app-uo-info-card',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class UoInfoCardComponent implements OnInit {
 
   @Input() isChangesInformation: boolean;
+  @Input() projectCardInfo: Project;
+
   @Input() backgroundImage: string;
   cardDescription = `The Shiba Inu is the smallest of the six original and
    distinct spitz breeds of dog from Japan. A small, agile dog that copes
@@ -19,4 +22,7 @@ export class UoInfoCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onProjectSelect() {
+    console.log('Clicked ........', this.projectCardInfo.name, this.projectCardInfo.id);
+  }
 }
