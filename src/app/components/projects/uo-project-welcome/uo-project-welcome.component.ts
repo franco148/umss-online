@@ -21,14 +21,6 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog, private projectService: ProjectService) { }
 
   ngOnInit() {
-    // const p0 = new Project();
-    // const p1 = new Project();
-    // const p2 = new Project();
-
-    // this.projectsList.push(p0);
-    // this.projectsList.push(p1);
-    // this.projectsList.push(p2);
-
     this.projectService.findAll().subscribe(dataResponse => {
       this.projectsList = dataResponse.slice();
       console.log(this.projectsList);
