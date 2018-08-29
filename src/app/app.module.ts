@@ -21,6 +21,8 @@ import { UoDocsNotesComponent } from './components/documents/uo-docs-notes/uo-do
 import { UoProjectHeaderComponent } from './components/projects/uo-project-header/uo-project-header.component';
 import { UoProjectProgressComponent } from './components/projects/uo-project-progress/uo-project-progress.component';
 import { UoProgressItemComponent } from './components/projects/uo-project-progress/uo-progress-item/uo-progress-item.component';
+import { UoProjectCreateModalComponent } from './components/projects/uo-project-create-modal/uo-project-create-modal.component';
+import { UoProjectWelcomeComponent } from './components/projects/uo-project-welcome/uo-project-welcome.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { UoProgressItemComponent } from './components/projects/uo-project-progre
     UoDocsNotesComponent,
     UoProjectHeaderComponent,
     UoProjectProgressComponent,
-    UoProgressItemComponent
+    UoProgressItemComponent,
+    UoProjectCreateModalComponent,
+    UoProjectWelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +51,7 @@ import { UoProgressItemComponent } from './components/projects/uo-project-progre
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [UoProjectCreateModalComponent]
 })
 export class AppModule { }

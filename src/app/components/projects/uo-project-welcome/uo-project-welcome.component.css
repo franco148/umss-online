@@ -1,0 +1,12 @@
+.uo-project-welcome-message-container {
+    background-color: #f2f2f2;
+}
+
+.uo-project-welcome-message-primary {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.uo-project-welcome-message-secondary {
+    font-size: 30px;
+}
