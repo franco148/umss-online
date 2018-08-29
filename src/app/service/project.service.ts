@@ -11,6 +11,7 @@ import { ProjectDto } from '../data/dto/project-dto';
 export class ProjectService {
 
   serverUrl = `${GATEWAY_SERVER_URL}/proj-mgt/projects`;
+  projectAddedChange = new Subject<Project>();
 
   projectsChange = new Subject<Project[]>();
   message = new Subject<string>();
@@ -27,7 +28,7 @@ export class ProjectService {
   }
 
   save(project: ProjectDto) {
-    return this.http.post(this.serverUrl, project);
+    return this.http.post<Project>(this.serverUrl, project);
   }
 
 }
