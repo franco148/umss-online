@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { NgForm } from '@angular/forms';
+import { ProjectDto } from '../../../data/dto/project-dto';
 
 @Component({
   selector: 'app-uo-project-create-modal',
@@ -13,12 +16,17 @@ export class UoProjectCreateModalComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
   minDate;
+  newProject: ProjectDto;
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public passedData: any) { }
 
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
+  }
+
+  onSubmit(form: NgForm) {
+    // this.newProject = new ProjectDto();
   }
 
 }

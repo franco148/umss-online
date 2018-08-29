@@ -3,6 +3,7 @@ import { GATEWAY_SERVER_URL } from '../constants/app.constant';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../data/model/project.model';
 import { Subject } from 'rxjs';
+import { ProjectDto } from '../data/dto/project-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class ProjectService {
     return this.http.get<Project>(`${this.serverUrl}/${projectId}`);
   }
 
-  save(project: Project) {
+  save(project: ProjectDto) {
     return this.http.post(this.serverUrl, project);
   }
 

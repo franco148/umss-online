@@ -29,4 +29,5 @@ export class UoProjectWelcomeComponent implements OnInit {
     });
   }
 
+  onCreate() {}
 }

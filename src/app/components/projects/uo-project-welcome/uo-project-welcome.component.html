@@ -4,7 +4,7 @@
         <p class="uo-project-welcome-message-primary">{{ projectName }}</p>
         <p class="uo-project-welcome-message-secondary">There is no any project, create the first one.</p>
 
-        <button mat-stroked-button color="accent">Create Project</button>
+        <button mat-stroked-button color="accent" (click)="onCreate()">Create Project</button>
     </div>
     <div *ngIf="projectsList.length > 0" class="uo-project-welcome-cards">
         <app-uo-info-card *ngFor="let project of projectsList"></app-uo-info-card>

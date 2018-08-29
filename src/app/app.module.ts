@@ -51,6 +51,7 @@ import { UoProjectWelcomeComponent } from './components/projects/uo-project-welc
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [UoProjectCreateModalComponent]
 })
 export class AppModule { }
