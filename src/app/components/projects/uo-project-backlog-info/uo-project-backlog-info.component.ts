@@ -43,4 +43,8 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
   doFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  onCreateUserStory() {
+    console.log('Create user story');
+  }
 }

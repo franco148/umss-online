@@ -37,3 +37,8 @@
 </mat-table>
 
 <mat-paginator [pageSize]="1" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<mat-divider></mat-divider>
+<button mat-fab color="accent" (click)="onCreateUserStory()" style="float: right; margin-top: 20px" matTooltip="Add a new User Story">
+  <mat-icon>create</mat-icon>
+</button>
