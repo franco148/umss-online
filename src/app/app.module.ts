@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 import { UoAuthLoginComponent } from './components/auth/uo-auth-login/uo-auth-login.component';
 import { UoAuthSignupComponent } from './components/auth/uo-auth-signup/uo-auth-signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
@@ -29,7 +28,6 @@ import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectBacklogComponent,
     UoAuthLoginComponent,
     UoAuthSignupComponent,
     UoDocsToolbarComponent,
