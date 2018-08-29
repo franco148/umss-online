@@ -35,7 +35,6 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
     });
 
     this.projecSavedSubscription = this.projectService.projectAddedChange.subscribe(projectSaved => {
-      console.log('Subscribed..............', projectSaved);
       if (projectSaved) {
         this.projectsList.push(projectSaved);
       }
@@ -49,7 +48,7 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('AAAAAAAAA - closed', result);
+      console.log('closed popup', result);
     });
   }
 

@@ -16,14 +16,6 @@ import { Project } from '../../../data/model/project.model';
 export class UoProjectCreateModalComponent implements OnInit {
 
   minDate;
-  newProject: ProjectDto;
-  assignedToList: User[] = [];
-  savedProject: Project;
-
-  projectName: string;
-  projectCompletion: Date;
-  projectDescription: string;
-  projectOwner: number;
 
   constructor(public dialogRef: MatDialogRef<UoProjectCreateModalComponent>,
               private userService: UserService,
@@ -37,41 +29,22 @@ export class UoProjectCreateModalComponent implements OnInit {
     //   this.assignedToList = usersResult.slice();
     //   console.log(this.assignedToList);
     // });
-    this.savedProject = new Project();
-    this.savedProject.name = 'savedProject';
   }
 
   onSubmit(form: NgForm) {
-    console.log('qqqqqqqqqqqqqqqqqqqqqqqqqqqqq');
     this.projectService.save({
       name: form.value.name,
       completedDateEstimation: form.value.completedOn,
       backlogDescription: form.value.backlogDescription,
       createdById: 1
     }).subscribe(savedProject => {
-      this.savedProject = savedProject;
-      console.log('==============', this.savedProject);
-      this.projectService.projectAddedChange.next(this.savedProject);
+      this.projectService.projectAddedChange.next(savedProject);
       this.dialogRef.close();
     });
-    // this.newProject = {
-    //   name: '',
-    //   backlogDescription: '',
-    //   completedDateEstimation: new Date(),
-    //   createdById: 1
-    // };
-    // this.newProject = {
-    //   name: this.projectName,
-    //   backlogDescription: this.projectDescription,
-    //   completedDateEstimation: this.projectCompletion,
-    //   createdById: 1
-    // };
-    // this.projectService.projectAddedChange.next(this.newProject);
-    // console.log('Submitted', this.savedProject, this.newProject);
   }
 
   onCancel() {
-    // this.dialogRef.close();
+    this.dialogRef.close();
   }
 
 }

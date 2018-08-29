@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UoInfoCardComponent implements OnInit {
 
-  isChangesInformation = true;
+  @Input() isChangesInformation: boolean;
   @Input() backgroundImage: string;
   cardDescription = `The Shiba Inu is the smallest of the six original and
    distinct spitz breeds of dog from Japan. A small, agile dog that copes
