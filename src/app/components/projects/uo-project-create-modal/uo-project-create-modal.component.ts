@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 import { ProjectDto } from '../../../data/dto/project-dto';
+import { UserService } from '../../../service/user.service';
+import { ProjectService } from '../../../service/project.service';
+import { User } from '../../auth/user.model';
 
 @Component({
   selector: 'app-uo-project-create-modal',
@@ -10,34 +13,26 @@ import { ProjectDto } from '../../../data/dto/project-dto';
 })
 export class UoProjectCreateModalComponent implements OnInit {
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
   minDate;
   newProject: ProjectDto;
+  assignedToList: User[] = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public passedData: any) { }
+  constructor(public dialogRef: MatDialogRef<UoProjectCreateModalComponent>,
+              private userService: UserService,
+              private projectService: ProjectService) { }
 
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
+
+    // this.userService.findAll().subscribe(usersResult => {
+    //   this.assignedToList = usersResult.slice();
+    //   console.log(this.assignedToList);
+    // });
   }
 
   onSubmit(form: NgForm) {
-    // this.newProject = new ProjectDto();
+    console.log(form);
   }
 
-}
-// {
-//   "backlogDescription": "string",
-//   "completedDateEstimation": "dd-MM-yyyy",
-//   "createdById": 0,
-//   "name": "Google Maps REST Api"
-// }
-
-export interface Food {
-  value: string;
-  viewValue: string;
 }

@@ -1,5 +1,5 @@
 <section>
-    <form fxLayout="column" fxFlex.gt-xs="250px" #f="ngForm">
+    <form fxLayout="column" fxFlex.gt-xs="250px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
             <input type="text" matInput placeholder="Enter project name" ngModel name="name" required #nameInput="ngModel">
             <mat-error *ngIf="nameInput.hasError('required')">Project Name must not be empty</mat-error>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
 import { Project } from '../../../data/model/project.model';
 import { ProjectService } from '../../../service/project.service';
+import { UoProjectCreateModalComponent } from '../uo-project-create-modal/uo-project-create-modal.component';
 
 @Component({
   selector: 'app-uo-project-welcome',
@@ -12,7 +15,7 @@ export class UoProjectWelcomeComponent implements OnInit {
   projectsList: Project[] = [];
   projectName = 'Umss Online';
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private dialog: MatDialog, private projectService: ProjectService) { }
 
   ngOnInit() {
     // const p0 = new Project();
@@ -29,5 +32,10 @@ export class UoProjectWelcomeComponent implements OnInit {
     });
   }
 
-  onCreate() {}
+  onCreate() {
+    const dialogRef = this.dialog.open(UoProjectCreateModalComponent, {
+      width: '300px',
+      disableClose: true
+    });
+  }
 }
