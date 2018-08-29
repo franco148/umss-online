@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../../data/model/project.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uo-info-card',
@@ -17,12 +18,13 @@ export class UoInfoCardComponent implements OnInit {
    very well with mountainous terrain, the Shiba Inu was originally bred
    for hunting.`;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   onProjectSelect() {
-    console.log('Clicked ........', this.projectCardInfo.name, this.projectCardInfo.id);
+    // console.log('Clicked ........', this.projectCardInfo.name, this.projectCardInfo.id);
+    this.router.navigate(['/project', this.projectCardInfo.id]);
   }
 }

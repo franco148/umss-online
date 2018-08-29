@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from '../../../service/project.service';
 
 @Component({
   selector: 'app-uo-project-backlog-info',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UoProjectBacklogInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute, private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      if (params['id']) {
+        this.projectService.findById(params['id']).subscribe(foundProject => {
+          console.log('Found Project', foundProject);
+        });
+      }
+    });
   }
 
 }
