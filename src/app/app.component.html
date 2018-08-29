@@ -28,13 +28,13 @@
     <mat-sidenav-container class="uo-sidenav-container">
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
-            <mat-form-field>
+            <!-- <mat-form-field>
                 <mat-select placeholder="Umss Online Projects" [(ngModel)]="selectedProject" name="proj" (valueChange)="changeProject($event)">
                     <mat-option *ngFor="let project of uoProjects" [value]="project.id">
                         <img src="assets/images/uologov1.jpg" width="20"> {{project.name}}
                     </mat-option>
                 </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>search</mat-icon>

@@ -45,12 +45,12 @@ export class ProjectBacklogComponent implements OnInit {
       //   this.dataSource.sort = this.sort;
       // });
 
-      const project1 = this.projectService.findById(params['id']);
-      this.project = project1;
-      this.userStories = this.project.backlog.userStories;
-      this.dataSource = new MatTableDataSource(this.userStories);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      // const project1 = this.projectService.findById(params['id']);
+      // this.project = project1;
+      // this.userStories = this.project.backlog.userStories;
+      // this.dataSource = new MatTableDataSource(this.userStories);
+      // this.dataSource.paginator = this.paginator;
+      // this.dataSource.sort = this.sort;
     });
   }
 
