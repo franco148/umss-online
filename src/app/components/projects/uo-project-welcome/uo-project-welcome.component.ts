@@ -28,7 +28,6 @@ export class UoProjectWelcomeComponent implements OnInit {
 
     this.projectService.findAll().subscribe(dataResponse => {
       this.projectsList = dataResponse.slice();
-      console.log(this.projectsList);
     });
   }
 

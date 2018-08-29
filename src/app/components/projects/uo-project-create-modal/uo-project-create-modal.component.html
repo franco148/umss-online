@@ -18,7 +18,7 @@
 
         <div fxLayout="row" fxLayoutAlign="space-around stretch">
             <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
-            <button mat-raised-button color="warn">Cancel</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
         </div>
     </form>
 </section>

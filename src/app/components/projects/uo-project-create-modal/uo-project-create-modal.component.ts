@@ -32,7 +32,18 @@ export class UoProjectCreateModalComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
+    this.projectService.save({
+      name: form.value.name,
+      completedDateEstimation: form.value.completedOn,
+      backlogDescription: form.value.backlogDescription,
+      createdById: 1
+    }).subscribe(savedProject => {
+      console.log(savedProject);
+    });
+  }
+
+  onCancel() {
+    this.dialogRef.close();
   }
 
 }
