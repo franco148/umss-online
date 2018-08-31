@@ -17,6 +17,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
   displayedColumns = ['id', 'name', 'priority', 'estimatedTime', 'assignedTo'];
   dataSource = new MatTableDataSource<UserStory>();
 
+  projectInfo: Project;
   userStoriesList: UserStory[] = [];
 
   @ViewChild(MatSort) sort: MatSort;
@@ -29,6 +30,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(foundProject => {
           console.log('Found Project', foundProject);
+          this.projectInfo = foundProject;
           this.dataSource.data = this.userStoriesList;
         });
       }

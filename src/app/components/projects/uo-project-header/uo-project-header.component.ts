@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-uo-project-header',
@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./uo-project-header.component.css']
 })
 export class UoProjectHeaderComponent implements OnInit {
+
+  @Input() projectName: string;
+  @Input() projectVersion: string;
+  @Input() projectStartedOn: Date;
+  @Input() projectCompletionEstimate: Date;
 
   constructor() { }
 

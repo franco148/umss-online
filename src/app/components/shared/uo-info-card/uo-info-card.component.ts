@@ -24,7 +24,6 @@ export class UoInfoCardComponent implements OnInit {
   }
 
   onProjectSelect() {
-    // console.log('Clicked ........', this.projectCardInfo.name, this.projectCardInfo.id);
     this.router.navigate(['/project', this.projectCardInfo.id]);
   }
 }
