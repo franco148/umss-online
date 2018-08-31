@@ -24,6 +24,7 @@ import { UoProjectCreateModalComponent } from './components/projects/uo-project-
 import { UoProjectWelcomeComponent } from './components/projects/uo-project-welcome/uo-project-welcome.component';
 import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-backlog-info/uo-project-backlog-info.component';
 import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create-modal/uo-us-create-modal.component';
+import { RoleKeysPipe } from './pipe/role-keys.pipe';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create
     UoProjectCreateModalComponent,
     UoProjectWelcomeComponent,
     UoProjectBacklogInfoComponent,
-    UoUsCreateModalComponent
+    UoUsCreateModalComponent,
+    RoleKeysPipe
   ],
   imports: [
     BrowserModule,

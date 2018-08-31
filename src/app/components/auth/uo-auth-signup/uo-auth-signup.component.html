@@ -29,9 +29,15 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder="Your bithdate" [max]="maxDate" ngModel name="birthdate" required>
+            <input matInput [matDatepicker]="picker" placeholder="Your bithdate" [max]="maxDate" ngModel name="birthdate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Roles" [formControl]="userRolesFormControl" multiple>
+                <mat-option *ngFor="let role of userRoles | roleKeys" [value]="role">{{role}}</mat-option>
+            </mat-select>
         </mat-form-field>
 
         <mat-checkbox labelPosition="before" ngModel name="agree" required color="primary">Agree to terms and Conditions</mat-checkbox>
@@ -39,16 +45,3 @@
         <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     </form>
 </section>
-<!-- // {
-    //     "account": "string", BBB
-    //     "birthDate": "string", AAAAAAA
-    //     "lastName": "string", BBB
-    //     "name": "string", BBB
-    //     "nickName": "string", AAAAAAA
-    //     "password": "string", BBB
-    //     "userRoles": [
-    //       {
-    //         "authority": "ADMIN"
-    //       }
-    //     ]
-    //   } -->
