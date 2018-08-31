@@ -20,15 +20,22 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) { }
 
   registerUser(userToRegister: User) {
+    console.log('TO BE REGISTER', userToRegister);
+    // this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
+    //   console.log('SAVED USER:::', savedUser);
+    // });
+    return this.http.post(this.serverUrl, userToRegister);
     // Add the logic here.
-    console.log('User to Register', userToRegister);
-    this.authSuccessfully();
+    // console.log('User to Register', userToRegister);
+    // this.authSuccessfully();
   }
 
   login(authData: AuthData) {
-    this.http.post<User>(`${this.serverUrl}/login`, authData).subscribe(logged => {
-      console.log('LOGGED: ', logged);
-    });
+    console.log('VERIFIED WITH DATA', authData);
+    // this.http.post<any>(`${this.serverUrl}/login`, authData).subscribe(logged => {
+    //   console.log('LOGGED: ', logged);
+    // });
+    return this.http.post(`${this.serverUrl}/login`, authData);
     // Add the logic here.
     // this.authSuccessfully();
   }

@@ -55,13 +55,7 @@ import { AppServerErrorInterceptor } from './app-server-error.interceptor';
     FlexLayoutModule,
     ReactiveFormsModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AppServerErrorInterceptor,
-      multi: true
-    }
-  ],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent]
 })

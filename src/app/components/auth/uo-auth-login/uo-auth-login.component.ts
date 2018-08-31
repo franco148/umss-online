@@ -25,6 +25,8 @@ export class UoAuthLoginComponent implements OnInit {
     this.authService.login({
       account: this.loginForm.value.email,
       password: this.loginForm.value.password
+    }).subscribe(res => {
+      console.log('LOGIN:', res);
     });
   }
 }

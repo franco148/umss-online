@@ -43,6 +43,8 @@ export class UoAuthSignupComponent implements OnInit {
       nickName: form.value.nickName,
       birthdate: form.value.birthdate,
       roles: this.userRolesFormControl.value
+    }).subscribe(savedusr => {
+      console.log('SAVED USR', savedusr);
     });
   }
 }
