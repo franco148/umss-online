@@ -16,8 +16,9 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  registerUser(authData: AuthData) {
+  registerUser(userToRegister: User) {
     // Add the logic here.
+    console.log('User to Register', userToRegister);
     this.authSuccessfully();
   }
 
@@ -42,6 +43,6 @@ export class AuthService {
 
   private authSuccessfully() {
     this.authChanged.next(true);
-    this.router.navigate(['/welcome']);
+    // this.router.navigate(['/welcome']);
   }
 }

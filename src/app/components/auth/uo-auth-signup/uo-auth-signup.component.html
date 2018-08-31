@@ -1,13 +1,13 @@
 <section>
     <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
-            <input type="text" matInput placeholder="Enter your name(s)" ngModel name="name" email required #emailInput="ngModel">
-            <mat-error *ngIf="emailInput.hasError('required')">Name must not be empty.</mat-error>
+            <input type="text" matInput placeholder="Enter your name(s)" ngModel name="name" required #nameInput="ngModel">
+            <mat-error *ngIf="nameInput.hasError('required')">Name must not be empty.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input type="text" matInput placeholder="Enter your last name(s)" ngModel name="lastName" email required #emailInput="ngModel">
-            <mat-error *ngIf="emailInput.hasError('required')">Last Name must not be empty.</mat-error>
+            <input type="text" matInput placeholder="Enter your last name(s)" ngModel name="lastName" required #lastNameInput="ngModel">
+            <mat-error *ngIf="lastNameInput.hasError('required')">Last Name must not be empty.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -24,11 +24,11 @@
             <mat-error>Has to be at least 6 characters long</mat-error>
         </mat-form-field>
 
-        <mat-form-field>
-            <input type="text" matInput placeholder="Enter your nick name" ngModel name="nickName" email #emailInput="ngModel">
+        <mat-form-field *ngIf="isEditMode">
+            <input type="text" matInput placeholder="Enter your nick name" ngModel name="nickName" #nickNameInput="ngModel">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="isEditMode">
             <input matInput [matDatepicker]="picker" placeholder="Your bithdate" [max]="maxDate" ngModel name="birthdate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
