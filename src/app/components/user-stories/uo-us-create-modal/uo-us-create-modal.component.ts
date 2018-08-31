@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-uo-us-create-modal',
@@ -16,11 +18,12 @@ export class UoUsCreateModalComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public passedData: any, private authService: AuthService) { }
 
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
+    console.log('Passed Data: ', this.passedData);
   }
 
   onSubmit(form: NgForm) {}

@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 
 import { ProjectService } from '../../../service/project.service';
 import { Project } from '../../../data/model/project.model';
 import { UserStory } from '../../../data/model/user-story.model';
+import { UoUsCreateModalComponent } from '../../user-stories/uo-us-create-modal/uo-us-create-modal.component';
 
 @Component({
   selector: 'app-uo-project-backlog-info',
@@ -23,7 +24,8 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private activatedRoute: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private activatedRoute: ActivatedRoute, private projectService: ProjectService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -47,6 +49,16 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
   }
 
   onCreateUserStory() {
-    console.log('Create user story');
+    const dialogRef = this.dialog.open(UoUsCreateModalComponent, {
+      data: {
+        userStoryId: this.projectInfo.backlog.id
+      },
+      width: '350px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed popup', result);
+    });
   }
 }

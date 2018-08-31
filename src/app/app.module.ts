@@ -54,6 +54,6 @@ import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent]
+  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent]
 })
 export class AppModule { }
