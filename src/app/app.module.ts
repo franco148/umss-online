@@ -23,6 +23,7 @@ import { UoProgressItemComponent } from './components/projects/uo-project-progre
 import { UoProjectCreateModalComponent } from './components/projects/uo-project-create-modal/uo-project-create-modal.component';
 import { UoProjectWelcomeComponent } from './components/projects/uo-project-welcome/uo-project-welcome.component';
 import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-backlog-info/uo-project-backlog-info.component';
+import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create-modal/uo-us-create-modal.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-
     UoProgressItemComponent,
     UoProjectCreateModalComponent,
     UoProjectWelcomeComponent,
-    UoProjectBacklogInfoComponent
+    UoProjectBacklogInfoComponent,
+    UoUsCreateModalComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,6 @@ import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent]
+  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent]
 })
 export class AppModule { }

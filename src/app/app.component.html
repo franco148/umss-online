@@ -28,13 +28,6 @@
     <mat-sidenav-container class="uo-sidenav-container">
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
-            <!-- <mat-form-field>
-                <mat-select placeholder="Umss Online Projects" [(ngModel)]="selectedProject" name="proj" (valueChange)="changeProject($event)">
-                    <mat-option *ngFor="let project of uoProjects" [value]="project.id">
-                        <img src="assets/images/uologov1.jpg" width="20"> {{project.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field> -->
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>search</mat-icon>
@@ -80,6 +73,7 @@
             <!-- <app-uo-progress-item></app-uo-progress-item> -->
             <!-- <app-uo-project-create-modal></app-uo-project-create-modal> -->
             <!-- <app-uo-project-welcome></app-uo-project-welcome> -->
+            <!-- <app-uo-us-create-modal></app-uo-us-create-modal> -->
             <router-outlet></router-outlet>
         </mat-sidenav-content>
     </mat-sidenav-container>
