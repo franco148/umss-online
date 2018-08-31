@@ -3,13 +3,14 @@
         <div mat-card-avatar class="uo-card-avatar"></div>
         <div class="uo-card-content">
             <mat-card-header>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title (click)="onProjectSelect()">{{ projectCardInfo.name }}</mat-card-title>
+                <mat-card-subtitle>Created at {{ projectCardInfo.createdAt | date }} by Franco Arratia</mat-card-subtitle>
             </mat-card-header>
 
             <mat-card-content>
                 <p>
-                    {{ cardDescription.substr(0, 100) }} ... see more
+                    <!-- {{ projectCardInfo.backlog.description }} -->
+                    {{ projectCardInfo.backlog.description }} ... see more
                 </p>
             </mat-card-content>
         </div>

@@ -7,6 +7,10 @@ mat-card {
 mat-card-title {
     margin-bottom: 5px;
     font-size: 18px !important;
+    cursor: pointer;
+    /* color: #0077CC; */
+    color: #0C5395;
+    text-decoration: underline;
 }
 
 mat-card-subtitle {

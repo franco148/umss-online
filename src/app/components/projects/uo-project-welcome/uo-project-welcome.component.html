@@ -7,8 +7,8 @@
         <button mat-stroked-button color="accent" (click)="onCreate()">Create Project</button>
     </div>
     <div *ngIf="projectsList.length > 0" class="uo-project-welcome-cards">
-        <app-uo-info-card [isChangesInformation]="false" *ngFor="let project of projectsList"></app-uo-info-card>
-        <button mat-fab color="accent" (click)="onCreate()" style="float: right; margin-top: 20px">
+        <app-uo-info-card [isChangesInformation]="false" [projectCardInfo]="project" *ngFor="let project of projectsList"></app-uo-info-card>
+        <button mat-fab color="accent" (click)="onCreate()" style="float: right; margin-top: 20px" matTooltip="Create a new Project">
             <mat-icon>create</mat-icon>
         </button>
     </div>

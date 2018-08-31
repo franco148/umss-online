@@ -11,7 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import { ProjectBacklogComponent } from './components/project-backlog/project-backlog.component';
 import { UoAuthLoginComponent } from './components/auth/uo-auth-login/uo-auth-login.component';
 import { UoAuthSignupComponent } from './components/auth/uo-auth-signup/uo-auth-signup.component';
 import { UoDocsToolbarComponent } from './components/documents/uo-docs-toolbar/uo-docs-toolbar.component';
@@ -23,12 +22,12 @@ import { UoProjectProgressComponent } from './components/projects/uo-project-pro
 import { UoProgressItemComponent } from './components/projects/uo-project-progress/uo-progress-item/uo-progress-item.component';
 import { UoProjectCreateModalComponent } from './components/projects/uo-project-create-modal/uo-project-create-modal.component';
 import { UoProjectWelcomeComponent } from './components/projects/uo-project-welcome/uo-project-welcome.component';
+import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-backlog-info/uo-project-backlog-info.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectBacklogComponent,
     UoAuthLoginComponent,
     UoAuthSignupComponent,
     UoDocsToolbarComponent,
@@ -39,7 +38,8 @@ import { UoProjectWelcomeComponent } from './components/projects/uo-project-welc
     UoProjectProgressComponent,
     UoProgressItemComponent,
     UoProjectCreateModalComponent,
-    UoProjectWelcomeComponent
+    UoProjectWelcomeComponent,
+    UoProjectBacklogInfoComponent
   ],
   imports: [
     BrowserModule,
