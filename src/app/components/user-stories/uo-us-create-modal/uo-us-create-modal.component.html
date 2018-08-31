@@ -1,3 +1,50 @@
-<p>
-  uo-us-create-modal works!
-</p>
+<section>
+    <form fxLayout="column" fxFlex.gt-xs="350px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter User Story name" ngModel name="name" required #nameInput="ngModel">
+            <mat-error *ngIf="nameInput.hasError('required')">User Story Name must not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter User Story description" ngModel name="description" #nameInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter User Story priority" ngModel name="priority" required #nameInput="ngModel">
+            <mat-error *ngIf="nameInput.hasError('required')">User Story Priority must not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter User Story estimated time (in hrs)" ngModel name="estimatedTime" #nameInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Started At" [matDatepicker]="picker" [min]="minDate" ngModel name="startedAt">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-hint>Date and time when the user story starts.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Favorite food">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                    {{food.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around stretch">
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</section>
+<!-- {
+    "assignedToId": 0,
+    "createdById": 0,XXXX
+    "description": "string",BBB
+    "estimatedTime": 0,BBB
+    "name": "string",BBB
+    "priority": "LOW",BBB
+    "startedAt": "dd-MM-yyyy HH:mm:ss"
+  } -->
