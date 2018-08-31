@@ -32,10 +32,13 @@ export class AuthService {
 
   login(authData: AuthData) {
     console.log('VERIFIED WITH DATA', authData);
-    // this.http.post<any>(`${this.serverUrl}/login`, authData).subscribe(logged => {
-    //   console.log('LOGGED: ', logged);
-    // });
-    return this.http.post(`${this.serverUrl}/login`, authData);
+    this.http.post<any>(`${this.serverUrl}/login`, authData).subscribe(logged => {
+      console.log('LOGGED: ', logged);
+      this.user = logged;
+      console.log('LOGGED this user: ', this.user);
+      this.authSuccessfully();
+    });
+    // return this.http.post(`${this.serverUrl}/login`, authData);
     // Add the logic here.
     // this.authSuccessfully();
   }
