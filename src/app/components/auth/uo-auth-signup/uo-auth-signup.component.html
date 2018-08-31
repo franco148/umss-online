@@ -1,7 +1,17 @@
 <section>
     <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
-            <input type="email" matInput placeholder="Enter your email" ngModel name="email" email required #emailInput="ngModel">
+            <input type="text" matInput placeholder="Enter your name(s)" ngModel name="name" email required #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Name must not be empty.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Enter your last name(s)" ngModel name="lastName" email required #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Last Name must not be empty.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="email" matInput placeholder="Enter your email" ngModel name="account" email required #emailInput="ngModel">
             <mat-error *ngIf="emailInput.hasError('required')">E-mail must not be empty.</mat-error>
             <mat-error *ngIf="!emailInput.hasError('required')">E-mail is invalid.</mat-error>
         </mat-form-field>
@@ -15,6 +25,10 @@
         </mat-form-field>
 
         <mat-form-field>
+            <input type="text" matInput placeholder="Enter your nick name" ngModel name="nickName" email #emailInput="ngModel">
+        </mat-form-field>
+
+        <mat-form-field>
             <input matInput [matDatepicker]="picker" placeholder="Your bithdate" [max]="maxDate" ngModel name="birthdate" required>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -25,3 +39,16 @@
         <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     </form>
 </section>
+<!-- // {
+    //     "account": "string", BBB
+    //     "birthDate": "string", AAAAAAA
+    //     "lastName": "string", BBB
+    //     "name": "string", BBB
+    //     "nickName": "string", AAAAAAA
+    //     "password": "string", BBB
+    //     "userRoles": [
+    //       {
+    //         "authority": "ADMIN"
+    //       }
+    //     ]
+    //   } -->

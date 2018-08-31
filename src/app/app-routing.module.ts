@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: '', component: UoProjectWelcomeComponent },
     { path: 'login', component: UoAuthLoginComponent },
     { path: 'signup', component: UoAuthSignupComponent },
+    { path: 'edit-profile/:id', component: UoAuthSignupComponent },
     { path: 'project/:id', component: UoProjectBacklogInfoComponent }
 ];
 
