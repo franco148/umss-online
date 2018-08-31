@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -25,6 +25,7 @@ import { UoProjectWelcomeComponent } from './components/projects/uo-project-welc
 import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-backlog-info/uo-project-backlog-info.component';
 import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create-modal/uo-us-create-modal.component';
 import { RoleKeysPipe } from './pipe/role-keys.pipe';
+import { AppServerErrorInterceptor } from './app-server-error.interceptor';
 
 
 @NgModule({
@@ -54,7 +55,13 @@ import { RoleKeysPipe } from './pipe/role-keys.pipe';
     FlexLayoutModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppServerErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent]
 })

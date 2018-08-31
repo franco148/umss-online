@@ -23,7 +23,7 @@ export class UoAuthLoginComponent implements OnInit {
   onSubmit() {
     // console.log(this.loginForm);
     this.authService.login({
-      email: this.loginForm.value.email,
+      account: this.loginForm.value.email,
       password: this.loginForm.value.password
     });
   }
