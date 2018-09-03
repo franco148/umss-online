@@ -14,7 +14,10 @@ import { GATEWAY_SERVER_URL } from '../../constants/app.constant';
 export class AuthService {
 
   serverUrl = `${GATEWAY_SERVER_URL}/auth/users`;
+
   authChanged = new Subject<boolean>();
+  authErrorChanged = new Subject<string>();
+
   private user: User;
 
   constructor(private router: Router, private http: HttpClient) { }

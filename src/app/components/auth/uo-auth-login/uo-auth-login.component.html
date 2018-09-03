@@ -14,4 +14,9 @@
 
         <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
     </form>
+
+    <div *ngIf="authErrorMessage" class="uo-login-error-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1px">
+        <p>{{ authErrorMessage }}</p>
+        <p>Do not you have an account? <span><a [routerLink]="['/signup']" routerLinkActive="router-link-active" >register...</a></span></p>
+    </div>
 </section>
