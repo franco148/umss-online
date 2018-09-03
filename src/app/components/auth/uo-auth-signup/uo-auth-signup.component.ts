@@ -1,21 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
-import { UserRole } from '../user-role.enum';
 import { ActivatedRoute } from '@angular/router';
+
+import { Subscription } from 'rxjs';
+
+import { AuthService } from '../auth.service';
+import { UserRole } from '../user-role.enum';
 
 @Component({
   selector: 'app-uo-auth-signup',
   templateUrl: './uo-auth-signup.component.html',
   styleUrls: ['./uo-auth-signup.component.css']
 })
-export class UoAuthSignupComponent implements OnInit {
+export class UoAuthSignupComponent implements OnInit, OnDestroy {
 
   maxDate;
   userRoles;
   isEditMode: boolean;
+  authErrorMessage: string;
 
   userRolesFormControl = new FormControl();
+
+  authSigupErrorSubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
 
@@ -29,6 +35,10 @@ export class UoAuthSignupComponent implements OnInit {
       if (params['id']) {
         this.isEditMode = true;
       }
+    });
+
+    this.authSigupErrorSubscription = this.authService.authErrorChanged.subscribe(errMessage => {
+      this.authErrorMessage = errMessage;
     });
   }
 
@@ -46,5 +56,9 @@ export class UoAuthSignupComponent implements OnInit {
     }).subscribe(savedusr => {
       console.log('SAVED USR', savedusr);
     });
+  }
+
+  ngOnDestroy() {
+    this.authSigupErrorSubscription.unsubscribe();
   }
 }

@@ -44,4 +44,12 @@
 
         <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
     </form>
+
+    <div *ngIf="authErrorMessage" class="uo-signup-error-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="1px">
+        <p>An error has ocurred in saving process</p>
+        <ul>
+            <li>{{ authErrorMessage }}</li>
+        </ul>
+        <p>Please, verify your data an try again.</p>
+    </div>
 </section>

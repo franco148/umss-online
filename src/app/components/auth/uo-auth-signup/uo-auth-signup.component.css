@@ -1,3 +1,13 @@
 mat-form-field {
     width: 300px;
 }
+
+p,
+li {
+    color: red;
+    font: bold;
+}
+
+.uo-signup-error-container {
+    margin-top: 15px;
+}

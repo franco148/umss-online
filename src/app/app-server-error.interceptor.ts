@@ -20,7 +20,6 @@ export class AppServerErrorInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(retry(NUMBER_OF_RETRIES))
                    .pipe(tap(event => {
-                       console.log('AAAAAA thrown: ', event);
                         if (event instanceof HttpResponse) {
                             console.log('HANDLED EVENT....', event);
                             if (event.body && event.body.error === true && event.body.errorMessage) {
@@ -32,12 +31,14 @@ export class AppServerErrorInterceptor implements HttpInterceptor {
                    }))
                    .pipe(catchError((exception) => {
                        console.log('CATCHED EXEPTION....', exception);
-                       console.log('Status::::', exception.status, 'message::::::', exception.error.message);
-
                        if (exception.status === 404 && exception.error.message.includes('User does not exist')) {
                            const errorMessage = 'Invalid user or password.';
                            this.snackBar.open(errorMessage, 'ERROR', { duration: 5000 });
                            this.authService.authErrorChanged.next(errorMessage);
+                       } else if (exception.status === 400) {
+                           // exception.error.message.includes('Validations')
+                           this.snackBar.open(exception.error.message, 'ERROR', { duration: 5000 });
+                           this.authService.authErrorChanged.next(exception.error.message);
                        }
                        return EMPTY;
                    }));
