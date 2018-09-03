@@ -1,4 +1,4 @@
-import { UserRole } from './user-role.enum';
+import { Role } from './role.model';
 
 export interface User {
     name: string;
@@ -7,5 +7,5 @@ export interface User {
     password: string;
     nickName: string;
     birthdate: Date;
-    roles: UserRole[];
+    userRoles: Role[];
 }

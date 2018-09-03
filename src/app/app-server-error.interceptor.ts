@@ -21,7 +21,6 @@ export class AppServerErrorInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(retry(NUMBER_OF_RETRIES))
                    .pipe(tap(event => {
                         if (event instanceof HttpResponse) {
-                            console.log('HANDLED EVENT....', event);
                             if (event.body && event.body.error === true && event.body.errorMessage) {
                                 throw new Error(event.body.errorMessage);
                             } else {

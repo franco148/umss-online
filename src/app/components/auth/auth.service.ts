@@ -24,13 +24,9 @@ export class AuthService {
 
   registerUser(userToRegister: User) {
     console.log('TO BE REGISTER', userToRegister);
-    // this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
-    //   console.log('SAVED USER:::', savedUser);
-    // });
-    return this.http.post(this.serverUrl, userToRegister);
-    // Add the logic here.
-    // console.log('User to Register', userToRegister);
-    // this.authSuccessfully();
+    this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
+      this.authSuccessfully('login');
+    });
   }
 
   login(authData: AuthData) {
@@ -39,7 +35,7 @@ export class AuthService {
       console.log('LOGGED: ', logged);
       this.user = logged;
       console.log('LOGGED this user: ', this.user);
-      this.authSuccessfully();
+      this.authSuccessfully('welcome');
     });
     // return this.http.post(`${this.serverUrl}/login`, authData);
     // Add the logic here.
@@ -60,8 +56,8 @@ export class AuthService {
     return this.user != null;
   }
 
-  private authSuccessfully() {
+  private authSuccessfully(path: string) {
     this.authChanged.next(true);
-    // this.router.navigate(['/welcome']);
+    this.router.navigate([`/${path}`]);
   }
 }

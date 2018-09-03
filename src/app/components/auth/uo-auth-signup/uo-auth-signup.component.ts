@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
 import { UserRole } from '../user-role.enum';
+import { Role } from '../role.model';
 
 @Component({
   selector: 'app-uo-auth-signup',
@@ -23,7 +24,8 @@ export class UoAuthSignupComponent implements OnInit, OnDestroy {
 
   authSigupErrorSubscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.maxDate = new Date();
@@ -43,8 +45,11 @@ export class UoAuthSignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    // console.log(form);
-    // console.log(this.userRolesFormControl);
+    const roles: Role[] = [];
+    this.userRolesFormControl.value.forEach(element => {
+      roles.push({ authority: element });
+    });
+
     this.authService.registerUser({
       name: form.value.name,
       lastName: form.value.lastName,
@@ -52,9 +57,7 @@ export class UoAuthSignupComponent implements OnInit, OnDestroy {
       password: form.value.password,
       nickName: form.value.nickName,
       birthdate: form.value.birthdate,
-      roles: this.userRolesFormControl.value
-    }).subscribe(savedusr => {
-      console.log('SAVED USR', savedusr);
+      userRoles: roles
     });
   }
 
