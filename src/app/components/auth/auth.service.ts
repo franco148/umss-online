@@ -22,6 +22,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {
     if (localStorage.getItem('authdata')) {
+      this.user = JSON.parse(localStorage.getItem('authdata'));
       this.authChanged.next(true);
     }
   }
