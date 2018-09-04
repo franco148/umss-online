@@ -26,7 +26,7 @@
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Assign this User Story to">
+            <mat-select placeholder="Assign this User Story to" ngModel name="assignedToId" required>
                 <mat-option *ngFor="let user of assignedToList" [value]="user.id">
                     {{user.name}} {{user.lastName}}
                 </mat-option>

@@ -60,7 +60,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
   onCreateUserStory() {
     const dialogRef = this.dialog.open(UoUsCreateModalComponent, {
       data: {
-        userStoryId: this.projectInfo.backlog.id
+        backlogId: this.projectInfo.backlog.id
       },
       width: '400px',
       disableClose: true
