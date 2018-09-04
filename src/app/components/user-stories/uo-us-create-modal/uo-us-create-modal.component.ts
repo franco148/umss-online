@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class UoUsCreateModalComponent implements OnInit {
     {value: 'tacos-2', viewValue: 'Tacos'}
   ];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public passedData: any, private authService: AuthService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public passedData: any, private authService: AuthService,
+                      public dialogRef: MatDialogRef<UoUsCreateModalComponent>) { }
 
   ngOnInit() {
     this.minDate = new Date();
@@ -28,7 +30,9 @@ export class UoUsCreateModalComponent implements OnInit {
 
   onSubmit(form: NgForm) {}
 
-  onCancel() {}
+  onCancel() {
+    this.dialogRef.close();
+  }
 }
 
 export interface Food {

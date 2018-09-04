@@ -53,7 +53,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
       data: {
         userStoryId: this.projectInfo.backlog.id
       },
-      width: '350px',
+      width: '400px',
       disableClose: true
     });
 
