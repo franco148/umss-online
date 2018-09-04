@@ -1,12 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
-import { ProjectDto } from '../../../data/dto/project-dto';
 import { UserService } from '../../../service/user.service';
 import { ProjectService } from '../../../service/project.service';
-import { User } from '../../auth/user.model';
-import { Project } from '../../../data/model/project.model';
 
 @Component({
   selector: 'app-uo-project-create-modal',
@@ -24,11 +21,6 @@ export class UoProjectCreateModalComponent implements OnInit {
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
-
-    // this.userService.findAll().subscribe(usersResult => {
-    //   this.assignedToList = usersResult.slice();
-    //   console.log(this.assignedToList);
-    // });
   }
 
   onSubmit(form: NgForm) {

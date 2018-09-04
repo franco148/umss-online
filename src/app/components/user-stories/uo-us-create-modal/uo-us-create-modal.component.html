@@ -19,16 +19,16 @@
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Started At" [matDatepicker]="picker" [min]="minDate" ngModel name="startedAt">
+            <input matInput placeholder="It is going to started at" [matDatepicker]="picker" [min]="minDate" ngModel name="startedAt">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-hint>Date and time when the user story starts.</mat-hint>
         </mat-form-field>
 
         <mat-form-field>
-            <mat-select placeholder="Favorite food">
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+            <mat-select placeholder="Assign this User Story to" ngModel name="assignedToId" required>
+                <mat-option *ngFor="let user of assignedToList" [value]="user.id">
+                    {{user.name}} {{user.lastName}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -39,12 +39,3 @@
         </div>
     </form>
 </section>
-<!-- {
-    "assignedToId": 0,
-    "createdById": 0,XXXX
-    "description": "string",BBB
-    "estimatedTime": 0,BBB
-    "name": "string",BBB
-    "priority": "LOW",BBB
-    "startedAt": "dd-MM-yyyy HH:mm:ss"
-  } -->

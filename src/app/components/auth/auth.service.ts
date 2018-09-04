@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 
 import { Subject } from 'rxjs';
 
-import { User } from './user.model';
 import { AuthData } from './auth-data.model';
 import { GATEWAY_SERVER_URL } from '../../constants/app.constant';
+import { User } from '../../data/model/user.model';
+import { UserDto } from '../../data/dto/user-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,12 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {
     if (localStorage.getItem('authdata')) {
+      this.user = JSON.parse(localStorage.getItem('authdata'));
       this.authChanged.next(true);
     }
   }
 
-  registerUser(userToRegister: User) {
+  registerUser(userToRegister: UserDto) {
     this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
       this.authSuccessfully('login');
     });

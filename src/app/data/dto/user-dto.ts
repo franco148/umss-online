@@ -1,11 +1,11 @@
-import { Role } from './role.model';
+import { RoleDto } from './role-dto';
 
-export interface User {
+export interface UserDto {
     name: string;
     lastName: string;
     account: string;
     password: string;
     nickName: string;
     birthdate: Date;
-    userRoles: Role[];
+    userRoles: RoleDto[];
 }
