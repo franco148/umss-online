@@ -20,32 +20,38 @@ export class AuthService {
 
   private user: User;
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {
+    if (localStorage.getItem('authdata')) {
+      this.authChanged.next(true);
+    }
+  }
 
   registerUser(userToRegister: User) {
-    console.log('TO BE REGISTER', userToRegister);
     this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
       this.authSuccessfully('login');
     });
   }
 
   login(authData: AuthData) {
-    console.log('VERIFIED WITH DATA', authData);
     this.http.post<any>(`${this.serverUrl}/login`, authData).subscribe(logged => {
-      console.log('LOGGED: ', logged);
       this.user = logged;
-      console.log('LOGGED this user: ', this.user);
-      this.authSuccessfully('welcome');
+      localStorage.setItem('authdata', JSON.stringify(this.user));
+      this.authSuccessfully('');
     });
-    // return this.http.post(`${this.serverUrl}/login`, authData);
-    // Add the logic here.
-    // this.authSuccessfully();
   }
 
   logout() {
-    this.user = null;
-    this.authChanged.next(false);
-    this.router.navigate(['/login']);
+    const authData: AuthData = {
+      account: this.user.account,
+      password: this.user.password
+    };
+
+    this.http.post<Boolean>(`${this.serverUrl}/logout`, authData).subscribe(loggedout => {
+      this.user = null;
+      localStorage.removeItem('authdata');
+      this.authChanged.next(false);
+      this.router.navigate(['/login']);
+    });
   }
 
   getUser() {

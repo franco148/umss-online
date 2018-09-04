@@ -30,14 +30,10 @@ export class UoAuthLoginComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    // console.log(this.loginForm);
     this.authService.login({
       account: this.loginForm.value.email,
       password: this.loginForm.value.password
     });
-    // .subscribe(res => {
-    //   console.log('LOGIN:', res);
-    // });
   }
 
   ngOnDestroy() {
