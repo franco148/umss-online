@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
 import { UserRole } from '../user-role.enum';
-import { Role } from '../role.model';
+import { RoleDto } from '../../../data/dto/role-dto';
 
 @Component({
   selector: 'app-uo-auth-signup',
@@ -45,7 +45,7 @@ export class UoAuthSignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(form: NgForm) {
-    const roles: Role[] = [];
+    const roles: RoleDto[] = [];
     this.userRolesFormControl.value.forEach(element => {
       roles.push({ authority: element });
     });

@@ -7,6 +7,7 @@ export class User {
     nickName: string;
     birthDate: Date;
     account: string;
+    password: string;
     isLogged: boolean;
     isDeleted: boolean;
     isEnabled: boolean;
