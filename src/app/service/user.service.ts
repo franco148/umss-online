@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GATEWAY_SERVER_URL } from '../constants/app.constant';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../components/auth/user.model';
+
+import { GATEWAY_SERVER_URL } from '../constants/app.constant';
+import { User } from '../data/model/user.model';
 
 @Injectable({
   providedIn: 'root'

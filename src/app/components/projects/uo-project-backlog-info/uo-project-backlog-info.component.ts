@@ -31,7 +31,6 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(foundProject => {
-          console.log('Found Project', foundProject);
           this.projectInfo = foundProject;
           this.dataSource.data = this.userStoriesList;
         });
