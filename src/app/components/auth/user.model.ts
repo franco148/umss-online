@@ -1,4 +1,11 @@
+import { Role } from './role.model';
+
 export interface User {
-    email: string;
-    userId: string;
+    name: string;
+    lastName: string;
+    account: string;
+    password: string;
+    nickName: string;
+    birthdate: Date;
+    userRoles: Role[];
 }

@@ -1,8 +1,8 @@
 <div class="uo-main-container">
     <mat-toolbar color="primary" class="example-toolbar">
         <button mat-icon-button (click)="sidenav.toggle()">
-          <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
-          <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
       </button>
 
         <h1 class="example-app-name">Umss Online</h1>
@@ -10,16 +10,24 @@
         <span class="uo-component-spacer"></span>
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
+        <mat-icon>more_vert</mat-icon>
       </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/profile">
-              <mat-icon>account_box</mat-icon>
-              <span>Mi Perfil</span>
+            <button *ngIf="!isAuthenticated" mat-menu-item routerLink="/login">
+            <mat-icon>input</mat-icon>
+            <span>Login</span>
           </button>
-            <button mat-menu-item routerLink="/login">
-              <mat-icon>exit_to_app</mat-icon>
-              <span>Cerrar Sesión</span>
+            <button *ngIf="!isAuthenticated" mat-menu-item routerLink="/signup">
+            <mat-icon>face</mat-icon>
+            <span>Signup</span>
+          </button>
+            <button *ngIf="isAuthenticated" mat-menu-item routerLink="/profile">
+            <mat-icon>account_box</mat-icon>
+            <span>Mi Perfil</span>
+          </button>
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="onLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Cerrar Sesión</span>
           </button>
         </mat-menu>
 
@@ -29,30 +37,30 @@
         <mat-sidenav #sidenav mode="side" [(opened)]="sidenav.opened" style="width: 200px">
             <img src="assets/images/uologov1.jpg" width="180">
             <mat-divider></mat-divider>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/search" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>search</mat-icon>
               <span>Search</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/project" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>directions_boat</mat-icon>
               <span>Active Sprint</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/especialidad" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>library_books</mat-icon>
               <span>Sprints</span>
           </button>
             <!-- <mat-divider></mat-divider> -->
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/medico" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>bug_report</mat-icon>
               <span>Issues</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/examen" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>assignment</mat-icon>
               <span>Documents</span>
           </button>
-            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer" [disabled]="selectedProject == undefined">
+            <button *ngIf="isAuthenticated" mat-menu-item (click)="sidenav.toggle()" routerLink="/paciente" style="cursor: pointer" [disabled]="selectedProject == undefined">
               <mat-icon>supervisor_account</mat-icon>
               <span>Participants</span>
           </button>
