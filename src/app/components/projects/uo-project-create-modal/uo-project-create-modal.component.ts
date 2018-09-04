@@ -21,11 +21,6 @@ export class UoProjectCreateModalComponent implements OnInit {
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate() + 1);
-
-    // this.userService.findAll().subscribe(usersResult => {
-    //   this.assignedToList = usersResult.slice();
-    //   console.log(this.assignedToList);
-    // });
   }
 
   onSubmit(form: NgForm) {

@@ -36,6 +36,10 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(foundProject => {
           this.projectInfo = foundProject;
+          if (foundProject.backlog.userStories) {
+            this.userStoriesList = this.projectInfo.backlog.userStories.slice();
+            console.log('FOUND PROJECT ...... ', this.userStoriesList);
+          }
           this.dataSource.data = this.userStoriesList;
         });
       }
@@ -44,6 +48,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
     this.userStorySavedSubscription = this.userStoryService.userStoryAddedChanged.subscribe(savedStory => {
       if (savedStory) {
         this.userStoriesList.push(savedStory);
+        console.log('SAVED!!!!!!!!!!!!!!!!!', this.userStoriesList);
       }
     });
   }

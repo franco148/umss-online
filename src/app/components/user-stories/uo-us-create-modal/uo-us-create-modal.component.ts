@@ -24,7 +24,6 @@ export class UoUsCreateModalComponent implements OnInit {
   ngOnInit() {
     this.minDate = new Date();
     this.minDate.setDate(this.minDate.getDate());
-    console.log('Passed Data: ', this.passedData);
 
     this.userService.findAll().subscribe(usersList => {
       this.assignedToList = usersList;
@@ -33,16 +32,20 @@ export class UoUsCreateModalComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log(form);
-    console.log('CREATED BY......', this.authService.getUser());
-    // this.userStoryService.save({
-    //   name: form.value.name,
-    //   description: form.value.description,
-    //   priority: form.value.priority,
-    //   estimatedTime: form.value.estimatedTime,
-    //   startedAt: form.value.startedAt,
-    //   assignedToId: form.value.assignedToId,
-    //   createdById: this.authService.getUser().id
-    // });
+    this.userStoryService.save(this.passedData.backlogId,
+    {
+      name: form.value.name,
+      description: form.value.description,
+      priority: form.value.priority,
+      estimatedTime: form.value.estimatedTime,
+      startedAt: form.value.startedAt,
+      assignedToId: form.value.assignedToId,
+      createdById: this.authService.getUser().id
+    }).subscribe(savedStory => {
+      console.log('IN MODAL....SAVED', savedStory);
+      this.userStoryService.userStoryAddedChanged.next(savedStory);
+      this.dialogRef.close();
+    });
   }
 
   onCancel() {

@@ -17,7 +17,8 @@ export class UserStoryService {
 
   constructor(private http: HttpClient) { }
 
-  save(userStory: UserStoryDto) {
-    return this.http.post<UserStory>(this.serverUrl, userStory);
+  save(backlogId: number, userStory: UserStoryDto) {
+    return this.http.post<UserStory>(`${this.serverUrl}/${backlogId}/user-story`, userStory);
+
   }
 }
