@@ -49,6 +49,7 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
       if (savedStory) {
         this.userStoriesList.push(savedStory);
         console.log('SAVED!!!!!!!!!!!!!!!!!', this.userStoriesList);
+        this.dataSource.data = this.userStoriesList;
       }
     });
   }
