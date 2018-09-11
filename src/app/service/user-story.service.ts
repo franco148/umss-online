@@ -19,6 +19,9 @@ export class UserStoryService {
 
   save(backlogId: number, userStory: UserStoryDto) {
     return this.http.post<UserStory>(`${this.serverUrl}/${backlogId}/user-story`, userStory);
+  }
 
+  findByBacklogId(backlogId: number) {
+    return this.http.get<UserStory[]>(`${this.serverUrl}/${backlogId}/user-story`);
   }
 }

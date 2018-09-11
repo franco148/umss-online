@@ -36,11 +36,23 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(foundProject => {
           this.projectInfo = foundProject;
-          if (foundProject.backlog.userStories) {
-            this.userStoriesList = this.projectInfo.backlog.userStories.slice();
-            console.log('FOUND PROJECT ...... ', this.userStoriesList);
+          // if (foundProject.backlog.userStories) {
+          //   this.userStoriesList = this.projectInfo.backlog.userStories.slice();
+          //   console.log('FOUND PROJECT ...... ', this.userStoriesList);
+          // }
+          // this.dataSource.data = this.userStoriesList.slice();
+
+          if (foundProject.backlog) {
+            this.userStoryService.findByBacklogId(foundProject.backlog.id).subscribe(storiesList => {
+              // this.dataSource = new MatTableDataSource(storiesList.slice());
+              // this.dataSource.sort = this.sort;
+              // this.dataSource.paginator = this.paginator;
+              this.userStoriesList = storiesList;
+              this.dataSource.data = this.userStoriesList.slice();
+            });
           }
-          this.dataSource.data = this.userStoriesList.slice();
+
+          // this.dataSource = new MatTableDataSource(this.userStoriesList.slice());
         });
       }
     });
@@ -49,7 +61,16 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
       if (savedStory) {
         this.userStoriesList.push({...savedStory});
         console.log('SAVED!!!!!!!!!!!!!!!!!', this.userStoriesList);
-        this.dataSource.data = this.userStoriesList.slice();
+        this.dataSource.data = this.userStoriesList;
+
+        // const res = this.userStoryService.findByBacklogId(1).subscribe(r => {
+        //   console.log('AAAAA', r);
+        //   this.dataSource = new MatTableDataSource(r.slice());
+        // });
+
+        // this.dataSource = new MatTableDataSource(this.userStoriesList.slice());
+        // this.dataSource.sort = this.sort;
+        // this.dataSource.paginator = this.paginator;
       }
     });
   }
