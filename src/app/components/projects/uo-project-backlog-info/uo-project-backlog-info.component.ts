@@ -38,7 +38,11 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
           this.projectInfo = foundProject;
           if (foundProject.backlog) {
             this.userStoryService.findByBacklogId(foundProject.backlog.id).subscribe(storiesList => {
-              this.userStoriesList = storiesList;
+              if (storiesList.length > 0) {
+                console.log('AAAAA', storiesList);
+                this.userStoriesList = storiesList;
+              }
+
               this.dataSource.data = this.userStoriesList.slice();
             });
           }
