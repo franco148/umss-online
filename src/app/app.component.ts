@@ -13,26 +13,16 @@ import { AuthService } from './components/auth/auth.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  isAuthenticated = false;
-
-  authChangedSubscription: Subscription;
-
-  constructor(private router: Router, private projectService: ProjectService, private authService: AuthService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.authChangedSubscription = this.authService.authChanged.subscribe(authStatus => {
-      this.isAuthenticated = authStatus;
-    });
-    this.isAuthenticated = this.authService.isAuthenticated();
   }
 
   onLogout() {
-    this.authService.logout();
   }
 
   ngOnDestroy() {
-    this.authChangedSubscription.unsubscribe();
   }
 
 }
