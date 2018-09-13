@@ -21,6 +21,8 @@ export class UoHeaderComponent implements OnInit, OnDestroy {
     this.sidenavToggle.emit();
   }
 
+  onLogout() {}
+
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
   }

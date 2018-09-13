@@ -6,14 +6,15 @@
     </div>
 
     <div>
-        <a routerLink="/">LOGO</a>
+        <a routerLink="/">UMSS Online</a>
+        <!-- <a routerLink="/"><img src="assets/images/uologov4.jpg" height="60"></a> -->
     </div>
 
     <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.xs>
         <ul fxLayout="row" fxLayoutGap="10px" class="navigation-items">
             <li *ngIf="!isAuth"><a routerLink="/signup">Signup</a></li>
             <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
-            <li *ngIf="isAuth"><a routerLink="/training">Training</a></li>
+            <li *ngIf="isAuth"><a routerLink="/profile">My Profile</a></li>
             <li *ngIf="isAuth"><a class="logout" (click)="onLogout()">Logout</a></li>
         </ul>
     </div>
