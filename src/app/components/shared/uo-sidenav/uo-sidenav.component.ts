@@ -14,6 +14,7 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
   @Output() sidenavOnClose = new EventEmitter<void>();
   isAuth = false;
   authSubscription: Subscription;
+  selectedProject = 0;
 
   constructor(private authService: AuthService) { }
 

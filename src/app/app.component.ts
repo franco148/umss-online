@@ -1,10 +1,4 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { Subscription } from 'rxjs';
-
-import { ProjectService } from './service/project.service';
-import { AuthService } from './components/auth/auth.service';
 
 @Component({
   selector: 'app-root',
