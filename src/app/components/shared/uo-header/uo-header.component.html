@@ -18,4 +18,28 @@
             <li *ngIf="isAuth"><a class="logout" (click)="onLogout()">Logout</a></li>
         </ul>
     </div>
+
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end" fxHide.gt-xs>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button *ngIf="!isAuth" mat-menu-item routerLink="/login">
+            <mat-icon>input</mat-icon>
+            <span>Login</span>
+          </button>
+            <button *ngIf="!isAuth" mat-menu-item routerLink="/signup">
+            <mat-icon>face</mat-icon>
+            <span>Signup</span>
+          </button>
+            <button *ngIf="isAuth" mat-menu-item routerLink="/profile">
+            <mat-icon>account_box</mat-icon>
+            <span>My Profile</span>
+          </button>
+            <button *ngIf="isAuth" mat-menu-item (click)="onLogout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+    </div>
 </mat-toolbar>

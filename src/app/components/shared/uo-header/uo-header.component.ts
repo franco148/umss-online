@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-uo-header',
@@ -12,16 +13,24 @@ export class UoHeaderComponent implements OnInit, OnDestroy {
   isAuth = false;
   authSubscription: Subscription;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
+
+    this.authSubscription = this.authService.authChanged.subscribe(authStatus => {
+      this.isAuth = authStatus;
+    });
+
+    this.isAuth = this.authService.isAuthenticated();
   }
 
   onToggleSidenav() {
     this.sidenavToggle.emit();
   }
 
-  onLogout() {}
+  onLogout() {
+    this.authService.logout();
+  }
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
