@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../auth/auth.service';
+import { ProjectService } from '../../../service/project.service';
 
 @Component({
   selector: 'app-uo-sidenav',
@@ -13,10 +14,12 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
   @Output() sidenavOnClose = new EventEmitter<void>();
   isAuth = false;
-  authSubscription: Subscription;
   selectedProject = 0;
 
-  constructor(private authService: AuthService) { }
+  authSubscription: Subscription;
+  projectSubscription: Subscription;
+
+  constructor(private authService: AuthService, private projectService: ProjectService) { }
 
   ngOnInit() {
     this.authSubscription = this.authService.authChanged.subscribe(authStatus => {
@@ -24,6 +27,11 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
     });
 
     this.isAuth = this.authService.isAuthenticated();
+
+    this.projectSubscription = this.projectService.projectAddedChange.subscribe(projectSelected => {
+      this.selectedProject = projectSelected.id;
+      console.log('SELECTED PROJECT: ', this.selectedProject);
+    });
   }
 
   onClose() {
