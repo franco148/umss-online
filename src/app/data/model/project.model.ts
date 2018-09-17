@@ -1,4 +1,5 @@
 import { Backlog } from './backlog.model';
+import { Sprint } from './sprint.model';
 
 export class Project {
 
@@ -6,6 +7,7 @@ export class Project {
     name: string;
     completedDateEstimation: Date;
     backlog: Backlog;
+    sprints: Sprint[];
 
     isDeleted: boolean;
 
