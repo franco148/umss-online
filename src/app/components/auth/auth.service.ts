@@ -30,7 +30,8 @@ export class AuthService {
 
   registerUser(userToRegister: UserDto) {
     this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
-      this.authSuccessfully('login');
+      // this.authSuccessfully('login');
+      this.router.navigate(['/login']);
     });
   }
 

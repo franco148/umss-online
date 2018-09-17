@@ -16,6 +16,8 @@ export class ProjectService {
   projectsChange = new Subject<Project[]>();
   message = new Subject<string>();
 
+  projectSelectedChange = new Subject<number>();
+
   constructor(private http: HttpClient) {
   }
 

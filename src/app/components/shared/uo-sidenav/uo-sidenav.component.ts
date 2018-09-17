@@ -17,7 +17,7 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
   selectedProject = 0;
 
   authSubscription: Subscription;
-  projectSubscription: Subscription;
+  projectSelectedSubscription: Subscription;
 
   constructor(private authService: AuthService, private projectService: ProjectService) { }
 
@@ -28,8 +28,8 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
     this.isAuth = this.authService.isAuthenticated();
 
-    this.projectSubscription = this.projectService.projectAddedChange.subscribe(projectSelected => {
-      this.selectedProject = projectSelected.id;
+    this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(projectSelectedId => {
+      this.selectedProject = projectSelectedId;
       console.log('SELECTED PROJECT: ', this.selectedProject);
     });
   }
