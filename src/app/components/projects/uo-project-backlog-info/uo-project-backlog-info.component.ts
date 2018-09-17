@@ -36,19 +36,25 @@ export class UoProjectBacklogInfoComponent implements OnInit, AfterViewInit, OnD
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(foundProject => {
           this.projectInfo = foundProject;
-          if (foundProject.backlog.userStories) {
-            this.userStoriesList = this.projectInfo.backlog.userStories.slice();
-            console.log('FOUND PROJECT ...... ', this.userStoriesList);
+          this.projectService.projectSelectedChange.next(this.projectInfo.id);
+
+          if (foundProject.backlog) {
+            this.userStoryService.findByBacklogId(foundProject.backlog.id).subscribe(storiesList => {
+              if (storiesList.length > 0) {
+                this.userStoriesList = storiesList;
+              }
+
+              this.dataSource.data = this.userStoriesList.slice();
+            });
           }
-          this.dataSource.data = this.userStoriesList;
         });
       }
     });
 
     this.userStorySavedSubscription = this.userStoryService.userStoryAddedChanged.subscribe(savedStory => {
       if (savedStory) {
-        this.userStoriesList.push(savedStory);
-        console.log('SAVED!!!!!!!!!!!!!!!!!', this.userStoriesList);
+        this.userStoriesList.push({...savedStory});
+        this.dataSource.data = this.userStoriesList;
       }
     });
   }

@@ -1,0 +1,7 @@
+.uo-menu-nav-disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+    pointer-events: none;
+}

@@ -16,6 +16,8 @@ export class ProjectService {
   projectsChange = new Subject<Project[]>();
   message = new Subject<string>();
 
+  projectSelectedChange = new Subject<number>();
+
   constructor(private http: HttpClient) {
   }
 
@@ -29,6 +31,11 @@ export class ProjectService {
 
   save(project: ProjectDto) {
     return this.http.post<Project>(this.serverUrl, project);
+  }
+
+  loadSprintsFor(projectId: number) {
+    // http://localhost:9005/api/v1/proj-mgt/projects/2/sprints
+    return this.http.get<Project>(`${this.serverUrl}/${projectId}/sprints`);
   }
 
 }

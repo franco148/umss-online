@@ -26,6 +26,9 @@ import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-
 import { UoUsCreateModalComponent } from './components/user-stories/uo-us-create-modal/uo-us-create-modal.component';
 import { RoleKeysPipe } from './pipe/role-keys.pipe';
 import { AppServerErrorInterceptor } from './app-server-error.interceptor';
+import { UoSprintInfoComponent } from './components/sprints/uo-sprint-info/uo-sprint-info.component';
+import { UoHeaderComponent } from './components/shared/uo-header/uo-header.component';
+import { UoSidenavComponent } from './components/shared/uo-sidenav/uo-sidenav.component';
 
 
 @NgModule({
@@ -44,7 +47,10 @@ import { AppServerErrorInterceptor } from './app-server-error.interceptor';
     UoProjectWelcomeComponent,
     UoProjectBacklogInfoComponent,
     UoUsCreateModalComponent,
-    RoleKeysPipe
+    RoleKeysPipe,
+    UoSprintInfoComponent,
+    UoHeaderComponent,
+    UoSidenavComponent
   ],
   imports: [
     BrowserModule,
