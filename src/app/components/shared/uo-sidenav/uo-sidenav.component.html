@@ -3,7 +3,7 @@
         <mat-icon>directions_boat</mat-icon>
         <span class="nav-caption">Active Sprint</span>
     </a>
-    <a *ngIf="isAuth" mat-list-item routerLink="/login" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item routerLink="/sprint" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>library_books</mat-icon>
         <span class="nav-caption">Sprints</span>
     </a>
