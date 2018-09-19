@@ -29,6 +29,7 @@ import { AppServerErrorInterceptor } from './app-server-error.interceptor';
 import { UoSprintInfoComponent } from './components/sprints/uo-sprint-info/uo-sprint-info.component';
 import { UoHeaderComponent } from './components/shared/uo-header/uo-header.component';
 import { UoSidenavComponent } from './components/shared/uo-sidenav/uo-sidenav.component';
+import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-info.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { UoSidenavComponent } from './components/shared/uo-sidenav/uo-sidenav.co
     RoleKeysPipe,
     UoSprintInfoComponent,
     UoHeaderComponent,
-    UoSidenavComponent
+    UoSidenavComponent,
+    UoDocInfoComponent
   ],
   imports: [
     BrowserModule,
