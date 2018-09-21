@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DmsService } from '../../../service/dms.service';
 
 @Component({
   selector: 'app-uo-doc-info',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UoDocInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dmsService: DmsService) { }
 
   ngOnInit() {
+    // this.dmsService.findDocViewById('c99b8940-073d-45f7-88fc-3147365d597800-50-56-C0-00-08').subscribe(doc => {
+    //   //
+    // });
   }
 
+  findDocById() {
+    // this.dmsService.findDocViewById('c99b8940-073d-45f7-88fc-3147365d597800-50-56-C0-00-08').subscribe(doc => {
+    //   console.log('Found a Document');
+    //   console.log(doc);
+    //   return doc;
+    // });
+  }
 }

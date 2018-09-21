@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { GATEWAY_SERVER_URL } from '../constants/app.constant';
 import { HttpClient } from '@angular/common/http';
-import { Project } from '../data/model/project.model';
+
 import { Subject } from 'rxjs';
+
+import { GATEWAY_SERVER_URL } from '../constants/app.constant';
+import { Project } from '../data/model/project.model';
 import { ProjectDto } from '../data/dto/project-dto';
 
 @Injectable({
