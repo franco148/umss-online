@@ -30,6 +30,7 @@ import { UoSprintInfoComponent } from './components/sprints/uo-sprint-info/uo-sp
 import { UoHeaderComponent } from './components/shared/uo-header/uo-header.component';
 import { UoSidenavComponent } from './components/shared/uo-sidenav/uo-sidenav.component';
 import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-info.component';
+import { DmsFilePipe } from './pipe/dms-file.pipe';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-in
     UoSprintInfoComponent,
     UoHeaderComponent,
     UoSidenavComponent,
-    UoDocInfoComponent
+    UoDocInfoComponent,
+    DmsFilePipe
   ],
   imports: [
     BrowserModule,

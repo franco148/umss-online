@@ -22,5 +22,7 @@ export class UoDocInfoComponent implements OnInit {
     //   console.log(doc);
     //   return doc;
     // });
+
+    return 'http://localhost:9090/api/v1/files/c99b8940-073d-45f7-88fc-3147365d597800-50-56-C0-00-08/view';
   }
 }
