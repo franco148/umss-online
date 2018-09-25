@@ -8,6 +8,8 @@ import { DmsService } from '../../../service/dms.service';
 })
 export class UoDocInfoComponent implements OnInit {
 
+  documentId: string;
+
   constructor(private dmsService: DmsService) { }
 
   ngOnInit() {
