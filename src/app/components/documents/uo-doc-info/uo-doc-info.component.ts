@@ -9,6 +9,7 @@ import { DmsService } from '../../../service/dms.service';
 export class UoDocInfoComponent implements OnInit {
 
   documentId: string;
+  documentSchema: any;
 
   constructor(private dmsService: DmsService) { }
 
