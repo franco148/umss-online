@@ -12,12 +12,20 @@ export class UoDocInfoComponent implements OnInit {
 
   documentId: string;
   documentSchema: any;
+  documentFileLink: string;
 
   constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
-      console.log(params);
+      if (params['id']) {
+        this.dmsService.findByQuery(params['id']).subscribe(docSchema => {
+          this.documentSchema = docSchema[0];
+          // this.documentId = this.documentSchema.id;
+          this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
+          console.log('Document Schema: ', this.documentSchema, '  plus document Id: ', this.documentId);
+        });
+      }
     });
   }
 

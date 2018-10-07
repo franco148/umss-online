@@ -1,7 +1,7 @@
 <app-uo-docs-header></app-uo-docs-header>
 <app-uo-docs-toolbar></app-uo-docs-toolbar>
 <div fxLayout="row" fxLayoutGap="10px">
-    <iframe width="80%" height="600" [src]="findDocById() | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="80%" height="600" [src]="documentId | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div style="width: 20%" fxLayoutAlign="center start">
         <app-uo-docs-notes></app-uo-docs-notes>
     </div>

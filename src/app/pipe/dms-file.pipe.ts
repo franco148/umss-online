@@ -9,7 +9,7 @@ export class DmsFilePipe implements PipeTransform {
   constructor(private domSanitizer: DomSanitizer) {}
 
   transform(value: any): any {
-    console.log('PIPE URL..................');
+    console.log('PIPE URL..................', value);
     return this.domSanitizer.bypassSecurityTrustResourceUrl(value);
   }
 
