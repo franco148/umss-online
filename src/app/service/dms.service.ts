@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { DMS_SERVER_URL } from '../constants/app.constant';
 import { Observable } from 'rxjs';
+import { text } from '@angular/core/src/render3/instructions';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,21 @@ export class DmsService {
     return this.http.get<any>(urlRequest);
   }
 
-  attachDocument(file: File): Observable<HttpEvent<{}>> {
+  attachDocument(file: File, resourceId: number): Observable<HttpEvent<{}>> {
     const formdata: FormData = new FormData();
-    return null;
+    const paramFormData = `{"title": "File Title", "description": "File Description", "projectId": "${resourceId}"}`;
+
+    formdata.append('file', file);
+    formdata.append('parameters', paramFormData);
+
+    // http://localhost:9090/api/v1/files
+    const request = new HttpRequest('POST', this.serverUrl, formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    console.log('REQUEST: ', request, '  PROJECT ID ', resourceId);
+
+    return this.http.request(request);
   }
 }

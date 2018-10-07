@@ -7,16 +7,26 @@
     </div>
 </div>
 
-<div *ngIf="!documentId">
-    <div *ngIf="currentFileUpload">
-        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
-            {{progress.percentage}}%
-        </div>
+<div fxLayout="column" *ngIf="!documentId">
+    <div class="uo-documents-message-container" fxLayout="column" fxLayoutAlign="center center">
+        <p class="uo-documents-main-message">No documents attached for this project</p>
+        <p class="uo-documents-secondary-message">Attach a file</p>
     </div>
 
-    <label class="btn btn-default">
-      <input type="file" (change)="selectFile($event)">
-    </label>
+    <div fxFlex.gt-xs="100px" fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex.gt-xs="500px" fxLayoutAlign="center start" fxLayoutGap="5px">
+            <div *ngIf="currentFileUpload">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                    {{progress.percentage}}%
+                </div>
+            </div>
 
-    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+            <label class="btn">
+              <input type="file" (change)="selectFile($event)">
+            </label>
+
+            <!-- <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button> -->
+            <button mat-raised-button color="accent" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+        </div>
+    </div>
 </div>

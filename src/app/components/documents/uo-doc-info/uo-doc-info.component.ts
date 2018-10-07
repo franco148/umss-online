@@ -11,6 +11,8 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 })
 export class UoDocInfoComponent implements OnInit {
 
+  projectId: number;
+
   documentId: string;
   documentSchema: any;
   documentFileLink: string;
@@ -25,7 +27,8 @@ export class UoDocInfoComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
-        this.dmsService.findByQuery(params['id']).subscribe(docSchema => {
+        this.projectId = params['id'];
+        this.dmsService.findByQuery(this.projectId).subscribe(docSchema => {
           if (docSchema[0]) {
             this.documentSchema = docSchema[0];
             this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
@@ -50,10 +53,10 @@ export class UoDocInfoComponent implements OnInit {
     this.progress.percentage = 0;
 
     this.currentFileUpload = this.selectedFiles.item(0);
-    this.dmsService.attachDocument(this.currentFileUpload).subscribe(event => {
+    this.dmsService.attachDocument(this.currentFileUpload, this.projectId).subscribe(event => {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
-      } else if(event instanceof HttpResponse) {
+      } else if (event instanceof HttpResponse) {
         console.log('File is completely uploaded!');
       }
     });
