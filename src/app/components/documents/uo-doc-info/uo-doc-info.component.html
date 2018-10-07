@@ -1,8 +1,22 @@
 <app-uo-docs-header></app-uo-docs-header>
 <app-uo-docs-toolbar></app-uo-docs-toolbar>
-<div fxLayout="row" fxLayoutGap="10px">
+<div *ngIf="documentId" fxLayout="row" fxLayoutGap="10px">
     <iframe width="80%" height="600" [src]="documentId | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div style="width: 20%" fxLayoutAlign="center start">
         <app-uo-docs-notes></app-uo-docs-notes>
     </div>
+</div>
+
+<div *ngIf="!documentId">
+    <div *ngIf="currentFileUpload">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+            {{progress.percentage}}%
+        </div>
+    </div>
+
+    <label class="btn btn-default">
+      <input type="file" (change)="selectFile($event)">
+    </label>
+
+    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
 </div>
