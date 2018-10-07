@@ -36,7 +36,6 @@ export class ProjectService {
   }
 
   loadSprintsFor(projectId: number) {
-    // http://localhost:9005/api/v1/proj-mgt/projects/2/sprints
     return this.http.get<Project>(`${this.serverUrl}/${projectId}/sprints`);
   }
 

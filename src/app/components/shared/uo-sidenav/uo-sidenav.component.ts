@@ -41,4 +41,8 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
   }
+
+  selectedProjectClick() {
+    console.log('Selected project is: ', this.selectedProject);
+  }
 }

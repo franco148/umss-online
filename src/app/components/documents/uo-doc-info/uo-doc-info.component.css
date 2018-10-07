@@ -1,0 +1,25 @@
+.uo-documents-message-container {
+    /* background-color: azure; */
+    margin-top: 20px;
+}
+
+.uo-documents-main-message {
+    font-size: 30px;
+    font-weight: bold;
+    color: gainsboro;
+}
+
+.uo-documents-secondary-message {
+    font-size: 20px;
+    font-weight: bold;
+    color: gainsboro;
+}
+
+.uo-documents-attachment-container {
+    max-width: 800px;
+    /* border: 1px solid cornflowerblue; */
+}
+
+label {
+    border: 1px solid tan;
+}
