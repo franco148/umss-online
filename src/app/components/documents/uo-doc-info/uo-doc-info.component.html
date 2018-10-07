@@ -1,21 +1,21 @@
 <app-uo-docs-header></app-uo-docs-header>
 <app-uo-docs-toolbar></app-uo-docs-toolbar>
-<div *ngIf="documentId" fxLayout="row" fxLayoutGap="10px">
-    <iframe width="80%" height="600" [src]="documentId | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<div *ngIf="documentId" fxLayout="row" fxLayoutGap="30px">
+    <iframe width="75%" height="600" [src]="documentId | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div style="width: 20%" fxLayoutAlign="center start">
         <app-uo-docs-notes></app-uo-docs-notes>
     </div>
 </div>
 
-<div fxLayout="column" *ngIf="!documentId">
+<div fxLayout="column" fxLayoutAlign="center center" *ngIf="!documentId">
     <div class="uo-documents-message-container" fxLayout="column" fxLayoutAlign="center center">
         <p class="uo-documents-main-message">No documents attached for this project</p>
         <p class="uo-documents-secondary-message">Attach a file</p>
     </div>
 
-    <div fxFlex.gt-xs="100px" fxLayout="row" fxLayoutAlign="center center">
-        <div fxFlex.gt-xs="500px" fxLayoutAlign="center start" fxLayoutGap="5px">
-            <div *ngIf="currentFileUpload">
+    <div class="uo-documents-attachment-container">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5px">
+            <div *ngIf="currentFileUpload" style="width: 100%;">
                 <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" attr.aria-valuenow="{{progress.percentage}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
                     {{progress.percentage}}%
                 </div>

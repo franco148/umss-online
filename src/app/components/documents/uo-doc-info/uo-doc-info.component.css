@@ -15,6 +15,11 @@
     color: gainsboro;
 }
 
+.uo-documents-attachment-container {
+    max-width: 800px;
+    /* border: 1px solid cornflowerblue; */
+}
+
 label {
     border: 1px solid tan;
 }
