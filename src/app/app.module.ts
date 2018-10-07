@@ -54,7 +54,8 @@ import { DmsFilePipe } from './pipe/dms-file.pipe';
     UoHeaderComponent,
     UoSidenavComponent,
     UoDocInfoComponent,
-    DmsFilePipe
+    DmsFilePipe,
+    UoDocVersionsComponent
   ],
   imports: [
     BrowserModule,
