@@ -28,13 +28,7 @@ export class UoDocInfoComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         this.projectId = params['id'];
-        this.dmsService.findByQuery(this.projectId).subscribe(docSchema => {
-          if (docSchema[0]) {
-            this.documentSchema = docSchema[0];
-            this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
-            console.log('Document Schema: ', this.documentSchema, '  plus document Id: ', this.documentId);
-          }
-        });
+        this.buildSchemaAndBuildDocumentUri();
       }
     });
   }
@@ -58,9 +52,19 @@ export class UoDocInfoComponent implements OnInit {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         console.log('File is completely uploaded!');
+        this.buildSchemaAndBuildDocumentUri();
       }
     });
 
     this.selectedFiles = undefined;
+  }
+
+  private buildSchemaAndBuildDocumentUri() {
+    this.dmsService.findByQuery(this.projectId).subscribe(docSchema => {
+      if (docSchema[0]) {
+        this.documentSchema = docSchema[0];
+        this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
+      }
+    });
   }
 }

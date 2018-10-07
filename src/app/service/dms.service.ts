@@ -20,7 +20,6 @@ export class DmsService {
   findByQuery(projectId: number) {
     const urlRequest = `${this.serverUrl}/inclusive/query?parameters={"projectId":"${projectId}"}`;
     // const urlRequest = `http://localhost:9090/api/v1/files/inclusive/query?parameters={"projectId":"1"}`;
-    console.log('Sending request to: ', urlRequest);
     return this.http.get<any>(urlRequest);
   }
 
@@ -31,13 +30,10 @@ export class DmsService {
     formdata.append('file', file);
     formdata.append('parameters', paramFormData);
 
-    // http://localhost:9090/api/v1/files
     const request = new HttpRequest('POST', this.serverUrl, formdata, {
       reportProgress: true,
       responseType: 'text'
     });
-
-    console.log('REQUEST: ', request, '  PROJECT ID ', resourceId);
 
     return this.http.request(request);
   }
