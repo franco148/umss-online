@@ -11,7 +11,7 @@
         <mat-icon>bug_report</mat-icon>
         <span class="nav-caption">Issues</span>
     </a>
-    <a *ngIf="isAuth" mat-list-item routerLink="/training" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item [routerLink]="['/project', selectedProject, 'document']" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>assignment</mat-icon>
         <span class="nav-caption">Documents</span>
     </a>

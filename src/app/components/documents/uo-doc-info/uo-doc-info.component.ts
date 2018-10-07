@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { DmsService } from '../../../service/dms.service';
 
 @Component({
@@ -11,9 +13,12 @@ export class UoDocInfoComponent implements OnInit {
   documentId: string;
   documentSchema: any;
 
-  constructor(private dmsService: DmsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService) { }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      console.log(params);
+    });
   }
 
   findDocById() {
