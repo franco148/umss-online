@@ -8,6 +8,7 @@ import { UoProjectBacklogInfoComponent } from './components/projects/uo-project-
 import { AuthGuard } from './components/auth/auth.guard';
 import { UoSprintInfoComponent } from './components/sprints/uo-sprint-info/uo-sprint-info.component';
 import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-info.component';
+import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/uo-doc-versions.component';
 
 const routes: Routes = [
     { path: '', component: UoProjectWelcomeComponent, canActivate: [AuthGuard] },
@@ -16,7 +17,8 @@ const routes: Routes = [
     { path: 'edit-profile/:id', component: UoAuthSignupComponent, canActivate: [AuthGuard] },
     { path: 'project/:id', component: UoProjectBacklogInfoComponent, canActivate: [AuthGuard] },
     { path: 'sprint', component: UoSprintInfoComponent, canActivate: [AuthGuard] },
-    { path: 'project/:id/document', component: UoDocInfoComponent, canActivate: [AuthGuard]}
+    { path: 'project/:id/document', component: UoDocInfoComponent, canActivate: [AuthGuard] },
+    { path: 'project-document/:id/versions', component: UoDocVersionsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
