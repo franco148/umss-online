@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DmsService } from '../../../service/dms.service';
 
 @Component({
   selector: 'app-uo-docs-toolbar',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UoDocsToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dmsService: DmsService) { }
 
   ngOnInit() {
   }
 
   onClickMethod() {
-    console.log('menu buttons clicks!!!...');
+    console.log('menu buttons clicks!!!...', this.dmsService.selectedProjecId, '   .............  ',
+     this.dmsService.selectedProjectDocumentId);
   }
 }

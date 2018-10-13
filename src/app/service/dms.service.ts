@@ -10,6 +10,8 @@ import { text } from '@angular/core/src/render3/instructions';
 export class DmsService {
 
   serverUrl = DMS_SERVER_URL;
+  selectedProjecId: number;
+  selectedProjectDocumentId: string;
 
   constructor(private http: HttpClient) { }
 
