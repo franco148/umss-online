@@ -40,11 +40,11 @@ export class DmsService {
     return this.http.request(request);
   }
 
-  getDocumentVersions() {
-    if (this.selectedProjectDocumentId) {
+  getDocumentVersions(selectedDocumentId: string): Observable<any[]> {
+    if (selectedDocumentId) {
       // http://localhost:9090/api/v1/files/42080a88-c4f3-4742-a404-1fa37fc9ad8200-50-56-C0-00-08/versions
-      const urlRequest = `${this.serverUrl}/${this.selectedProjectDocumentId}/versions`;
-      return this.http.get<any>(urlRequest);
+      const urlRequest = `${this.serverUrl}/${selectedDocumentId}/versions`;
+      return this.http.get<any[]>(urlRequest);
     }
   }
 }
