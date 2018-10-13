@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { DmsService } from '../../../service/dms.service';
 import { Project } from '../../../data/model/project.model';
@@ -13,13 +13,16 @@ import { Backlog } from '../../../data/model/backlog.model';
 export class UoDocVersionsComponent implements OnInit {
 
   projectsList: Project[] = [];
+  selectedProjectId: number;
 
-  constructor(private dmsService: DmsService, private activatedRoute: ActivatedRoute) { }
+  constructor(private dmsService: DmsService, private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         const projectId = params['id'];
+        this.selectedProjectId = projectId;
         this.buildSchemaAndBuildDocumentUri(projectId);
       }
     });
@@ -31,8 +34,11 @@ export class UoDocVersionsComponent implements OnInit {
         const documentSchema = docSchema[0];
 
         this.dmsService.getDocumentVersions(documentSchema.id).subscribe(docVersions => {
-          // console.log(docVersions);
+          // myArr.sort((val1, val2)=> {return new Date(val2.CREATE_TS) - new Date(val1.CREATE_TS)})
           if (docVersions) {
+            docVersions.sort((v1, v2) => {
+              return v2.createdDate - v1.createdDate;
+            });
             docVersions.forEach(version => {
               const backlog = new Backlog();
               backlog.description = version.description;
@@ -52,5 +58,9 @@ export class UoDocVersionsComponent implements OnInit {
   }
 
   onUpload() {}
+
+  goBackToDocumentViewer() {
+    this.router.navigate(['/project', this.selectedProjectId, 'document']);
+  }
 
 }
