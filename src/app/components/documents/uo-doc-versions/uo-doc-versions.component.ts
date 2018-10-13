@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DmsService } from '../../../service/dms.service';
 
 @Component({
   selector: 'app-uo-doc-versions',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UoDocVersionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dmsService: DmsService) { }
 
   ngOnInit() {
+    if (this.dmsService.selectedProjectDocumentId) {
+      this.dmsService.getDocumentVersions().subscribe(docVersions => {
+        console.log('DOC VERSIONSSSSSSS', docVersions);
+      });
+    }
   }
 
 }

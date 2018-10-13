@@ -16,5 +16,8 @@ export class UoDocsToolbarComponent implements OnInit {
   onClickMethod() {
     console.log('menu buttons clicks!!!...', this.dmsService.selectedProjecId, '   .............  ',
      this.dmsService.selectedProjectDocumentId);
+     this.dmsService.getDocumentVersions().subscribe(versions => {
+       console.log('.................................', versions);
+     });
   }
 }
