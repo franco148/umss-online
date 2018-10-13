@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DmsService } from '../../../service/dms.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uo-docs-toolbar',
@@ -8,16 +10,12 @@ import { DmsService } from '../../../service/dms.service';
 })
 export class UoDocsToolbarComponent implements OnInit {
 
-  constructor(private dmsService: DmsService) { }
+  constructor(private dmsService: DmsService, private router: Router) { }
 
   ngOnInit() {
   }
 
   onClickMethod() {
-    console.log('menu buttons clicks!!!...', this.dmsService.selectedProjecId, '   .............  ',
-     this.dmsService.selectedProjectDocumentId);
-     this.dmsService.getDocumentVersions().subscribe(versions => {
-       console.log('.................................', versions);
-     });
+    this.router.navigate(['/project-document', this.dmsService.selectedProjecId, 'versions']);
   }
 }

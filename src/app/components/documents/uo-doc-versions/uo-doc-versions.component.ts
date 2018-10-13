@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DmsService } from '../../../service/dms.service';
+import { Project } from '../../../data/model/project.model';
 
 @Component({
   selector: 'app-uo-doc-versions',
@@ -7,6 +8,8 @@ import { DmsService } from '../../../service/dms.service';
   styleUrls: ['./uo-doc-versions.component.css']
 })
 export class UoDocVersionsComponent implements OnInit {
+
+  projectsList: Project[] = [];
 
   constructor(private dmsService: DmsService) { }
 
