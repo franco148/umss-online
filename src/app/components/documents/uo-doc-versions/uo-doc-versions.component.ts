@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 import { DmsService } from '../../../service/dms.service';
 import { Project } from '../../../data/model/project.model';
@@ -16,7 +17,7 @@ export class UoDocVersionsComponent implements OnInit {
   selectedProjectId: number;
 
   constructor(private dmsService: DmsService, private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -57,7 +58,16 @@ export class UoDocVersionsComponent implements OnInit {
     });
   }
 
-  onUpload() {}
+  onUpload() {
+    // const dialogRef = this.dialog.open(UoProjectCreateModalComponent, {
+    //   width: '300px',
+    //   disableClose: true
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('closed popup', result);
+    // });
+  }
 
   goBackToDocumentViewer() {
     this.router.navigate(['/project', this.selectedProjectId, 'document']);

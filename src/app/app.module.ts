@@ -32,6 +32,7 @@ import { UoSidenavComponent } from './components/shared/uo-sidenav/uo-sidenav.co
 import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-info.component';
 import { DmsFilePipe } from './pipe/dms-file.pipe';
 import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/uo-doc-versions.component';
+import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-modal/uo-doc-upload-modal.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/u
     UoSidenavComponent,
     UoDocInfoComponent,
     DmsFilePipe,
-    UoDocVersionsComponent
+    UoDocVersionsComponent,
+    UoDocUploadModalComponent
   ],
   imports: [
     BrowserModule,
