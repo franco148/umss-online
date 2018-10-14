@@ -42,7 +42,6 @@ export class UoUsCreateModalComponent implements OnInit {
       assignedToId: form.value.assignedToId,
       createdById: this.authService.getUser().id
     }).subscribe(savedStory => {
-      console.log('IN MODAL....SAVED', savedStory);
       this.userStoryService.userStoryAddedChanged.next(savedStory);
       this.dialogRef.close();
     });

@@ -40,6 +40,24 @@ export class DmsService {
     return this.http.request(request);
   }
 
+  uploadDocumentVersion(selectedFileId: string, file: File, docTitle: string, docDescription: string) {
+    const formdata: FormData = new FormData();
+
+    formdata.append('file', file);
+    formdata.append('title', docTitle);
+    formdata.append('description', docDescription);
+
+    const requestUrl = `${this.serverUrl}/${selectedFileId}/versions`;
+    const request = new HttpRequest('POST', requestUrl, formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    console.log(requestUrl);
+    // console.log(request);
+    return this.http.request(request);
+  }
+
   getDocumentVersions(selectedDocumentId: string): Observable<any[]> {
     if (selectedDocumentId) {
       // http://localhost:9090/api/v1/files/42080a88-c4f3-4742-a404-1fa37fc9ad8200-50-56-C0-00-08/versions

@@ -1,8 +1,8 @@
 <section fxLayout="row" fxLayoutAlign="center start">
     <form fxLayout="column" #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <label class="btn">
-            <input type="file" (change)="selectFile($event)">
-        </label>
+
+        <input type="file" (change)="selectFile($event)">
+
         <mat-form-field>
             <input type="text" matInput placeholder="Enter document title" ngModel name="title" required #nameInput="ngModel">
             <mat-error *ngIf="nameInput.hasError('required')">Document title must not be empty</mat-error>

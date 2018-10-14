@@ -16,6 +16,7 @@ export class UoDocVersionsComponent implements OnInit {
 
   projectsList: Project[] = [];
   selectedProjectId: number;
+  selectedDocumentId: string;
 
   constructor(private dmsService: DmsService, private activatedRoute: ActivatedRoute,
               private router: Router, private dialog: MatDialog) { }
@@ -34,6 +35,7 @@ export class UoDocVersionsComponent implements OnInit {
     this.dmsService.findByQuery(projectId).subscribe(docSchema => {
       if (docSchema[0]) {
         const documentSchema = docSchema[0];
+        this.selectedDocumentId = documentSchema.id;
 
         this.dmsService.getDocumentVersions(documentSchema.id).subscribe(docVersions => {
           // myArr.sort((val1, val2)=> {return new Date(val2.CREATE_TS) - new Date(val1.CREATE_TS)})
@@ -53,7 +55,6 @@ export class UoDocVersionsComponent implements OnInit {
               this.projectsList.push(proj);
             });
           }
-          console.log('DOCUMENTS PROJECTS ', this.projectsList);
         });
       }
     });
@@ -61,12 +62,16 @@ export class UoDocVersionsComponent implements OnInit {
 
   onUpload() {
     const dialogRef = this.dialog.open(UoDocUploadModalComponent, {
+      data: {
+        documentId: this.selectedDocumentId
+      },
       width: '370px',
       disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('closed popup', result);
+      this.projectsList = [];
+      this.buildSchemaAndBuildDocumentUri(this.selectedProjectId);
     });
   }
 

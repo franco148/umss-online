@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+import { DmsService } from '../../../service/dms.service';
 
 @Component({
   selector: 'app-uo-doc-upload-modal',
@@ -9,10 +11,11 @@ import { MatDialogRef } from '@angular/material';
 })
 export class UoDocUploadModalComponent implements OnInit {
 
-  minDate;
   selectedFiles: FileList;
 
-  constructor(public dialogRef: MatDialogRef<UoDocUploadModalComponent>) { }
+  constructor(public dialogRef: MatDialogRef<UoDocUploadModalComponent>,
+              @Inject(MAT_DIALOG_DATA) public passedData: any,
+              private dmsService: DmsService) { }
 
   ngOnInit() {
   }
@@ -22,15 +25,15 @@ export class UoDocUploadModalComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // this.projectService.save({
-    //   name: form.value.name,
-    //   completedDateEstimation: form.value.completedOn,
-    //   backlogDescription: form.value.backlogDescription,
-    //   createdById: 1
-    // }).subscribe(savedProject => {
-    //   this.projectService.projectAddedChange.next(savedProject);
-    //   this.dialogRef.close();
-    // });
+
+    this.dmsService.uploadDocumentVersion(
+      this.passedData.documentId,
+      this.selectedFiles.item(0),
+      form.value.title, form.value.description)
+    .subscribe(docVersion => {
+      console.log(docVersion);
+      this.dialogRef.close(docVersion);
+    });
   }
 
   onCancel() {
