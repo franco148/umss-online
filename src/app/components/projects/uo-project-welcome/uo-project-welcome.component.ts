@@ -23,7 +23,6 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.projectService.findAll().subscribe(dataResponse => {
       this.projectsList = dataResponse.slice();
-      console.log(this.projectsList);
     });
 
     this.projecSavedSubscription = this.projectService.projectAddedChange.subscribe(projectSaved => {

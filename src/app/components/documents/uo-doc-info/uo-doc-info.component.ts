@@ -28,6 +28,7 @@ export class UoDocInfoComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
         this.projectId = params['id'];
+        this.dmsService.selectedProjecId = this.projectId;
         this.buildSchemaAndBuildDocumentUri();
       }
     });
@@ -51,7 +52,6 @@ export class UoDocInfoComponent implements OnInit {
       if (event.type === HttpEventType.UploadProgress) {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
-        console.log('File is completely uploaded!');
         this.buildSchemaAndBuildDocumentUri();
       }
     });
@@ -63,6 +63,7 @@ export class UoDocInfoComponent implements OnInit {
     this.dmsService.findByQuery(this.projectId).subscribe(docSchema => {
       if (docSchema[0]) {
         this.documentSchema = docSchema[0];
+        this.dmsService.selectedProjectDocumentId = this.documentSchema.id;
         this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
       }
     });
