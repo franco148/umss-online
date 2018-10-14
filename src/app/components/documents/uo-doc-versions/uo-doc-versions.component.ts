@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { DmsService } from '../../../service/dms.service';
 import { Project } from '../../../data/model/project.model';
 import { Backlog } from '../../../data/model/backlog.model';
+import { UoDocUploadModalComponent } from '../uo-doc-upload-modal/uo-doc-upload-modal.component';
 
 @Component({
   selector: 'app-uo-doc-versions',
@@ -59,14 +60,14 @@ export class UoDocVersionsComponent implements OnInit {
   }
 
   onUpload() {
-    // const dialogRef = this.dialog.open(UoProjectCreateModalComponent, {
-    //   width: '300px',
-    //   disableClose: true
-    // });
+    const dialogRef = this.dialog.open(UoDocUploadModalComponent, {
+      width: '370px',
+      disableClose: true
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('closed popup', result);
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed popup', result);
+    });
   }
 
   goBackToDocumentViewer() {

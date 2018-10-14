@@ -10,10 +10,15 @@ import { MatDialogRef } from '@angular/material';
 export class UoDocUploadModalComponent implements OnInit {
 
   minDate;
+  selectedFiles: FileList;
 
   constructor(public dialogRef: MatDialogRef<UoDocUploadModalComponent>) { }
 
   ngOnInit() {
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
   onSubmit(form: NgForm) {
@@ -29,6 +34,6 @@ export class UoDocUploadModalComponent implements OnInit {
   }
 
   onCancel() {
-    // this.dialogRef.close();
+    this.dialogRef.close();
   }
 }

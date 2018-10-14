@@ -77,6 +77,6 @@ import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent]
+  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent]
 })
 export class AppModule { }
