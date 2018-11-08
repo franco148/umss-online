@@ -44,6 +44,7 @@ export class UoDocVersionsComponent implements OnInit {
               return v2.createdDate - v1.createdDate;
             });
             docVersions.forEach(version => {
+              console.log('DOCUMENT VERSION: ', version);
               const backlog = new Backlog();
               backlog.description = version.description;
 

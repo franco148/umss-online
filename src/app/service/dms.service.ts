@@ -53,8 +53,6 @@ export class DmsService {
       responseType: 'text'
     });
 
-    console.log(requestUrl);
-    // console.log(request);
     return this.http.request(request);
   }
 
