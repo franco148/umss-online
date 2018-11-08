@@ -10,6 +10,7 @@ export class Project {
     sprints: Sprint[];
 
     isDeleted: boolean;
+    isRoot: boolean;
 
     createdAt: Date;
     updatedAt: Date;

@@ -48,6 +48,7 @@ mat-card-content {
     height: 25px;
     font-size: 12px;
     color: aliceblue;
+    display: none !important;
 }
 
 .span-checkbox {
