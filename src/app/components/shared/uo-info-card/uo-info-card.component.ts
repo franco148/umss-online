@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../../../data/model/project.model';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,8 @@ export class UoInfoCardComponent implements OnInit {
 
   @Input() backgroundImage: string;
 
+  @Output() versionOnSelect = new EventEmitter<void>();
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -25,5 +27,6 @@ export class UoInfoCardComponent implements OnInit {
 
   onSelectVersion(event: Event) {
     console.log(event);
+    this.versionOnSelect.emit();
   }
 }

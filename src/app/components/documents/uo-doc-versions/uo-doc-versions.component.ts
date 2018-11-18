@@ -81,4 +81,7 @@ export class UoDocVersionsComponent implements OnInit {
     this.router.navigate(['/project', this.selectedProjectId, 'document']);
   }
 
+  selectedVersionEvent() {
+    console.log('AAAAAAAAAAAAA clicket');
+  }
 }
