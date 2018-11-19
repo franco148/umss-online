@@ -29,5 +29,10 @@ export class UoInfoCardComponent implements OnInit {
   onSelectVersion(event: Event) {
     console.log(this.projectCardInfo);
     // this.versionOnSelect.emit();
+    if (!this.projectCardInfo.isRoot) {
+      console.log('Do you want to change de version of the document?');
+    } else {
+      this.projectCardInfo.isRoot = true;
+    }
   }
 }
