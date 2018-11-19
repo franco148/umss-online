@@ -11,6 +11,7 @@ export class Project {
 
     isDeleted: boolean;
     isRoot: boolean;
+    versionId: string;
 
     createdAt: Date;
     updatedAt: Date;

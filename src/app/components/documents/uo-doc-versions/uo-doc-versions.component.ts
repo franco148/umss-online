@@ -51,6 +51,7 @@ export class UoDocVersionsComponent implements OnInit {
               const proj = new Project();
               proj.name = version.title;
               proj.isRoot = version.root;
+              proj.versionId = version.versionId;
               proj.backlog = backlog;
               proj.createdAt = new Date(version.createdDate);
 
@@ -81,7 +82,4 @@ export class UoDocVersionsComponent implements OnInit {
     this.router.navigate(['/project', this.selectedProjectId, 'document']);
   }
 
-  selectedVersionEvent() {
-    console.log('AAAAAAAAAAAAA clicket');
-  }
 }

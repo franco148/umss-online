@@ -14,7 +14,8 @@ export class UoInfoCardComponent implements OnInit {
 
   @Input() backgroundImage: string;
 
-  @Output() versionOnSelect = new EventEmitter<void>();
+  // @Input() versionIndex: number;
+  // @Output() versionOnSelect = new EventEmitter<void>();
 
   constructor(private router: Router) { }
 
@@ -26,7 +27,7 @@ export class UoInfoCardComponent implements OnInit {
   }
 
   onSelectVersion(event: Event) {
-    console.log(event);
-    this.versionOnSelect.emit();
+    console.log(this.projectCardInfo);
+    // this.versionOnSelect.emit();
   }
 }
