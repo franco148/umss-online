@@ -17,7 +17,7 @@ export class UoInfoCardComponent implements OnInit {
   @Input() backgroundImage: string;
 
   // @Input() versionIndex: number;
-  // @Output() versionOnSelect = new EventEmitter<void>();
+  @Output() versionOnSelect = new EventEmitter<void>();
 
   constructor(private router: Router, private dialog: MatDialog) { }
 
@@ -30,17 +30,12 @@ export class UoInfoCardComponent implements OnInit {
 
   onSelectVersion(event: Event) {
     console.log(this.projectCardInfo);
-    // this.versionOnSelect.emit();
     if (!this.projectCardInfo.isRoot) {
-      // console.log('Do you want to change de version of the document?');
       const dialogRef = this.dialog.open(UoDocChangeVersionModalComponent);
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          console.log('Confirmed the change of version....');
-          this.projectCardInfo.isRoot = false;
-
-          console.log(this.projectCardInfo.isRoot);
+          this.versionOnSelect.emit();
         }
       });
     } else {

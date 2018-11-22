@@ -1,7 +1,7 @@
 <app-uo-docs-header></app-uo-docs-header>
 <app-uo-docs-toolbar></app-uo-docs-toolbar>
 <div class="uo-versions-component-container" fxLayout="column" fxLayoutAlign="start center">
-    <app-uo-info-card [isChangesInformation]="true" [projectCardInfo]="project" *ngFor="let project of projectsList"></app-uo-info-card>
+    <app-uo-info-card [isChangesInformation]="true" [projectCardInfo]="project" *ngFor="let project of projectsList" (versionOnSelect)="onSelectedVersionEvent()"></app-uo-info-card>
 </div>
 <div fxLayout="row" fxLayoutAlign="end start" fxLayoutGap="20px">
     <button mat-fab color="accent" (click)="onUpload()" matTooltip="Upload a new document version">

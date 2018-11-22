@@ -32,6 +32,7 @@ export class UoDocVersionsComponent implements OnInit {
   }
 
   private buildSchemaAndBuildDocumentUri(projectId: number) {
+    this.projectsList = [];
     this.dmsService.findByQuery(projectId).subscribe(docSchema => {
       if (docSchema[0]) {
         const documentSchema = docSchema[0];
@@ -80,6 +81,10 @@ export class UoDocVersionsComponent implements OnInit {
 
   goBackToDocumentViewer() {
     this.router.navigate(['/project', this.selectedProjectId, 'document']);
+  }
+
+  onSelectedVersionEvent() {
+    this.buildSchemaAndBuildDocumentUri(this.selectedProjectId);
   }
 
 }
