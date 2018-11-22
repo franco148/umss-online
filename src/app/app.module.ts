@@ -79,6 +79,6 @@ import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent]
+  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent, UoDocChangeVersionModalComponent]
 })
 export class AppModule { }

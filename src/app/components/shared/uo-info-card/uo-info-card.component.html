@@ -18,7 +18,7 @@
             <span class="span-button" fxLayoutAlign="center center">Verified</span>
             <span class="span-checkbox" fxLayoutAlign="center center">
               <mat-icon aria-label="Example icon-button with a heart icon">chevron_left</mat-icon>
-              <mat-checkbox class="mat-checkbox-inner-container" color="primary" [checked]="projectCardInfo.isRoot" [disabled]="projectCardInfo.isRoot" (click)="onSelectVersion($event)"></mat-checkbox>
+              <mat-checkbox class="mat-checkbox-inner-container" color="primary" [(checked)]="projectCardInfo.isRoot" [disabled]="projectCardInfo.isRoot" (click)="onSelectVersion($event)"></mat-checkbox>
           </span>
         </div>
     </div>
