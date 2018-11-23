@@ -10,6 +10,9 @@ export class Project {
     sprints: Sprint[];
 
     isDeleted: boolean;
+    isRoot: boolean;
+    documentId: string;
+    versionId: string;
 
     createdAt: Date;
     updatedAt: Date;

@@ -53,8 +53,6 @@ export class DmsService {
       responseType: 'text'
     });
 
-    console.log(requestUrl);
-    // console.log(request);
     return this.http.request(request);
   }
 
@@ -63,6 +61,15 @@ export class DmsService {
       // http://localhost:9090/api/v1/files/42080a88-c4f3-4742-a404-1fa37fc9ad8200-50-56-C0-00-08/versions
       const urlRequest = `${this.serverUrl}/${selectedDocumentId}/versions`;
       return this.http.get<any[]>(urlRequest);
+    }
+  }
+
+  changeDocumentVersion(documentId: any, versionId: string) {
+    // http://localhost:8080/api/v1/files/dac73c08-58ad-4324-8898-DocID/versions/ad40fbe0-d219-45cc-a1fc-6db3c64db270/change
+    if (documentId && versionId) {
+      const urlRequest = `${this.serverUrl}/${documentId}/versions/${versionId}/change`;
+      console.log('Requested to: ', urlRequest);
+      return this.http.post<any>(urlRequest, null);
     }
   }
 }

@@ -33,6 +33,7 @@ import { UoDocInfoComponent } from './components/documents/uo-doc-info/uo-doc-in
 import { DmsFilePipe } from './pipe/dms-file.pipe';
 import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/uo-doc-versions.component';
 import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-modal/uo-doc-upload-modal.component';
+import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-versions/uo-doc-change-version-modal.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-
     UoDocInfoComponent,
     DmsFilePipe,
     UoDocVersionsComponent,
-    UoDocUploadModalComponent
+    UoDocUploadModalComponent,
+    UoDocChangeVersionModalComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,6 @@ import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent]
+  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent, UoDocChangeVersionModalComponent]
 })
 export class AppModule { }
