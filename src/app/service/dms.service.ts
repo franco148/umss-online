@@ -63,4 +63,13 @@ export class DmsService {
       return this.http.get<any[]>(urlRequest);
     }
   }
+
+  changeDocumentVersion(documentId: any, versionId: string) {
+    // http://localhost:8080/api/v1/files/dac73c08-58ad-4324-8898-DocID/versions/ad40fbe0-d219-45cc-a1fc-6db3c64db270/change
+    if (documentId && versionId) {
+      const urlRequest = `${this.serverUrl}/${documentId}/versions/${versionId}/change`;
+      console.log('Requested to: ', urlRequest);
+      return this.http.post<any>(urlRequest, null);
+    }
+  }
 }

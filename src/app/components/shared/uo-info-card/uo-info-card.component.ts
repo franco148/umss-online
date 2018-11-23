@@ -3,6 +3,7 @@ import { Project } from '../../../data/model/project.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { UoDocChangeVersionModalComponent } from '../../documents/uo-doc-versions/uo-doc-change-version-modal.component';
+import { DmsService } from '../../../service/dms.service';
 
 @Component({
   selector: 'app-uo-info-card',
@@ -19,7 +20,7 @@ export class UoInfoCardComponent implements OnInit {
   // @Input() versionIndex: number;
   @Output() versionOnSelect = new EventEmitter<void>();
 
-  constructor(private router: Router, private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog, private dmsService: DmsService) { }
 
   ngOnInit() {
   }
@@ -35,11 +36,14 @@ export class UoInfoCardComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
+          this.dmsService.changeDocumentVersion(this.projectCardInfo.documentId, this.projectCardInfo.versionId).subscribe(changed => {
+            console.log(changed);
+            this.versionOnSelect.emit();
+          });
+        } else {
           this.versionOnSelect.emit();
         }
       });
-    } else {
-      this.projectCardInfo.isRoot = true;
     }
   }
 }

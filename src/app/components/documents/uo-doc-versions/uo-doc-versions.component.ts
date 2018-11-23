@@ -52,6 +52,7 @@ export class UoDocVersionsComponent implements OnInit {
               const proj = new Project();
               proj.name = version.title;
               proj.isRoot = version.root;
+              proj.documentId = version.id;
               proj.versionId = version.versionId;
               proj.backlog = backlog;
               proj.createdAt = new Date(version.createdDate);
