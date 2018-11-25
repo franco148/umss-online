@@ -1,5 +1,5 @@
 <mat-nav-list>
-    <a *ngIf="isAuth" mat-list-item routerLink="/signup" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item routerLink="/sprint" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>directions_boat</mat-icon>
         <span class="nav-caption">Active Sprint</span>
     </a>
@@ -7,7 +7,7 @@
         <mat-icon>library_books</mat-icon>
         <span class="nav-caption">Sprints</span>
     </a>
-    <a *ngIf="isAuth" mat-list-item routerLink="/training" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>bug_report</mat-icon>
         <span class="nav-caption">Issues</span>
     </a>
@@ -15,7 +15,7 @@
         <mat-icon>assignment</mat-icon>
         <span class="nav-caption">Documents</span>
     </a>
-    <a *ngIf="isAuth" mat-list-item routerLink="/training" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>supervisor_account</mat-icon>
         <span class="nav-caption">Participants</span>
     </a>
