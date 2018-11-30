@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'edit-profile/:id', component: UoAuthSignupComponent, canActivate: [AuthGuard] },
     { path: 'project/:id', component: UoProjectBacklogInfoComponent, canActivate: [AuthGuard] },
     { path: 'sprint', component: UoSprintInfoComponent, canActivate: [AuthGuard] },
-    { path: 'active-sprint', component: UoActiveSprintComponent, canActivate: [AuthGuard] },
+    { path: 'project/:id/current-sprint', component: UoActiveSprintComponent, canActivate: [AuthGuard] },
     { path: 'project/:id/document', component: UoDocInfoComponent, canActivate: [AuthGuard] },
     { path: 'project-document/:id/versions', component: UoDocVersionsComponent, canActivate: [AuthGuard] }
 ];
