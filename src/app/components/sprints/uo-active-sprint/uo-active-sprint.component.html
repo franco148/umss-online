@@ -1,2 +1,2 @@
-<app-uo-project-header></app-uo-project-header>
+<app-uo-project-header [projectName]="projectInfo?.name" [projectStartedOn]="projectInfo?.createdAt" [projectCompletionEstimate]="projectInfo?.completedDateEstimation"></app-uo-project-header>
 <app-uo-project-progress></app-uo-project-progress>

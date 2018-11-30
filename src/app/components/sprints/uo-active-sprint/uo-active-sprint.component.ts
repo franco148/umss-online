@@ -11,9 +11,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UoActiveSprintComponent implements OnInit {
 
-  projectSelectedSubscription: Subscription;
-  selectedProject: number;
-
   projectInfo: Project;
 
   constructor(private activatedRoute: ActivatedRoute, private projectService: ProjectService) { }
@@ -21,10 +18,9 @@ export class UoActiveSprintComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
       if (params['id']) {
-        console.log('............: ', params['id']);
-        // this.projectId = params['id'];
-        // this.dmsService.selectedProjecId = this.projectId;
-        // this.buildSchemaAndBuildDocumentUri();
+        this.projectService.findById(params['id']).subscribe(project => {
+          this.projectInfo = project;
+        });
       }
     });
   }
