@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectService } from '../../../service/project.service';
-import { Subscription } from 'rxjs';
-import { Project } from '../../../data/model/project.model';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { Subscription } from 'rxjs';
+
+import { ProjectService } from '../../../service/project.service';
+import { Project } from '../../../data/model/project.model';
+import { UserStory } from '../../../data/model/user-story.model';
 
 @Component({
   selector: 'app-uo-active-sprint',
   templateUrl: './uo-active-sprint.component.html',
   styleUrls: ['./uo-active-sprint.component.css']
 })
-export class UoActiveSprintComponent implements OnInit {
+export class UoActiveSprintComponent implements OnInit, AfterViewInit {
+
+  displayedColumns = ['id', 'name', 'priority', 'estimatedTime', 'assignedTo'];
+  dataSource = new MatTableDataSource<UserStory>();
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   projectInfo: Project;
 
@@ -25,4 +35,7 @@ export class UoActiveSprintComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
 }
