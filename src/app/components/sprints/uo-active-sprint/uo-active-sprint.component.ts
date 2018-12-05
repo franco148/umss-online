@@ -18,6 +18,8 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
   displayedColumns = ['id', 'name', 'priority', 'estimatedTime', 'assignedTo'];
   dataSource = new MatTableDataSource<UserStory>();
 
+  userStoriesList: UserStory[] = [];
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -36,6 +38,7 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }
