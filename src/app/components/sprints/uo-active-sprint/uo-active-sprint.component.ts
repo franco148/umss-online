@@ -41,4 +41,11 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
+
+  initializeDataForActiveSprint() {
+    for (let index = 0; index < 35; index++) {
+      const element = 35;
+      //
+    }
+  }
 }
