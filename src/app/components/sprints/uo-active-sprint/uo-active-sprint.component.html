@@ -1,0 +1,44 @@
+<app-uo-project-header [projectName]="projectInfo?.name" [projectStartedOn]="projectInfo?.createdAt" [projectCompletionEstimate]="projectInfo?.completedDateEstimation"></app-uo-project-header>
+<app-uo-project-progress></app-uo-project-progress>
+<div fxLayoutAlign="center center">
+    <mat-form-field fxFlex="40%">
+        <input matInput type="text" placeholder="Filter">
+    </mat-form-field>
+</div>
+
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Priority</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.priority }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="estimatedTime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Estimated Time</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.estimatedTime | number }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="assignedTo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Assigned To</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.assignedTo.id }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+<mat-divider></mat-divider>
+<!-- <button mat-fab color="accent" (click)="onCreateUserStory()" style="float: right; margin-top: 20px" matTooltip="Add a new User Story">
+<mat-icon>create</mat-icon>
+</button> -->

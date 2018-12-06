@@ -34,6 +34,7 @@ import { DmsFilePipe } from './pipe/dms-file.pipe';
 import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/uo-doc-versions.component';
 import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-modal/uo-doc-upload-modal.component';
 import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-versions/uo-doc-change-version-modal.component';
+import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/uo-active-sprint.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-
     DmsFilePipe,
     UoDocVersionsComponent,
     UoDocUploadModalComponent,
-    UoDocChangeVersionModalComponent
+    UoDocChangeVersionModalComponent,
+    UoActiveSprintComponent
   ],
   imports: [
     BrowserModule,

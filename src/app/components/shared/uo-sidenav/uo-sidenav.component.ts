@@ -30,7 +30,6 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
     this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(projectSelectedId => {
       this.selectedProject = projectSelectedId;
-      console.log('SELECTED PROJECT: ', this.selectedProject);
     });
   }
 
