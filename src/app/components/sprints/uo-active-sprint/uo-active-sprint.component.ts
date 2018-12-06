@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { ProjectService } from '../../../service/project.service';
 import { Project } from '../../../data/model/project.model';
 import { UserStory } from '../../../data/model/user-story.model';
+import { User } from '../../../data/model/user.model';
 
 @Component({
   selector: 'app-uo-active-sprint',
@@ -32,6 +33,9 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
       if (params['id']) {
         this.projectService.findById(params['id']).subscribe(project => {
           this.projectInfo = project;
+          this.initializeDataForActiveSprint();
+          console.log(this.userStoriesList);
+          this.dataSource.data = this.userStoriesList.slice();
         });
       }
     });
@@ -43,9 +47,20 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
   }
 
   initializeDataForActiveSprint() {
-    for (let index = 0; index < 35; index++) {
-      const element = 35;
-      //
+
+    const owner = new User();
+    owner.id = 1;
+
+    for (let index = 1; index <= 35; index++) {
+      const userStoryItem = new UserStory();
+      userStoryItem.id = index;
+      userStoryItem.name = `User Story number ${index}`;
+      userStoryItem.description = `User Story number ${index} description`;
+      userStoryItem.priority = 'HIGH';
+      userStoryItem.estimatedTime = 4;
+      userStoryItem.assignedTo = owner;
+
+      this.userStoriesList.push(userStoryItem);
     }
   }
 }
