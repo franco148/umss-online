@@ -15,7 +15,7 @@
         <mat-icon>assignment</mat-icon>
         <span class="nav-caption">Documents</span>
     </a>
-    <a *ngIf="isAuth" mat-list-item (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
+    <a *ngIf="isAuth" mat-list-item routerLink="/members" routerLinkActive="router-link-active" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>supervisor_account</mat-icon>
         <span class="nav-caption">Participants</span>
     </a>

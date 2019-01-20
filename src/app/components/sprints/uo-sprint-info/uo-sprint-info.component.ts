@@ -16,17 +16,20 @@ export class UoSprintInfoComponent implements OnInit, OnDestroy {
 
   displayedColumns = ['id', 'name', 'startedOn', 'completedOn', 'active'];
   dataSource = new MatTableDataSource<Sprint>();
-  sprintSavedSubscription: Subscription;
+  // sprintSavedSubscription: Subscription;
 
   selectedProjectWithSprints: Project;
 
   constructor(private projMgtService: ProjectService) { }
 
   ngOnInit() {
-    this.projMgtService.loadSprintsFor(2).subscribe(dataResult => {
-      this.selectedProjectWithSprints = dataResult;
-      this.dataSource.data = this.selectedProjectWithSprints.sprints;
-    });
+    if (localStorage.getItem('selectedProject')) {
+      const selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+      this.projMgtService.loadSprintsFor(selectedProject.id).subscribe(dataResult => {
+        this.selectedProjectWithSprints = dataResult;
+        this.dataSource.data = this.selectedProjectWithSprints.sprints;
+      });
+    }
   }
 
   doFilter(filterValue: string) {
@@ -36,6 +39,6 @@ export class UoSprintInfoComponent implements OnInit, OnDestroy {
   onCreateSprint() {}
 
   ngOnDestroy() {
-    this.sprintSavedSubscription.unsubscribe();
+    // this.sprintSavedSubscription.unsubscribe();
   }
 }

@@ -35,6 +35,7 @@ import { UoDocVersionsComponent } from './components/documents/uo-doc-versions/u
 import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-modal/uo-doc-upload-modal.component';
 import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-versions/uo-doc-change-version-modal.component';
 import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/uo-active-sprint.component';
+import { SharingPanelComponent } from './components/members/sharing-panel/sharing-panel.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/u
     UoDocVersionsComponent,
     UoDocUploadModalComponent,
     UoDocChangeVersionModalComponent,
-    UoActiveSprintComponent
+    UoActiveSprintComponent,
+    SharingPanelComponent
   ],
   imports: [
     BrowserModule,

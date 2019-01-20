@@ -18,13 +18,17 @@ export class ProjectService {
   projectsChange = new Subject<Project[]>();
   message = new Subject<string>();
 
-  projectSelectedChange = new Subject<number>();
+  projectSelectedChange = new Subject<Project>();
 
   constructor(private http: HttpClient) {
   }
 
   findAll() {
     return this.http.get<Project[]>(this.serverUrl);
+  }
+
+  findAllByUser(userId: number) {
+    return this.http.get<Project[]>(`${this.serverUrl}/by?user=${userId}`);
   }
 
   findById(projectId: number) {
@@ -39,4 +43,19 @@ export class ProjectService {
     return this.http.get<Project>(`${this.serverUrl}/${projectId}/sprints`);
   }
 
+  getSelectedProjectId() {
+    if (localStorage.getItem('selectedProject')) {
+      const selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+      return selectedProject.id;
+    }
+    return 0;
+  }
+
+  getSelectedProject() {
+    if (localStorage.getItem('selectedProject')) {
+      const selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+      return selectedProject;
+    }
+    return null;
+  }
 }

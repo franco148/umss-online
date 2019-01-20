@@ -28,9 +28,16 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
     this.isAuth = this.authService.isAuthenticated();
 
-    this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(projectSelectedId => {
-      this.selectedProject = projectSelectedId;
+    this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(selectedProject => {
+      if (selectedProject) {
+        this.selectedProject = selectedProject.id;
+        localStorage.setItem('selectedProject', JSON.stringify(selectedProject));
+      } else {
+        this.selectedProject = 0;
+      }
     });
+
+    this.selectedProject = this.projectService.getSelectedProjectId();
   }
 
   onClose() {
@@ -39,9 +46,5 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
-  }
-
-  selectedProjectClick() {
-    console.log('Selected project is: ', this.selectedProject);
   }
 }

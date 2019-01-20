@@ -1,0 +1,20 @@
+.uo-project-welcome-message-container {
+    background-color: #f2f2f2;
+    margin-bottom: 5%;
+}
+
+.uo-project-welcome-message-primary {
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.uo-project-welcome-message-secondary {
+    font-size: 30px;
+    margin-top: 0%;
+}
+
+mat-table {
+    min-height: 200px;
+}

@@ -52,6 +52,7 @@ export class AuthService {
     this.http.post<Boolean>(`${this.serverUrl}/logout`, authData).subscribe(loggedout => {
       this.user = null;
       localStorage.removeItem('authdata');
+      localStorage.removeItem('selectedProject');
       this.authChanged.next(false);
       this.router.navigate(['/login']);
     });
