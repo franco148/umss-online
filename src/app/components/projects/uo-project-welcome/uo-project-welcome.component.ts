@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Project } from '../../../data/model/project.model';
 import { ProjectService } from '../../../service/project.service';
 import { UoProjectCreateModalComponent } from '../uo-project-create-modal/uo-project-create-modal.component';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-uo-project-welcome',
@@ -18,10 +19,10 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
   projectName = 'Umss Online';
   projecSavedSubscription: Subscription;
 
-  constructor(private dialog: MatDialog, private projectService: ProjectService) { }
+  constructor(private dialog: MatDialog, private projectService: ProjectService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.projectService.findAll().subscribe(dataResponse => {
+    this.projectService.findAllByUser(this.authService.getUser().id).subscribe(dataResponse => {
       this.projectsList = dataResponse.slice();
     });
 

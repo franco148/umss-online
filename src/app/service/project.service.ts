@@ -27,6 +27,10 @@ export class ProjectService {
     return this.http.get<Project[]>(this.serverUrl);
   }
 
+  findAllByUser(userId: number) {
+    return this.http.get<Project[]>(`${this.serverUrl}/by?user=${userId}`);
+  }
+
   findById(projectId: number) {
     return this.http.get<Project>(`${this.serverUrl}/${projectId}`);
   }
