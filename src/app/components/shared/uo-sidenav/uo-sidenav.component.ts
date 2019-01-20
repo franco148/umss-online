@@ -28,14 +28,19 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
     this.isAuth = this.authService.isAuthenticated();
 
-    this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(projectSelectedId => {
-      this.selectedProject = projectSelectedId;
-      localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
+    this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(selectedProject => {
+      if (selectedProject) {
+        this.selectedProject = selectedProject.id;
+        localStorage.setItem('selectedProject', JSON.stringify(selectedProject));
+      } else {
+        this.selectedProject = 0;
+      }
     });
 
-    if (localStorage.getItem('selectedProject')) {
-      this.selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
-    }
+    // if (localStorage.getItem('selectedProject')) {
+    //   this.selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+    // }
+    this.selectedProject = this.projectService.getSelectedProjectId();
   }
 
   onClose() {

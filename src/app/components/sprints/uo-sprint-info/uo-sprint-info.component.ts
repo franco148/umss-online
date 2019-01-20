@@ -25,7 +25,7 @@ export class UoSprintInfoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     if (localStorage.getItem('selectedProject')) {
       const selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
-      this.projMgtService.loadSprintsFor(selectedProject).subscribe(dataResult => {
+      this.projMgtService.loadSprintsFor(selectedProject.id).subscribe(dataResult => {
         this.selectedProjectWithSprints = dataResult;
         this.dataSource.data = this.selectedProjectWithSprints.sprints;
       });

@@ -33,7 +33,7 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
     });
 
     localStorage.removeItem('selectedProject');
-    this.projectService.projectSelectedChange.next(0);
+    this.projectService.projectSelectedChange.next(null);
   }
 
   onCreate() {
