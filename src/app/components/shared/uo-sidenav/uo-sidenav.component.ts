@@ -37,9 +37,6 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
       }
     });
 
-    // if (localStorage.getItem('selectedProject')) {
-    //   this.selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
-    // }
     this.selectedProject = this.projectService.getSelectedProjectId();
   }
 
