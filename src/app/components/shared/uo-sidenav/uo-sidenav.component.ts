@@ -30,7 +30,13 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
     this.projectSelectedSubscription = this.projectService.projectSelectedChange.subscribe(projectSelectedId => {
       this.selectedProject = projectSelectedId;
+      localStorage.setItem('selectedProject', JSON.stringify(this.selectedProject));
     });
+
+    if (localStorage.getItem('selectedProject')) {
+      this.selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
+    }
+    console.log('AAAAAA: ', this.selectedProject);
   }
 
   onClose() {
