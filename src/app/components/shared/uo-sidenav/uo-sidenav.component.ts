@@ -36,7 +36,6 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('selectedProject')) {
       this.selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
     }
-    console.log('AAAAAA: ', this.selectedProject);
   }
 
   onClose() {
@@ -45,9 +44,5 @@ export class UoSidenavComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
-  }
-
-  selectedProjectClick() {
-    console.log('Selected project is: ', this.selectedProject);
   }
 }
