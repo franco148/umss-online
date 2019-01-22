@@ -1,3 +1,16 @@
-<p>
-  sharing-modal works!
-</p>
+<section>
+    <form fxLayout="column" fxFlex.gt-xs="300px" #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <mat-form-field>
+            <mat-select placeholder="Share this project with..." ngModel name="assignedToId" required>
+                <mat-option *ngFor="let user of assignedToList" [value]="user.id">
+                    {{user.name}} {{user.lastName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div fxLayout="row" fxLayoutAlign="space-around stretch">
+            <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Share</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</section>

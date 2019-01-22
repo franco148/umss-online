@@ -85,6 +85,12 @@ import { SharingModalComponent } from './components/members/sharing-modal/sharin
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent, UoDocChangeVersionModalComponent]
+  entryComponents: [
+    UoProjectCreateModalComponent,
+    UoUsCreateModalComponent,
+    UoDocUploadModalComponent,
+    UoDocChangeVersionModalComponent,
+    SharingModalComponent
+  ]
 })
 export class AppModule { }
