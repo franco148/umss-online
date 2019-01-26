@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 
 import { ProjectService } from '../../../service/project.service';
 import { Project } from '../../../data/model/project.model';
 import { User } from '../../../data/model/user.model';
+import { SharingModalComponent } from '../sharing-modal/sharing-modal.component';
 
 @Component({
   selector: 'app-sharing-panel',
@@ -20,13 +21,20 @@ export class SharingPanelComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private projService: ProjectService) { }
+  constructor(private projService: ProjectService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.selectedProject = this.projService.getSelectedProject();
   }
 
   onShareProject() {
+    const dialogRef = this.dialog.open(SharingModalComponent, {
+      width: '400px',
+      disableClose: true
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('closed popup', result);
+    });
   }
 }
