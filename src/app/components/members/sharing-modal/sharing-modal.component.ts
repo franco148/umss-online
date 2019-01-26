@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { MatDialogRef } from '@angular/material';
 import { User } from '../../../data/model/user.model';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-sharing-modal',
@@ -13,7 +14,9 @@ export class SharingModalComponent implements OnInit {
 
   registeredUsers: User[] = [];
 
-  constructor(private authService: AuthService, public dialogRef: MatDialogRef<SharingModalComponent>) { }
+  constructor(private authService: AuthService,
+              private commonService: CommonService,
+              public dialogRef: MatDialogRef<SharingModalComponent>) { }
 
   ngOnInit() {
     this.authService.findAll().subscribe(users => {
@@ -24,6 +27,8 @@ export class SharingModalComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log(form);
     console.log(form.value);
+
+    this.commonService.shareProjectWith(form.value);
   }
 
   onCancel() {
