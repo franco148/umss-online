@@ -11,17 +11,20 @@ import { User } from '../../../data/model/user.model';
 })
 export class SharingModalComponent implements OnInit {
 
-  registeredUsers: User[];
+  registeredUsers: User[] = [];
 
   constructor(private authService: AuthService, public dialogRef: MatDialogRef<SharingModalComponent>) { }
 
   ngOnInit() {
     this.authService.findAll().subscribe(users => {
-      console.log(users);
+      this.registeredUsers = users.slice();
     });
   }
 
-  onSubmit(form: NgForm) {}
+  onSubmit(form: NgForm) {
+    console.log(form);
+    console.log(form.value);
+  }
 
   onCancel() {
     this.dialogRef.close();

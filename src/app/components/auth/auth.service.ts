@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   findAll() {
-    return this.http.get<User>(this.serverUrl);
+    return this.http.get<User[]>(this.serverUrl);
   }
   registerUser(userToRegister: UserDto) {
     this.http.post<any>(this.serverUrl, userToRegister).subscribe(savedUser => {
