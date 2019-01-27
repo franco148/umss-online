@@ -23,7 +23,8 @@ export class CommonService {
   }
 
   getSharedProjects() {
-    return this.sharedProjects;
+    const selectedProject = this.projectService.getSelectedProject();
+    return this.sharedProjects.find(p => p.projectId === selectedProject.id);
   }
 
   shareProjectWith(user: User) {
@@ -33,16 +34,18 @@ export class CommonService {
       const sharedWithUser = sharedProject.sharedWithList.find(u => u.id === user.id);
       if (!sharedWithUser) {
         sharedProject.sharedWithList.push(user);
-        console.log('When project is already shared....', this.sharedProjects);
+        // console.log('When project is already shared....', this.sharedProjects);
+        localStorage.setItem('sharedProjects', JSON.stringify(this.sharedProjects));
       }
     } else {
       const usersList: User[] = [];
       usersList.push(user);
-      const newSharedProject = {
+      this.sharedProjects.push({
         projectId: selectedProject.id,
         sharedWithList: usersList
-      };
-      console.log('When project is being shared the first time...', newSharedProject);
+      });
+      // console.log('When project is being shared the first time...', this.sharedProjects);
+      localStorage.setItem('sharedProjects', JSON.stringify(this.sharedProjects));
     }
   }
 

@@ -5,6 +5,7 @@ import { ProjectService } from '../../../service/project.service';
 import { Project } from '../../../data/model/project.model';
 import { User } from '../../../data/model/user.model';
 import { SharingModalComponent } from '../sharing-modal/sharing-modal.component';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-sharing-panel',
@@ -21,10 +22,13 @@ export class SharingPanelComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private projService: ProjectService, private dialog: MatDialog) { }
+  constructor(private projService: ProjectService, private coomonService: CommonService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.selectedProject = this.projService.getSelectedProject();
+    this.dataSource.data = this.coomonService.getSharedProjects().sharedWithList.slice();
+    // console.log('Panel - SharedProjects: ', this.coomonService.getSharedProjects());
+    console.log('In Panel:  ', this.dataSource.data);
   }
 
   onShareProject() {
