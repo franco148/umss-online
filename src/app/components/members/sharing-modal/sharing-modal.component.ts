@@ -25,9 +25,6 @@ export class SharingModalComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
-    console.log(form.value);
-
     this.commonService.shareProjectWith(form.value);
   }
 
