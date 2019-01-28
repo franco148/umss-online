@@ -25,7 +25,7 @@ export class SharingModalComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    this.commonService.shareProjectWith(form.value);
+    this.commonService.shareProjectWith(form.value.sharedWith);
     this.dialogRef.close();
   }
 

@@ -6,7 +6,7 @@
 <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="fullName">
