@@ -27,18 +27,8 @@ export class SharingPanelComponent implements OnInit {
 
   ngOnInit() {
     this.selectedProject = this.projService.getSelectedProject();
-    // const sharedCollectionResult = this.coomonService.getSharedProjects().slice();
-    // for (let index = 0; index < sharedCollectionResult.length; index++) {
-    //   const usr = new User();
-    //   usr.id = sharedCollectionResult[index].id;
-    //   usr.name = sharedCollectionResult[index].name;
-    //   usr.lastName = sharedCollectionResult[index].lastName;
-    //   usr.userRoles = sharedCollectionResult[index].userRoles;
-    //   this.sharedUsersList.push(usr);
-    // }
-    // this.dataSource.data = this.sharedUsersList.slice();
-    // console.log('aaaa', this.sharedUsersList);
-    // console.log('In Panel:  ', this.dataSource.data);
+    this.sharedUsersList = this.coomonService.getSharedProjects();
+    this.dataSource.data = this.sharedUsersList.slice();
   }
 
   onShareProject() {

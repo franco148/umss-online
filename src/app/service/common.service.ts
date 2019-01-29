@@ -28,6 +28,7 @@ export class CommonService {
       //     console.log('.....', algo);
       //   });
       // });
+      this.sharedProjects = loadedSharedProjects.slice();
       console.log('aaaaa', loadedSharedProjects);
     }
 
@@ -35,14 +36,13 @@ export class CommonService {
   }
 
   getSharedProjects(): User[] {
-    // const selectedProject = this.projectService.getSelectedProject();
-    // const foundSelectedProject = this.sharedProjects.find(p => p.projectId === selectedProject.id);
-    // console.log('foun found, ', foundSelectedProject.sharedWithList);
-    // foundSelectedProject.sharedWithList.forEach(element => {
-    //   console.log('IIIIIIIIIIIIIIII', element.id);
-    // });
-    // return foundSelectedProject.sharedWithList;
-    return null;
+    const selectedProject = this.projectService.getSelectedProject();
+    const foundSelectedProject = this.sharedProjects.find(p => p.projectId === selectedProject.id);
+    console.log('foun found, ', foundSelectedProject.sharedWithList);
+    foundSelectedProject.sharedWithList.forEach(element => {
+      console.log('IIIIIIIIIIIIIIII', element.id);
+    });
+    return foundSelectedProject.sharedWithList;
   }
 
   shareProjectWith(user: User) {
@@ -59,14 +59,14 @@ export class CommonService {
       const usersList: User[] = [];
       usersList.push(user);
 
-      const projectDto = new SharedProjectDto();
-      projectDto.projectId = selectedProject.id;
-      projectDto.sharedWithList = usersList;
-      // this.sharedProjects.push({
-      //   projectId: selectedProject.id,
-      //   sharedWithList: usersList
-      // });
-      this.sharedProjects.push(projectDto);
+      // const projectDto = new SharedProjectDto();
+      // projectDto.projectId = selectedProject.id;
+      // projectDto.sharedWithList = usersList;
+      this.sharedProjects.push({
+        projectId: selectedProject.id,
+        sharedWithList: usersList
+      });
+      // this.sharedProjects.push(projectDto);
       console.log('When project is being shared the first time...', this.sharedProjects);
       localStorage.setItem('sharedProjects', JSON.stringify(this.sharedProjects));
     }

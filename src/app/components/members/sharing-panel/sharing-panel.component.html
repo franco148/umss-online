@@ -5,13 +5,13 @@
 </div>
 <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element }}</mat-cell>
+        <mat-header-cell fxFlex="80px" *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+        <mat-cell fxFlex="80px" *matCellDef="let element">{{ element.id }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="fullName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.name }} {{ element.lastName }}</mat-cell>
+        <mat-header-cell fxFlex="50%" *matHeaderCellDef mat-sort-header>Full Name</mat-header-cell>
+        <mat-cell fxFlex="50%" *matCellDef="let element">{{ element.name }} {{ element.lastName }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="role">
@@ -20,8 +20,8 @@
     </ng-container>
 
     <ng-container matColumnDef="options">
-        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+        <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header></mat-header-cell>
+        <mat-cell fxFlex="10%" *matCellDef="let element">{{ element.name }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
