@@ -38,7 +38,6 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
           this.projectInfo = project;
           this.initializeDataForActiveSprint();
           this.dataSource.data = this.userStoriesList.slice();
-          console.log(this.dataSource.data);
         });
       }
     });

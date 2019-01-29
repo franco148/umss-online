@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+
+import { Subscription } from 'rxjs';
 
 import { ProjectService } from '../../../service/project.service';
 import { Project } from '../../../data/model/project.model';
@@ -12,13 +14,14 @@ import { CommonService } from '../../../service/common.service';
   templateUrl: './sharing-panel.component.html',
   styleUrls: ['./sharing-panel.component.css']
 })
-export class SharingPanelComponent implements OnInit {
+export class SharingPanelComponent implements OnInit, OnDestroy {
 
   displayedColumns = ['id', 'fullName', 'role', 'options'];
   dataSource = new MatTableDataSource<User>();
 
   selectedProject: Project;
   sharedUsersList: User[] = [];
+  projectShareSubscription: Subscription;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -29,6 +32,11 @@ export class SharingPanelComponent implements OnInit {
     this.selectedProject = this.projService.getSelectedProject();
     this.sharedUsersList = this.coomonService.getSharedProjects();
     this.dataSource.data = this.sharedUsersList.slice();
+
+    this.projectShareSubscription = this.coomonService.sharedProjectChanged.subscribe(usr => {
+      this.sharedUsersList.push(usr);
+      this.dataSource.data = this.sharedUsersList.slice();
+    });
   }
 
   onShareProject() {
@@ -40,5 +48,11 @@ export class SharingPanelComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('closed popup', result);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.projectShareSubscription) {
+      this.projectShareSubscription.unsubscribe();
+    }
   }
 }
