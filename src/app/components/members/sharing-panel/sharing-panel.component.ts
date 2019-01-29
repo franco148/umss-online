@@ -50,6 +50,8 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
     });
   }
 
+  onRemoveSharing() {}
+
   ngOnDestroy() {
     if (this.projectShareSubscription) {
       this.projectShareSubscription.unsubscribe();
