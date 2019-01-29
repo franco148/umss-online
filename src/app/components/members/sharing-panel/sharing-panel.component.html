@@ -16,7 +16,7 @@
 
     <ng-container matColumnDef="role">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Role(s)</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.userRoles }}</mat-cell>
+        <mat-cell *matCellDef="let element">{{ element.userRoles | roleFormat }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="options">

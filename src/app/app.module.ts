@@ -37,6 +37,7 @@ import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-
 import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/uo-active-sprint.component';
 import { SharingPanelComponent } from './components/members/sharing-panel/sharing-panel.component';
 import { SharingModalComponent } from './components/members/sharing-modal/sharing-modal.component';
+import { RoleFormatPipe } from './pipe/role-format.pipe';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { SharingModalComponent } from './components/members/sharing-modal/sharin
     UoDocChangeVersionModalComponent,
     UoActiveSprintComponent,
     SharingPanelComponent,
-    SharingModalComponent
+    SharingModalComponent,
+    RoleFormatPipe
   ],
   imports: [
     BrowserModule,
