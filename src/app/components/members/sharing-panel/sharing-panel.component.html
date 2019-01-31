@@ -21,8 +21,8 @@
 
     <ng-container matColumnDef="options">
         <mat-header-cell fxFlex="10%" *matHeaderCellDef mat-sort-header></mat-header-cell>
-        <mat-cell fxFlex="10%" *matCellDef="let element">
-            <button (click)="onRemoveSharing()" mat-icon-button><mat-icon>delete</mat-icon></button>
+        <mat-cell fxFlex="10%" *matCellDef="let element; let idx = index">
+            <button (click)="onRemoveSharing(idx)" mat-icon-button><mat-icon>delete</mat-icon></button>
         </mat-cell>
     </ng-container>
 

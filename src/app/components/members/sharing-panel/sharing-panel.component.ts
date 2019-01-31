@@ -50,7 +50,10 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
     });
   }
 
-  onRemoveSharing() {}
+  onRemoveSharing(position: number) {
+    this.sharedUsersList.splice(position, 1);
+    console.log('After removed...', this.sharedUsersList);
+  }
 
   ngOnDestroy() {
     if (this.projectShareSubscription) {
