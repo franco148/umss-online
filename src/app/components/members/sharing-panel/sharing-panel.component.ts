@@ -30,7 +30,7 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.selectedProject = this.projService.getSelectedProject();
-    this.sharedUsersList = this.coomonService.getSharedProjects();
+    this.sharedUsersList = this.coomonService.getUsersFromSharedProject();
     this.dataSource.data = this.sharedUsersList.slice();
 
     this.projectShareSubscription = this.coomonService.sharedProjectChanged.subscribe(usr => {
@@ -52,7 +52,9 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
 
   onRemoveSharing(position: number) {
     this.sharedUsersList.splice(position, 1);
-    console.log('After removed...', this.sharedUsersList);
+    // console.log('After removed...', this.sharedUsersList);
+    this.coomonService.updateProjectSharing(this.sharedUsersList);
+    this.dataSource.data = this.sharedUsersList.slice();
   }
 
   ngOnDestroy() {

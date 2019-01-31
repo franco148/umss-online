@@ -22,7 +22,7 @@ export class CommonService {
     }
   }
 
-  getSharedProjects(): User[] {
+  getUsersFromSharedProject(): User[] {
     const selectedProject = this.projectService.getSelectedProject();
     const foundSelectedProject = this.sharedProjects.find(p => p.projectId === selectedProject.id);
     return foundSelectedProject.sharedWithList;
@@ -54,7 +54,7 @@ export class CommonService {
   getUsersToShareWith(): User[] {
     const userListResult: User[] = [];
     this.authService.findAll().subscribe(users => {
-      const listOfSharedUsers = this.getSharedProjects();
+      const listOfSharedUsers = this.getUsersFromSharedProject();
       users.forEach(usr => {
         const foundUser = listOfSharedUsers.filter(u => u.id === usr.id);
         if (!foundUser) {
@@ -64,5 +64,14 @@ export class CommonService {
     });
 
     return userListResult;
+  }
+
+  updateProjectSharing(usersList: User[]) {
+    const selectedProject = this.projectService.getSelectedProject();
+    const sharedProject = this.sharedProjects.find(p => p.projectId === selectedProject.id);
+    if (sharedProject) {
+      sharedProject.sharedWithList = usersList.slice();
+      localStorage.setItem('sharedProjects', JSON.stringify(this.sharedProjects));
+    }
   }
 }
