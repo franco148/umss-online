@@ -51,5 +51,18 @@ export class CommonService {
     }
   }
 
-  getUsersToShareWith() {}
+  getUsersToShareWith(): User[] {
+    const userListResult: User[] = [];
+    this.authService.findAll().subscribe(users => {
+      const listOfSharedUsers = this.getSharedProjects();
+      users.forEach(usr => {
+        const foundUser = listOfSharedUsers.filter(u => u.id === usr.id);
+        if (!foundUser) {
+          userListResult.push(foundUser[0]);
+        }
+      });
+    });
+
+    return userListResult;
+  }
 }

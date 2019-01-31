@@ -22,6 +22,7 @@ export class SharingModalComponent implements OnInit {
     this.authService.findAll().subscribe(users => {
       this.registeredUsers = users.slice();
     });
+    // this.commonService.getUsersToShareWith();
   }
 
   onSubmit(form: NgForm) {
