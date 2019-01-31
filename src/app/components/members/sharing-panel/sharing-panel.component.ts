@@ -52,7 +52,6 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
 
   onRemoveSharing(position: number) {
     this.sharedUsersList.splice(position, 1);
-    // console.log('After removed...', this.sharedUsersList);
     this.coomonService.updateProjectSharing(this.sharedUsersList);
     this.dataSource.data = this.sharedUsersList.slice();
   }

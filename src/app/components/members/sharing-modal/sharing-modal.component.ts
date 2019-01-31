@@ -14,15 +14,11 @@ export class SharingModalComponent implements OnInit {
 
   registeredUsers: User[] = [];
 
-  constructor(private authService: AuthService,
-              private commonService: CommonService,
+  constructor(private commonService: CommonService,
               public dialogRef: MatDialogRef<SharingModalComponent>) { }
 
-  ngOnInit() {
-    this.authService.findAll().subscribe(users => {
-      this.registeredUsers = users.slice();
-    });
-    // this.commonService.getUsersToShareWith();
+  async ngOnInit() {
+    this.registeredUsers = await this.commonService.getUsersToShareWith();
   }
 
   onSubmit(form: NgForm) {
