@@ -58,4 +58,6 @@ export class ProjectService {
     }
     return null;
   }
+
+  getSharedProjectsWithLoggedUser() {}
 }
