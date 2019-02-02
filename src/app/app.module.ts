@@ -94,7 +94,8 @@ import { UoDocNotesModalComponent } from './components/documents/uo-doc-notes-mo
     UoUsCreateModalComponent,
     UoDocUploadModalComponent,
     UoDocChangeVersionModalComponent,
-    SharingModalComponent
+    SharingModalComponent,
+    UoDocNotesModalComponent
   ]
 })
 export class AppModule { }

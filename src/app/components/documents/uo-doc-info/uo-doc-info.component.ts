@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
 
 import { DmsService } from '../../../service/dms.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { UoDocNotesModalComponent } from '../uo-doc-notes-modal/uo-doc-notes-modal.component';
 
 @Component({
   selector: 'app-uo-doc-info',
@@ -22,7 +24,7 @@ export class UoDocInfoComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
 
-  constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService) { }
+  constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -69,5 +71,15 @@ export class UoDocInfoComponent implements OnInit {
     });
   }
 
-  addNewNote() {}
+  addNewNote() {
+    const dialogRef = this.dialog.open(UoDocNotesModalComponent, {
+      width: '370px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // this.projectsList = [];
+      // this.buildSchemaAndBuildDocumentUri(this.selectedProjectId);
+    });
+  }
 }
