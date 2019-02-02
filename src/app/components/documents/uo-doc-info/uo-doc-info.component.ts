@@ -68,4 +68,6 @@ export class UoDocInfoComponent implements OnInit {
       }
     });
   }
+
+  addNewNote() {}
 }
