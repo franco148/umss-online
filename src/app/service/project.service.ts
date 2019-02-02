@@ -60,16 +60,18 @@ export class ProjectService {
     return null;
   }
 
-  getSharedProjectsWithLoggedUser(loggedUserId: number) {
-    const sharedProjects: Project[] = [];
+  getSharedProjectsWithLoggedUser(loggedUserId: number): number[] {
+    const sharedProjectsId: number[] = [];
     if (localStorage.getItem('sharedProjects')) {
       const loadedSharedProjects = <SharedProjectDto[]>JSON.parse(localStorage.getItem('sharedProjects'));
       loadedSharedProjects.forEach(p => {
         const isShared = p.sharedWithList.find(u => u.id === loggedUserId);
         if (isShared) {
-          // sharedProjects.push(p.projectId);
+          sharedProjectsId.push(p.projectId);
         }
       });
     }
+
+    return sharedProjectsId;
   }
 }

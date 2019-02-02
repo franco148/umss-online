@@ -22,8 +22,22 @@ export class UoProjectWelcomeComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog, private projectService: ProjectService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.projectService.findAllByUser(this.authService.getUser().id).subscribe(dataResponse => {
-      this.projectsList = dataResponse.slice();
+    // this.projectService.findAllByUser(this.authService.getUser().id).subscribe(dataResponse => {
+    //   this.projectsList = dataResponse.slice();
+    // });
+
+    this.projectService.findAll().subscribe(resultList => {
+      const sharedProjectsId = this.projectService.getSharedProjectsWithLoggedUser(this.authService.getUser().id);
+
+      this.projectService.findAllByUser(this.authService.getUser().id).subscribe(dataResponse => {
+        this.projectsList = dataResponse.slice();
+        resultList.forEach(p => {
+          const isShared = sharedProjectsId.find(id => id === p.id);
+          if (isShared) {
+            this.projectsList.push(p);
+          }
+        });
+      });
     });
 
     this.projecSavedSubscription = this.projectService.projectAddedChange.subscribe(projectSaved => {
