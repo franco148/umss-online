@@ -31,7 +31,6 @@ export class UoUsCreateModalComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form);
     this.userStoryService.save(this.passedData.backlogId,
     {
       name: form.value.name,

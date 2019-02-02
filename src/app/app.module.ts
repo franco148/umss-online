@@ -36,6 +36,8 @@ import { UoDocUploadModalComponent } from './components/documents/uo-doc-upload-
 import { UoDocChangeVersionModalComponent } from './components/documents/uo-doc-versions/uo-doc-change-version-modal.component';
 import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/uo-active-sprint.component';
 import { SharingPanelComponent } from './components/members/sharing-panel/sharing-panel.component';
+import { SharingModalComponent } from './components/members/sharing-modal/sharing-modal.component';
+import { RoleFormatPipe } from './pipe/role-format.pipe';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { SharingPanelComponent } from './components/members/sharing-panel/sharin
     UoDocUploadModalComponent,
     UoDocChangeVersionModalComponent,
     UoActiveSprintComponent,
-    SharingPanelComponent
+    SharingPanelComponent,
+    SharingModalComponent,
+    RoleFormatPipe
   ],
   imports: [
     BrowserModule,
@@ -83,6 +87,12 @@ import { SharingPanelComponent } from './components/members/sharing-panel/sharin
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [UoProjectCreateModalComponent, UoUsCreateModalComponent, UoDocUploadModalComponent, UoDocChangeVersionModalComponent]
+  entryComponents: [
+    UoProjectCreateModalComponent,
+    UoUsCreateModalComponent,
+    UoDocUploadModalComponent,
+    UoDocChangeVersionModalComponent,
+    SharingModalComponent
+  ]
 })
 export class AppModule { }

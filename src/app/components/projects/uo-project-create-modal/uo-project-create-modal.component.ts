@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { NgForm } from '@angular/forms';
 
-import { UserService } from '../../../service/user.service';
 import { ProjectService } from '../../../service/project.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-uo-project-create-modal',
@@ -15,7 +15,7 @@ export class UoProjectCreateModalComponent implements OnInit {
   minDate;
 
   constructor(public dialogRef: MatDialogRef<UoProjectCreateModalComponent>,
-              private userService: UserService,
+              private authService: AuthService,
               private projectService: ProjectService) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class UoProjectCreateModalComponent implements OnInit {
       name: form.value.name,
       completedDateEstimation: form.value.completedOn,
       backlogDescription: form.value.backlogDescription,
-      createdById: 1
+      createdById: this.authService.getUser().id
     }).subscribe(savedProject => {
       this.projectService.projectAddedChange.next(savedProject);
       this.dialogRef.close();
