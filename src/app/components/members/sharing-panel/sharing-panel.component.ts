@@ -30,7 +30,11 @@ export class SharingPanelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.selectedProject = this.projService.getSelectedProject();
-    this.sharedUsersList = this.coomonService.getUsersFromSharedProject();
+    const resultOfSharedUsers = this.coomonService.getUsersFromSharedProject();
+    // this.sharedUsersList = this.coomonService.getUsersFromSharedProject();
+    if (resultOfSharedUsers) {
+      this.sharedUsersList = resultOfSharedUsers;
+    }
     this.dataSource.data = this.sharedUsersList.slice();
 
     this.projectShareSubscription = this.coomonService.sharedProjectChanged.subscribe(usr => {

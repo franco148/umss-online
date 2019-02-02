@@ -25,7 +25,11 @@ export class CommonService {
   getUsersFromSharedProject(): User[] {
     const selectedProject = this.projectService.getSelectedProject();
     const foundSelectedProject = this.sharedProjects.find(p => p.projectId === selectedProject.id);
-    return foundSelectedProject.sharedWithList;
+    if (foundSelectedProject) {
+      return foundSelectedProject.sharedWithList;
+    }
+
+    return [] as User[];
   }
 
   shareProjectWith(user: User) {
