@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { GATEWAY_SERVER_URL } from '../constants/app.constant';
 import { Project } from '../data/model/project.model';
 import { ProjectDto } from '../data/dto/project-dto';
+import { SharedProjectDto } from '../data/dto/shared-project-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -59,5 +60,16 @@ export class ProjectService {
     return null;
   }
 
-  getSharedProjectsWithLoggedUser() {}
+  getSharedProjectsWithLoggedUser(loggedUserId: number) {
+    const sharedProjects: Project[] = [];
+    if (localStorage.getItem('sharedProjects')) {
+      const loadedSharedProjects = <SharedProjectDto[]>JSON.parse(localStorage.getItem('sharedProjects'));
+      loadedSharedProjects.forEach(p => {
+        const isShared = p.sharedWithList.find(u => u.id === loggedUserId);
+        if (isShared) {
+          // sharedProjects.push(p.projectId);
+        }
+      });
+    }
+  }
 }
