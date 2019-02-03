@@ -1,12 +1,12 @@
 <section fxLayout="row" fxLayoutAlign="center start">
     <form fxLayout="column" #f="ngForm" (ngSubmit)="onSubmit(f)">
         <mat-form-field>
-            <input type="text" matInput placeholder="Enter document title" ngModel name="title" required #nameInput="ngModel">
+            <input type="text" matInput placeholder="Enter the comment title" ngModel name="title" required #nameInput="ngModel">
             <mat-error *ngIf="nameInput.hasError('required')">Document title must not be empty</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input matInput placeholder="Document description" ngModel name="description" required #descInput="ngModel">
+            <input matInput placeholder="Enter the description of your comment" ngModel name="description" required #descInput="ngModel">
             <mat-error *ngIf="descInput.hasError('required')">Document description must not be empty</mat-error>
         </mat-form-field>
 
