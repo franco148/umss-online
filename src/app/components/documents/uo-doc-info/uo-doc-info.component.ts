@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material';
 
 import { DmsService } from '../../../service/dms.service';
 import { UoDocNotesModalComponent } from '../uo-doc-notes-modal/uo-doc-notes-modal.component';
-import { CommonService } from 'src/app/service/common.service';
 import { NotesDto } from '../../../data/dto/notes-dto';
+import { Subscription } from 'rxjs';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-uo-doc-info',
   templateUrl: './uo-doc-info.component.html',
   styleUrls: ['./uo-doc-info.component.css']
 })
-export class UoDocInfoComponent implements OnInit {
+export class UoDocInfoComponent implements OnInit, OnDestroy {
 
   projectId: number;
 
@@ -27,6 +28,7 @@ export class UoDocInfoComponent implements OnInit {
   currentFileUpload: File;
 
   projectCommentsList: NotesDto[] = [];
+  projectCommentSubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute,
               private dmsService: DmsService,
@@ -43,6 +45,10 @@ export class UoDocInfoComponent implements OnInit {
     });
 
     this.projectCommentsList = this.commonService.getCommentsFromSelectedProject();
+
+    this.projectCommentSubscription = this.commonService.projectNotesChanged.subscribe(comment => {
+      this.projectCommentsList.push(comment);
+    });
   }
 
   findDocById() {
@@ -87,8 +93,12 @@ export class UoDocInfoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.projectsList = [];
-      // this.buildSchemaAndBuildDocumentUri(this.selectedProjectId);
     });
+  }
+
+  ngOnDestroy() {
+    if (this.projectCommentSubscription) {
+      this.projectCommentSubscription.unsubscribe();
+    }
   }
 }

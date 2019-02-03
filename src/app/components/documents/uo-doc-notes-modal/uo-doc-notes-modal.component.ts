@@ -14,8 +14,6 @@ import { CommonService } from '../../../service/common.service';
 })
 export class UoDocNotesModalComponent implements OnInit {
 
-  // projectCommentsList: {projectId: number, notesInfo: NotesDto[]}[] = [];
-
   constructor(public dialogRef: MatDialogRef<UoDocNotesModalComponent>,
               private authService: AuthService,
               private commonService: CommonService) { }
@@ -25,7 +23,6 @@ export class UoDocNotesModalComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    // const projectSelectedId = this.projectService.getSelectedProjectId();
     const loggedUser = this.authService.getUser();
     const notesInfoDto: NotesDto = {
       title: form.value.title,
@@ -35,27 +32,6 @@ export class UoDocNotesModalComponent implements OnInit {
 
     this.commonService.saveProjectComment(notesInfoDto);
     this.dialogRef.close();
-
-    // const selectedProject = this.projectCommentsList.find(p => p.projectId === projectSelectedId);
-    // if (selectedProject) {
-    //   selectedProject.notesInfo.push(notesInfoDto);
-    // } else {
-    //   const projectNotes: NotesDto[] = [];
-    //   projectNotes.push(notesInfoDto);
-    //   this.projectCommentsList.push({
-    //     projectId: projectSelectedId,
-    //     notesInfo: projectNotes
-    //   });
-    // }
-
-    // this.dmsService.uploadDocumentVersion(
-    //   this.passedData.documentId,
-    //   this.selectedFiles.item(0),
-    //   form.value.title, form.value.description)
-    // .subscribe(docVersion => {
-    //   console.log(docVersion);
-    //   this.dialogRef.close(docVersion);
-    // });
   }
 
   onCancel() {
