@@ -4,7 +4,7 @@
     <iframe width="75%" height="600" [src]="documentId | dmsFile" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <div style="width: 20%" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
         <button mat-stroked-button (click)="addNewNote()">Add new note...<mat-icon>note_add</mat-icon></button>
-        <app-uo-docs-notes *ngFor="let pComment of projectCommentsList"></app-uo-docs-notes>
+        <app-uo-docs-notes *ngFor="let comment of projectCommentsList" [projectComment]="comment"></app-uo-docs-notes>
     </div>
 </div>
 

@@ -3,8 +3,8 @@
         <div mat-card-avatar class="uo-card-avatar"></div>
         <div class="uo-card-content">
             <mat-card-header>
-                <mat-card-title>Shiba Inu</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                <mat-card-title>{{projectComment?.title}}</mat-card-title>
+                <mat-card-subtitle>{{projectComment?.author}}</mat-card-subtitle>
             </mat-card-header>
         </div>
         <div fxLayoutAlign="end center" style="width: 30%;">
@@ -14,7 +14,8 @@
     </div>
     <mat-card-content>
         <p>
-            {{ cardDescription.substr(0, 20) }} ... see more
+            <!-- {{ cardDescription.substr(0, 20) }} ... see more -->
+            {{ projectComment?.description.substr(0, 70) }} ... see more
         </p>
     </mat-card-content>
 </mat-card>
