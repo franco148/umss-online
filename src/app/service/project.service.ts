@@ -44,7 +44,7 @@ export class ProjectService {
     return this.http.get<Project>(`${this.serverUrl}/${projectId}/sprints`);
   }
 
-  getSelectedProjectId() {
+  getSelectedProjectId(): number {
     if (localStorage.getItem('selectedProject')) {
       const selectedProject = JSON.parse(localStorage.getItem('selectedProject'));
       return selectedProject.id;

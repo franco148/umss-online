@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material';
 
 import { DmsService } from '../../../service/dms.service';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { UoDocNotesModalComponent } from '../uo-doc-notes-modal/uo-doc-notes-modal.component';
+import { NotesDto } from '../../../data/dto/notes-dto';
+import { Subscription } from 'rxjs';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-uo-doc-info',
   templateUrl: './uo-doc-info.component.html',
   styleUrls: ['./uo-doc-info.component.css']
 })
-export class UoDocInfoComponent implements OnInit {
+export class UoDocInfoComponent implements OnInit, OnDestroy {
 
   projectId: number;
 
@@ -22,7 +27,13 @@ export class UoDocInfoComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
 
-  constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService) { }
+  projectCommentsList: NotesDto[] = [];
+  projectCommentSubscription: Subscription;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private dmsService: DmsService,
+              private commonService: CommonService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -31,6 +42,12 @@ export class UoDocInfoComponent implements OnInit {
         this.dmsService.selectedProjecId = this.projectId;
         this.buildSchemaAndBuildDocumentUri();
       }
+    });
+
+    this.projectCommentsList = this.commonService.getCommentsFromSelectedProject();
+
+    this.projectCommentSubscription = this.commonService.projectNotesChanged.subscribe(comment => {
+      this.projectCommentsList.push(comment);
     });
   }
 
@@ -67,5 +84,21 @@ export class UoDocInfoComponent implements OnInit {
         this.documentId = `http://localhost:9090/api/v1/files/${this.documentSchema.id}/view`;
       }
     });
+  }
+
+  addNewNote() {
+    const dialogRef = this.dialog.open(UoDocNotesModalComponent, {
+      width: '370px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.projectCommentSubscription) {
+      this.projectCommentSubscription.unsubscribe();
+    }
   }
 }

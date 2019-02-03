@@ -38,6 +38,7 @@ import { UoActiveSprintComponent } from './components/sprints/uo-active-sprint/u
 import { SharingPanelComponent } from './components/members/sharing-panel/sharing-panel.component';
 import { SharingModalComponent } from './components/members/sharing-modal/sharing-modal.component';
 import { RoleFormatPipe } from './pipe/role-format.pipe';
+import { UoDocNotesModalComponent } from './components/documents/uo-doc-notes-modal/uo-doc-notes-modal.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { RoleFormatPipe } from './pipe/role-format.pipe';
     UoActiveSprintComponent,
     SharingPanelComponent,
     SharingModalComponent,
-    RoleFormatPipe
+    RoleFormatPipe,
+    UoDocNotesModalComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +94,8 @@ import { RoleFormatPipe } from './pipe/role-format.pipe';
     UoUsCreateModalComponent,
     UoDocUploadModalComponent,
     UoDocChangeVersionModalComponent,
-    SharingModalComponent
+    SharingModalComponent,
+    UoDocNotesModalComponent
   ]
 })
 export class AppModule { }
