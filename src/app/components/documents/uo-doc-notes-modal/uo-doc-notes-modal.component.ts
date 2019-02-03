@@ -14,7 +14,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class UoDocNotesModalComponent implements OnInit {
 
-  projectCommentsList: {projectId: number, notesInfo: NotesDto}[] = [];
+  projectCommentsList: {projectId: number, notesInfo: NotesDto[]}[] = [];
 
   constructor(public dialogRef: MatDialogRef<UoDocNotesModalComponent>,
               private projectService: ProjectService,
@@ -25,8 +25,26 @@ export class UoDocNotesModalComponent implements OnInit {
 
   onSubmit(form: NgForm) {
 
-    const projectSelected = this.projectService.getSelectedProjectId();
+    const projectSelectedId = this.projectService.getSelectedProjectId();
     const loggedUser = this.authService.getUser();
+    const notesInfoDto: NotesDto = {
+      title: form.value.title,
+      author: `${loggedUser.name} ${loggedUser.lastName}`,
+      description: form.value.description
+    };
+
+    const selectedProject = this.projectCommentsList.find(p => p.projectId === projectSelectedId);
+    if (selectedProject) {
+      selectedProject.notesInfo.push(notesInfoDto);
+    } else {
+      const projectNotes: NotesDto[] = [];
+      projectNotes.push(notesInfoDto);
+      this.projectCommentsList.push({
+        projectId: projectSelectedId,
+        notesInfo: projectNotes
+      });
+    }
+
     // this.dmsService.uploadDocumentVersion(
     //   this.passedData.documentId,
     //   this.selectedFiles.item(0),
