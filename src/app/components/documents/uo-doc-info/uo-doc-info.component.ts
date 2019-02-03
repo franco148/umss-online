@@ -5,6 +5,8 @@ import { MatDialog } from '@angular/material';
 
 import { DmsService } from '../../../service/dms.service';
 import { UoDocNotesModalComponent } from '../uo-doc-notes-modal/uo-doc-notes-modal.component';
+import { CommonService } from 'src/app/service/common.service';
+import { NotesDto } from '../../../data/dto/notes-dto';
 
 @Component({
   selector: 'app-uo-doc-info',
@@ -24,7 +26,12 @@ export class UoDocInfoComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
 
-  constructor(private activatedRoute: ActivatedRoute, private dmsService: DmsService, private dialog: MatDialog) { }
+  projectCommentsList: NotesDto[] = [];
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private dmsService: DmsService,
+              private commonService: CommonService,
+              private dialog: MatDialog) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => {
@@ -34,6 +41,8 @@ export class UoDocInfoComponent implements OnInit {
         this.buildSchemaAndBuildDocumentUri();
       }
     });
+
+    this.projectCommentsList = this.commonService.getCommentsFromSelectedProject();
   }
 
   findDocById() {

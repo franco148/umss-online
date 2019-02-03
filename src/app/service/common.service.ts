@@ -6,6 +6,7 @@ import { AuthService } from '../components/auth/auth.service';
 import { User } from '../data/model/user.model';
 import { ProjectService } from './project.service';
 import { SharedProjectDto } from '../data/dto/shared-project-dto';
+import { NotesDto } from '../data/dto/notes-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,20 @@ import { SharedProjectDto } from '../data/dto/shared-project-dto';
 export class CommonService {
 
   sharedProjects: SharedProjectDto[] = [];
+  projectCommentsList: {projectId: number, notesInfo: NotesDto[]}[] = [];
+
   sharedProjectChanged = new Subject<User>();
+  projectNotesChanged = new Subject<NotesDto>();
 
   constructor(private authService: AuthService, private projectService: ProjectService) {
     if (localStorage.getItem('sharedProjects')) {
       const loadedSharedProjects = <SharedProjectDto[]>JSON.parse(localStorage.getItem('sharedProjects'));
       this.sharedProjects = loadedSharedProjects.slice();
+    }
+
+    if (localStorage.getItem('projectCommentsList')) {
+      const loadedProjectComments = <{projectId: number, notesInfo: NotesDto[]}[]>JSON.parse(localStorage.getItem('projectCommentsList'));
+      this.projectCommentsList = loadedProjectComments.slice();
     }
   }
 
@@ -79,5 +88,34 @@ export class CommonService {
       sharedProject.sharedWithList = usersList.slice();
       localStorage.setItem('sharedProjects', JSON.stringify(this.sharedProjects));
     }
+  }
+
+  saveProjectComment(projComment: NotesDto) {
+    const projectSelectedId = this.projectService.getSelectedProjectId();
+
+    const selectedProject = this.projectCommentsList.find(p => p.projectId === projectSelectedId);
+    if (selectedProject) {
+      selectedProject.notesInfo.push(projComment);
+    } else {
+      const projectNotes: NotesDto[] = [];
+      projectNotes.push(projComment);
+      this.projectCommentsList.push({
+        projectId: projectSelectedId,
+        notesInfo: projectNotes
+      });
+    }
+
+    localStorage.setItem('projectCommentsList', JSON.stringify(this.projectCommentsList));
+    this.projectNotesChanged.next(projComment);
+  }
+
+  getCommentsFromSelectedProject(): NotesDto[] {
+    const selectedProject = this.projectService.getSelectedProject();
+    const foundSelectedProject = this.projectCommentsList.find(p => p.projectId === selectedProject.id);
+    if (foundSelectedProject) {
+      return foundSelectedProject.notesInfo;
+    }
+
+    return [] as NotesDto[];
   }
 }

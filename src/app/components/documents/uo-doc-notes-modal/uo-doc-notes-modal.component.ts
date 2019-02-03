@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { DmsService } from '../../../service/dms.service';
 import { NgForm } from '@angular/forms';
 import { NotesDto } from '../../../data/dto/notes-dto';
 import { ProjectService } from '../../../service/project.service';
 import { AuthService } from '../../auth/auth.service';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-uo-doc-notes-modal',
@@ -14,18 +14,18 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class UoDocNotesModalComponent implements OnInit {
 
-  projectCommentsList: {projectId: number, notesInfo: NotesDto[]}[] = [];
+  // projectCommentsList: {projectId: number, notesInfo: NotesDto[]}[] = [];
 
   constructor(public dialogRef: MatDialogRef<UoDocNotesModalComponent>,
-              private projectService: ProjectService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private commonService: CommonService) { }
 
   ngOnInit() {
   }
 
   onSubmit(form: NgForm) {
 
-    const projectSelectedId = this.projectService.getSelectedProjectId();
+    // const projectSelectedId = this.projectService.getSelectedProjectId();
     const loggedUser = this.authService.getUser();
     const notesInfoDto: NotesDto = {
       title: form.value.title,
@@ -33,17 +33,20 @@ export class UoDocNotesModalComponent implements OnInit {
       description: form.value.description
     };
 
-    const selectedProject = this.projectCommentsList.find(p => p.projectId === projectSelectedId);
-    if (selectedProject) {
-      selectedProject.notesInfo.push(notesInfoDto);
-    } else {
-      const projectNotes: NotesDto[] = [];
-      projectNotes.push(notesInfoDto);
-      this.projectCommentsList.push({
-        projectId: projectSelectedId,
-        notesInfo: projectNotes
-      });
-    }
+    this.commonService.saveProjectComment(notesInfoDto);
+    this.dialogRef.close();
+
+    // const selectedProject = this.projectCommentsList.find(p => p.projectId === projectSelectedId);
+    // if (selectedProject) {
+    //   selectedProject.notesInfo.push(notesInfoDto);
+    // } else {
+    //   const projectNotes: NotesDto[] = [];
+    //   projectNotes.push(notesInfoDto);
+    //   this.projectCommentsList.push({
+    //     projectId: projectSelectedId,
+    //     notesInfo: projectNotes
+    //   });
+    // }
 
     // this.dmsService.uploadDocumentVersion(
     //   this.passedData.documentId,
