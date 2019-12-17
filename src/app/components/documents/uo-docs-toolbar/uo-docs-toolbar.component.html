@@ -13,7 +13,7 @@
     </span>
     <span fxLayout="row" fxLayoutGap="5px">
       <mat-icon>visibility</mat-icon>
-      <span>3 tutors/reviewers</span>
+      <span mat-raised-button [matTooltip]="reviewersToolTip">{{reviewersAmount}} tutors/reviewers</span>
     </span>
     <span fxLayout="row" fxLayoutGap="5px">
       <mat-icon>save_alt</mat-icon>

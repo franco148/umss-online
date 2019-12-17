@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DmsService } from '../../../service/dms.service';
-import { Router } from '@angular/router';
+import { User } from '../../../data/model/user.model';
+import { CommonService } from '../../../service/common.service';
 
 @Component({
   selector: 'app-uo-docs-toolbar',
@@ -11,14 +13,28 @@ import { Router } from '@angular/router';
 export class UoDocsToolbarComponent implements OnInit {
 
   amountOfVersions = 0;
+  reviewers: User[] = [];
+  reviewersAmount = 0;
+  reviewersToolTip = '';
 
-  constructor(private dmsService: DmsService, private router: Router) { }
+  constructor(private dmsService: DmsService, private commonService: CommonService, private router: Router) { }
 
   ngOnInit() {
-    console.log('DOCUMENT ID: ', this.dmsService.selectedProjectDocumentId);
+    // This gets the amount of versions including the root file
     this.dmsService.getFileVersionsAmount(this.dmsService.selectedProjectDocumentId).subscribe(amount => {
-      console.log('AMOUNT GOTTEN FROM DMS SERVICE: ', amount);
       this.amountOfVersions = amount;
+    });
+
+    // This information will be loaded in tool bar of Document Viewer
+    // Information for Tutors and Reviewers
+    this.reviewers = this.commonService.getUsersFromSharedProject();
+    this.reviewersAmount = this.reviewers.length;
+    this.reviewers.forEach(user => {
+      if (this.reviewersToolTip.length === 0) {
+        this.reviewersToolTip += `${user.name} ${user.lastName}`;
+      } else {
+        this.reviewersToolTip += `, ${user.name} ${user.lastName}`;
+      }
     });
   }
 
