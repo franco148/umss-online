@@ -31,7 +31,7 @@ export class UoDocUploadModalComponent implements OnInit {
       this.selectedFiles.item(0),
       form.value.title, form.value.description)
     .subscribe(docVersion => {
-      console.log(docVersion);
+      console.log('----------------', docVersion);
       this.dialogRef.close(docVersion);
     });
   }

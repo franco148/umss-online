@@ -64,6 +64,15 @@ export class DmsService {
     }
   }
 
+  getFileVersionsAmount(selectedDocumentId: string): Observable<number> {
+    if (selectedDocumentId) {
+      const urlRequest = `${this.serverUrl}/${selectedDocumentId}/versions/count?includeRoot=true`;
+      return this.http.get<number>(urlRequest);
+    }
+
+    return new Observable();
+  }
+
   changeDocumentVersion(documentId: any, versionId: string) {
     // http://localhost:8080/api/v1/files/dac73c08-58ad-4324-8898-DocID/versions/ad40fbe0-d219-45cc-a1fc-6db3c64db270/change
     if (documentId && versionId) {

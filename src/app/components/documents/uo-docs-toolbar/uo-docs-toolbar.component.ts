@@ -10,9 +10,16 @@ import { Router } from '@angular/router';
 })
 export class UoDocsToolbarComponent implements OnInit {
 
+  amountOfVersions = 0;
+
   constructor(private dmsService: DmsService, private router: Router) { }
 
   ngOnInit() {
+    console.log('DOCUMENT ID: ', this.dmsService.selectedProjectDocumentId);
+    this.dmsService.getFileVersionsAmount(this.dmsService.selectedProjectDocumentId).subscribe(amount => {
+      console.log('AMOUNT GOTTEN FROM DMS SERVICE: ', amount);
+      this.amountOfVersions = amount;
+    });
   }
 
   onClickMethod() {
