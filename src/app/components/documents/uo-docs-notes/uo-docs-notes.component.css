@@ -24,7 +24,8 @@ span:active {
 }
 
 .uo-card-avatar {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('https://i.pravatar.cc/300');
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
     width: 40px;
     height: 40px;
