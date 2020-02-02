@@ -25,27 +25,11 @@ export const ACTIVE_SPRINT_DATA = `[
     "assignedTo": null
   },
   {
-    "id": 4,
-    "name": "As a platform user, I need to receive some notifications when new updates were added to the projects.",
-    "description": "If someone is subscribed to some project, he can receive some notifications with all the news of that project.",
-    "priority": "LOW",
-    "estimatedTime": 40,
-    "assignedTo": null
-  },
-  {
     "id": 5,
     "name": "As a responsible to review a project, I want to approve the changes once they were tagged as ready to review.",
     "description": "The responsibles of a project can approve the new updated applied to a project.",
     "priority": "MEDIUM",
     "estimatedTime": 16,
-    "assignedTo": null
-  },
-  {
-    "id": 6,
-    "name": "As a product owner, I want to have a mobile app for accessing to the platform.",
-    "description": "Users can also use the platform through a mobile app.",
-    "priority": "LOW",
-    "estimatedTime": 1000,
     "assignedTo": null
   },
   {
@@ -126,6 +110,14 @@ export const ACTIVE_SPRINT_DATA = `[
     "description": "Comments can be left to the project as a feedback for those with whom the project has been shared.",
     "priority": "LOW",
     "estimatedTime": 18,
+    "assignedTo": null
+  },
+  {
+    "id": 4,
+    "name": "As a platform user, I need to receive some notifications when new updates were added to the projects.",
+    "description": "If someone is subscribed to some project, he can receive some notifications with all the news of that project.",
+    "priority": "LOW",
+    "estimatedTime": 40,
     "assignedTo": null
   },
   {
@@ -270,6 +262,14 @@ export const ACTIVE_SPRINT_DATA = `[
     "description": "Since AWS provides us a scalable environment, it is a great option to take into account for deploying our projects.",
     "priority": "MEDIUM",
     "estimatedTime": 70,
+    "assignedTo": null
+  },
+  {
+    "id": 6,
+    "name": "As a product owner, I want to have a mobile app for accessing to the platform.",
+    "description": "Users can also use the platform through a mobile app.",
+    "priority": "LOW",
+    "estimatedTime": 100,
     "assignedTo": null
   },
   {
