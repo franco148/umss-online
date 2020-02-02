@@ -9,6 +9,7 @@ import { Project } from '../../../data/model/project.model';
 import { UserStory } from '../../../data/model/user-story.model';
 import { User } from '../../../data/model/user.model';
 import { AuthService } from '../../auth/auth.service';
+import { ACTIVE_SPRINT_DATA } from '../../../constants/temp.constant';
 
 @Component({
   selector: 'app-uo-active-sprint',
@@ -51,17 +52,23 @@ export class UoActiveSprintComponent implements OnInit, AfterViewInit {
   initializeDataForActiveSprint() {
 
     const owner = this.authService.getUser();
+    const userStoriesForActiveSprint: UserStory[] = JSON.parse(ACTIVE_SPRINT_DATA);
 
-    for (let index = 1; index <= 35; index++) {
-      const userStoryItem = new UserStory();
-      userStoryItem.id = index;
-      userStoryItem.name = `User Story number ${index}`;
-      userStoryItem.description = `User Story number ${index} description`;
-      userStoryItem.priority = 'HIGH';
-      userStoryItem.estimatedTime = 4;
-      userStoryItem.assignedTo = owner;
+    userStoriesForActiveSprint.forEach(us => {
+      us.assignedTo = owner;
+      this.userStoriesList.push(us);
+    });
 
-      this.userStoriesList.push(userStoryItem);
-    }
+    // for (let index = 1; index <= 35; index++) {
+    //   const userStoryItem = new UserStory();
+    //   userStoryItem.id = index;
+    //   userStoryItem.name = `User Story number ${index}`;
+    //   userStoryItem.description = `User Story number ${index} description`;
+    //   userStoryItem.priority = 'HIGH';
+    //   userStoryItem.estimatedTime = 4;
+    //   userStoryItem.assignedTo = owner;
+
+    //   this.userStoriesList.push(userStoryItem);
+    // }
   }
 }
