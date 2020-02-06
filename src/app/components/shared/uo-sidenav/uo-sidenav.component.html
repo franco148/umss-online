@@ -1,3 +1,5 @@
+<div style="text-align: center;">{{authUser?.name}} {{authUser?.lastName}}</div>
+<mat-divider></mat-divider>
 <mat-nav-list>
     <a *ngIf="isAuth" mat-list-item [routerLink]="['/project', selectedProject, 'active-sprint']" (click)="onClose()" [ngClass]="{'uo-menu-nav-disabled': selectedProject === 0}">
         <mat-icon>directions_boat</mat-icon>
