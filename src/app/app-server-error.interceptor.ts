@@ -5,7 +5,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { tap, catchError, retry } from 'rxjs/operators';
 
 
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { NUMBER_OF_RETRIES } from './constants/app.constant';
 import { AuthService } from './components/auth/auth.service';

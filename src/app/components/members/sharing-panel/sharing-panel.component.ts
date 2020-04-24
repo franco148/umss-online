@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
 
 import { Subscription } from 'rxjs';
 

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { DMS_SERVER_URL } from '../constants/app.constant';
 import { Observable } from 'rxjs';
-import { text } from '@angular/core/src/render3/instructions';
 
 @Injectable({
   providedIn: 'root'

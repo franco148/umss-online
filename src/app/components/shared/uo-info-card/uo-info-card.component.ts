@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from '../../../data/model/project.model';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UoDocChangeVersionModalComponent } from '../../documents/uo-doc-versions/uo-doc-change-version-modal.component';
 import { DmsService } from '../../../service/dms.service';
 

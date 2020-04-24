@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { DmsService } from '../../../service/dms.service';
 import { UoDocNotesModalComponent } from '../uo-doc-notes-modal/uo-doc-notes-modal.component';
